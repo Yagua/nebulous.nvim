@@ -768,7 +768,7 @@ Group.new('scalaTypeDeclaration',         c.Yellow, c.none, no)
 -- TELESCOPE --
 ---------------
 Group.new('TelescopeNormal',          c.White,       c.none,   no)
-Group.new('TelescopeSelection',       c.White,       c.Grey_2,  b)
+Group.new('TelescopeSelection',       c.White,       c.Grey,  b)
 Group.new('TelescopeSlectionCaret',   c.Red,         c.none,   no)
 Group.new('TelescopeMultiSelection ', c.Grey_2,      c.none,   no)
 Group.new('TelescopeBorde',           c.DarkOrange,  c.none,   no)
