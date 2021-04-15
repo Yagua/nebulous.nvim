@@ -3,6 +3,7 @@
 -- Author:       DilanGMB <Dilan.baron79@gmail.com>
 -- Website:      https://github.com/DilanGMB/nightbuddy
 
+local Color = require('colorbuddy.color').Color
 ---------------------
 --  LIGHT COLORS   --
 ---------------------

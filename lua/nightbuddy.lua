@@ -3,7 +3,12 @@
 -- Author:       DilanGMB <Dilan.baron79@gmail.com>
 -- Website:      https://github.com/DilanGMB/nightbuddy
 
-local Color, c, Group, g, s = require('colorbuddy').setup()
+-- Setup Colorbuddy
+local Group = require('colorbuddy.group').Group
+local c = require('colorbuddy.color').colors
+local g = require('colorbuddy.group').groups
+local s = require('colorbuddy.style').styles
+
 local b = s.bold
 local i = s.italic
 local uc = s.undercurl
@@ -27,6 +32,7 @@ else
 end
 
 -- MORE VARIANTS COMING SOON !!
+
 ---------------------
 -- EDITOR SETTINGS --
 ---------------------
@@ -109,67 +115,6 @@ Group.new('QuickFixLine',     g.Search,       g.Search,       g.Search)
 Group.new('TabLineFill',      c.Grey,         c.Black,        no)
 Group.new('TabLineSel',       c.Black,        c.DarkCyan,     no)
 Group.new('TabLine',          g.TabLineFill,  g.TabLineFill,  g.TabLineFill)
-
-----------------
--- LSP COLORS --
-----------------
-Group.new('LspDiagnosticsVirtualTextHint',        c.Custom_2,   c.none, no)
-Group.new('LspDiagnosticsSignWarning',            c.DarkOrange, c.none, no)
-Group.new('LspDiagnosticsSignInformation',        c.Custom_3,   c.none, no)
-Group.new('LspDiagnosticsSignHint',               c.Custom_2,   c.none, no)
-Group.new('LspDiagnosticsFloatingHint',           c.Custom_2,   c.none, ul)
-Group.new('LspDiagnosticsSignError',              c.DarkRed,    c.none, no)
-Group.new('LspDiagnosticsDefaultWarning',         c.DarkOrange, c.none, no)
-Group.new('LspDiagnosticsDefaultError',           c.DarkRed,    c.none, no)
-Group.new('LspDiagnosticsFloatingError',          c.DarkRed,    c.none, ul)
-Group.new('LspDiagnosticsFloatingWarning',        c.DarkOrange, c.none, ul)
-Group.new('LspDiagnosticsFloatingInformation',    c.Custom_3,   c.none, ul)
-Group.new('LspDiagnosticsUnderlineInformation',   c.none,       c.none, ul)
-Group.new('LspDiagnosticsUnderlineHint',          c.none,       c.none, ul)
-Group.new('LspDiagnosticsDefaultInformation',     c.Cyan,       c.none, no)
-Group.new('LspDiagnosticsDefaultHint',            c.Custom_2,   c.none, no)
-Group.new('LspDiagnosticsUnderlineError',         c.none,       c.none, ul)
-Group.new('LspDiagnosticsVirtualTextError',       c.DarkRed,    c.none, no)
-Group.new('LspDiagnosticsVirtualTextWarning',     c.DarkOrange, c.none, no)
-Group.new('LspDiagnosticsVirtualTextInformation', c.Custom_3,   c.none, no)
-Group.new('LspDiagnosticsUnderlineWarning',       c.none,       c.none, ul)
-Group.new("LspReferenceText",                     c.DarkOrange, c.Cyan, no)
-Group.new("LspReferenceRead",                     c.DarkOrange, c.Cyan, no)
-Group.new("LspReferenceWrite",                    c.DarkOrange, c.Cyan, no)
-
------------------------
--- TREESITTER COLORS --
------------------------
-Group.new('TSFloat',              g.Float,       c.none, no)
-Group.new('TSFunction',           g.Function,    c.none, no)
-Group.new('TSType',               g.Type,        c.none, no)
-Group.new('TSTypeBuiltin',        g.Type,        c.none, no)
-Group.new('TSLabel',              g.Label,       c.none, no)
-Group.new('TSCharacter',          g.Character,   c.none, no)
-Group.new('TSConditional',        g.Conditional, c.none, no)
-Group.new('TSConstant',           g.Constant,    c.none, no)
-Group.new('TSConstBuiltin',       g.Constant,    c.none, no)
-Group.new('TSConstMacro',         g.Constant,    c.none, no)
-Group.new('TSFuncBuiltin',        g.Function,    c.none, no)
-Group.new("TSMethod",             g.Function,    c.none, no)
-Group.new('TSStructure',          g.Structure,   c.none, no)
-Group.new('TSTagDelimiter',       g.Delimiter,   c.none, no)
-Group.new('TSNumber',             g.Number,      c.none, no)
-Group.new('TSFuncMacro',          g.Function,    c.none, no)
-Group.new('TSInclude',            g.Include,     c.none, no)
-Group.new('TSKeyword',            g.Keyword,     c.none, no)
-Group.new('TSException',          g.Exception,   c.none, no)
-Group.new('TSBoolean',            g.Boolean,     c.none, no)
-Group.new('TSError',              g.Error,       c.none, no)
-Group.new('TSString',             g.String,      c.none, no)
-Group.new('TSStringEscape',       c.Orange,      c.none, no)
-Group.new('TSStringRegex',        c.Red,         c.none, no)
-Group.new('TSProperty',           c.DarkCyan,    c.none, no)
-Group.new('TSField',              c.Purple,      c.none, no)
-Group.new('TSParameter',          c.Yellow,      c.none, no)
-Group.new('TSVariable',           c.Cyan,        c.none, no)
-Group.new('TSPunctBracket',       c.White,       c.none, no)
-Group.new('TSOperator',           c.White,       c.none, no)
 
 --------------------------------------------------------------------------
 --                        COLOR LANGUAGE SETTINGS                       --
@@ -619,20 +564,26 @@ Group.new('goDeclaration',  g.Keyword, g.Keyword, g.Keyword)
 ------------
 -- PYTHON --
 ------------
-Group.new('pythonEscape',          c.Red,      c.none, no)
-Group.new('pythonEscape',          c.Red,      c.none, no)
-Group.new('pythonSelf',            c.DarkGrey, c.none, i)
-Group.new('pythonImport',          c.Purple,   c.none, no)
-Group.new('pythonBuiltin',         c.Cyan,     c.none, no)
-Group.new('pythonModule',          c.Purple,   c.none, no)
-Group.new('pythonStringDelimiter', c.Green,    c.none, no)
-Group.new('pythonParam',           c.Orange,   c.none, no)
-Group.new('pythonFunction',        c.DarkCyan, c.none, no)
-Group.new('pythonKeyword',         c.DarkCyan, c.none, no)
-Group.new('pythonStatement',       c.Purple,   c.none, no)
-Group.new('pythonClass',           c.DarkCyan, c.none, no)
-Group.new('pythonOperator',        c.Purple,   c.none, no)
-Group.new('pythonSymbol',          c.Cyan,     c.none, no)
+Group.new('pythonEscape',            c.Red,         c.none,        no)
+Group.new('pythonSelf',              c.DarkGrey,    c.none,        i)
+Group.new('pythonSelfArg',           c.Grey_2,      c.none,        s.italic)
+Group.new('pythonImport',            c.Purple,      c.none,        no)
+Group.new('pythonBuiltin',           c.Cyan,        c.none,        no)
+Group.new('pythonModule',            c.Purple,      c.none,        no)
+Group.new('pythonStringDelimiter',   c.Green,       c.none,        no)
+Group.new('pythonParam',             c.Orange,      c.none,        no)
+Group.new('pythonFunction',          c.DarkCyan,    c.none,        no)
+Group.new('pythonKeyword',           c.DarkCyan,    c.none,        no)
+Group.new('pythonStatement',         c.Purple,      c.none,        no)
+Group.new('pythonClass',             c.DarkCyan,    c.none,        no)
+Group.new('pythonOperator',          c.Purple,      c.none,        no)
+Group.new('pythonSymbol',            c.Cyan,        c.none,        no)
+Group.new('pythonBytes',             c.green,       c.none,        s.italic)
+Group.new('pythonBytesError',        g.Error,       g.Error,       g.Error)
+Group.new('pythonBytesEscapeError',  g.Error,       g.Error,       g.Error)
+Group.new('pythonBytesEscape',       g.Special,     g.Special,     g.Special)
+Group.new('pythonRawBytes',          g.pythonBytes, g.pythonBytes, g.pythonBytes)
+Group.new('pythonBytesContent',      g.pythonBytes, g.pythonBytes, g.pythonBytes)
 
 ----------------
 -- PURESCRIPT --
@@ -649,11 +600,9 @@ Group.new('purescriptOperator',    c.White,  c.none, no)
 -- VIM --
 ---------
 Group.new('vimSep',          c.DarkGrey, c.none,     no)
-Group.new('vimCommand',      c.Purple,   c.none,     no)
 Group.new('vimCommentTitle', c.Grey,     c.none,     b)
 Group.new('vimLineComment',  c.Grey,     c.none,     i)
 Group.new('vimParenSep',     c.DarkGrey, c.none,     no)
-Group.new('vimFunction',     c.Cyan,     c.none,     no)
 Group.new('vimFuncName',     c.Purple,   c.none,     no)
 Group.new('vimHighlight',    c.DarkCyan, c.none,     no)
 Group.new('vimUserFunc',     c.Cyan,     c.none,     no)
@@ -672,6 +621,12 @@ Group.new('vimFunction',     g.Function, g.Function, g.Function)
 Group.new('vimFuncSID',      g.Function, g.Function, g.Function)
 Group.new('vimCommentTitle', c.Blue,     c.none,     b)
 Group.new('vimCommand',      c.Cyan,     c.none,     b)
+Group.new('vimNotFunc',      c.Blue,     c.none,     no)
+Group.new('vimFuncVar',      c.Purple,   c.none,     no)
+Group.new('vimMapModKey',    c.Cyan,     c.none,     no)
+Group.new('vimMapLHS',       c.Yellow,   c.none,     no)
+Group.new('vimMap',          c.Aqua,     c.none,     no)
+Group.new('nvimMap',         g.vimMap,   c.none,     no)
 
 ---------
 -- ZSH --
@@ -740,9 +695,17 @@ Group.new('ocamlConstructor',    c.Orange, c.none , no )
 ---------
 -- LUA --
 ---------
-Group.new('luaFunction', c.Cyan,   c.none, no)
-Group.new('luaTable',    c.Orange, c.none, no)
-Group.new('luaIn',       c.Red,    c.none, no)
+Group.new('luaFunction',             c.Cyan,               c.none,               no)
+Group.new('luaTable',                c.Orange,             c.none,               no)
+Group.new('luaIn',                   c.Red,                c.none,               no)
+Group.new('luaStatement',            c.DarkYellow,         c.none,               s.bold)
+Group.new('luaKeyword',              c.DarkOrange,         c.none,               s.bold)
+Group.new('luaMyKeyword',            c.Violet,             c.none,               s.bold)
+Group.new('luaFunctionCall',         c.DarkBlue,           c.none,               nil)
+Group.new('luaSpecialFunctions',     c.DarkBlue,           c.none,               nil)
+Group.new('luaMetatableEvents',      c.Purple,             c.none,               nil)
+Group.new('luaMetatableArithmetic',  g.luaMetatableEvents, g.luaMetatableEvents, g.luaMetatableEvents)
+Group.new('luaMetatableEquivalence', g.luaMetatableEvents, g.luaMetatableEvents, g.luaMetatableEvents)
 
 -----------
 -- SCALA --
@@ -760,9 +723,88 @@ Group.new('scalaKeywordModifier',         c.Red,    c.none, no)
 Group.new('scalaSpecial',                 c.Cyan,   c.none, no)
 Group.new('scalaTypeDeclaration',         c.Yellow, c.none, no)
 
+-----------
+--  SQL  --
+-----------
+Group.new('SqlKeyword', c.Red)
+
 --------------------------------------------------------------------------
 --                           PLUGINS SETTINGS                            -
 --------------------------------------------------------------------------
+
+----------------
+-- LSP COLORS --
+----------------
+Group.new('LspDiagnosticsVirtualTextHint',        c.Custom_2,   c.none, no)
+Group.new('LspDiagnosticsSignWarning',            c.DarkOrange, c.none, no)
+Group.new('LspDiagnosticsSignInformation',        c.Custom_3,   c.none, no)
+Group.new('LspDiagnosticsSignHint',               c.Custom_2,   c.none, no)
+Group.new('LspDiagnosticsFloatingHint',           c.Custom_2,   c.none, ul)
+Group.new('LspDiagnosticsSignError',              c.DarkRed,    c.none, no)
+Group.new('LspDiagnosticsDefaultWarning',         c.DarkOrange, c.none, no)
+Group.new('LspDiagnosticsDefaultError',           c.DarkRed,    c.none, no)
+Group.new('LspDiagnosticsFloatingError',          c.DarkRed,    c.none, ul)
+Group.new('LspDiagnosticsFloatingWarning',        c.DarkOrange, c.none, ul)
+Group.new('LspDiagnosticsFloatingInformation',    c.Custom_3,   c.none, ul)
+Group.new('LspDiagnosticsUnderlineInformation',   c.none,       c.none, ul)
+Group.new('LspDiagnosticsUnderlineHint',          c.none,       c.none, ul)
+Group.new('LspDiagnosticsDefaultInformation',     c.Cyan,       c.none, no)
+Group.new('LspDiagnosticsDefaultHint',            c.Custom_2,   c.none, no)
+Group.new('LspDiagnosticsUnderlineError',         c.none,       c.none, ul)
+Group.new('LspDiagnosticsVirtualTextError',       c.DarkRed,    c.none, no)
+Group.new('LspDiagnosticsVirtualTextWarning',     c.DarkOrange, c.none, no)
+Group.new('LspDiagnosticsVirtualTextInformation', c.Custom_3,   c.none, no)
+Group.new('LspDiagnosticsUnderlineWarning',       c.none,       c.none, ul)
+Group.new("LspReferenceText",                     c.DarkOrange, c.Cyan, no)
+Group.new("LspReferenceRead",                     c.DarkOrange, c.Cyan, no)
+Group.new("LspReferenceWrite",                    c.DarkOrange, c.Cyan, no)
+
+---------------
+--  LSPSAGA  --
+---------------
+Group.new("LspSagaRenamePromptPrefix", c.Green,  c.none)
+Group.new("DiagnosticHint",            c.Purple, c.none)
+Group.new("DefinitionPreviewTitle",    c.Yellow, c.none)
+Group.new("LspSagaRenameBorder",       c.Green,  c.none)
+Group.new("DiagnosticInformation",     c.Blue,   c.none)
+Group.new("LspSagaDefPreviewBorder",   c.Yellow, c.none)
+Group.new("LspSagaHoverBorder",        c.Cyan,   c.none)
+Group.new("DiagnosticWarning",         c.Yellow, c.none)
+Group.new("DiagnosticError",           g.Error,  c.none)
+
+-----------------------
+-- TREESITTER COLORS --
+-----------------------
+Group.new('TSFloat',              g.Float,       c.none, no)
+Group.new('TSFunction',           g.Function,    c.none, no)
+Group.new('TSType',               g.Type,        c.none, no)
+Group.new('TSTypeBuiltin',        g.Type,        c.none, no)
+Group.new('TSLabel',              g.Label,       c.none, no)
+Group.new('TSCharacter',          g.Character,   c.none, no)
+Group.new('TSConditional',        g.Conditional, c.none, no)
+Group.new('TSConstant',           g.Constant,    c.none, no)
+Group.new('TSConstBuiltin',       g.Constant,    c.none, no)
+Group.new('TSConstMacro',         g.Constant,    c.none, no)
+Group.new('TSFuncBuiltin',        g.Function,    c.none, no)
+Group.new("TSMethod",             g.Function,    c.none, no)
+Group.new('TSStructure',          g.Structure,   c.none, no)
+Group.new('TSTagDelimiter',       g.Delimiter,   c.none, no)
+Group.new('TSNumber',             g.Number,      c.none, no)
+Group.new('TSFuncMacro',          g.Function,    c.none, no)
+Group.new('TSInclude',            g.Include,     c.none, no)
+Group.new('TSKeyword',            g.Keyword,     c.none, no)
+Group.new('TSException',          g.Exception,   c.none, no)
+Group.new('TSBoolean',            g.Boolean,     c.none, no)
+Group.new('TSError',              g.Error,       c.none, no)
+Group.new('TSString',             g.String,      c.none, no)
+Group.new('TSStringEscape',       c.Orange,      c.none, no)
+Group.new('TSStringRegex',        c.Red,         c.none, no)
+Group.new('TSProperty',           c.DarkCyan,    c.none, no)
+Group.new('TSField',              c.Purple,      c.none, no)
+Group.new('TSParameter',          c.Yellow,      c.none, no)
+Group.new('TSVariable',           c.Cyan,        c.none, no)
+Group.new('TSPunctBracket',       c.White,       c.none, no)
+Group.new('TSOperator',           c.White,       c.none, no)
 
 ---------------
 -- TELESCOPE --
