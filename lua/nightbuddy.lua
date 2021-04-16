@@ -801,10 +801,12 @@ Group.new('TSStringEscape',       c.Orange,      c.none, no)
 Group.new('TSStringRegex',        c.Red,         c.none, no)
 Group.new('TSProperty',           c.DarkCyan,    c.none, no)
 Group.new('TSField',              c.Purple,      c.none, no)
-Group.new('TSParameter',          c.Yellow,      c.none, no)
+Group.new('TSParameter',          c.Cyan,        c.none, no)
 Group.new('TSVariable',           c.Cyan,        c.none, no)
 Group.new('TSPunctBracket',       c.White,       c.none, no)
 Group.new('TSOperator',           c.White,       c.none, no)
+Group.new('TSVariableBuiltin',    c.Orange,      c.none, no)
+Group.new('TSConstructor',        c.DarkYellow,  c.none, no)
 
 ---------------
 -- TELESCOPE --
