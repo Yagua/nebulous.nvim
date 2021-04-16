@@ -7,7 +7,7 @@ local Color = require('colorbuddy.color').Color
 ---------------------
 --  LIGHT COLORS   --
 ---------------------
-Color.new('background',  "#0b1015")
+Color.new('Cbackground', "#0b1015")
 Color.new('Red',         "#FB467B")
 Color.new('Blue',        "#0BA8E2")
 Color.new('Green',       "#B8EE92")
