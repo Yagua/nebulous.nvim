@@ -64,7 +64,7 @@ require('colorbuddy').colorscheme('nightbuddy')
 #### Midnight
 ![midnight](./media/midnight.gif)
 
-#### Lualine scheme
+## Lualine scheme
 If you want to use the custom colorscheme of lualine, put the following code in your init
 (make sure you have nightbuddy and lualine installed, otherwise it may not work):
 
