@@ -25,7 +25,7 @@ Minimalist Collection of Dark Colorschemes Created with [Colorbuddy helper](http
 
 ```vim
 Plug 'tjdevries/colorbuddy.vim'
-Plug 'DilanGMB/nightbuddy'
+Plug 'DilanGMB/nightbuddy', {'branch':'main'}
 ```
 
 ##### [Packer.nvim](https://github.com/wbthomason/packer.nvim)
