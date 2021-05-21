@@ -25,7 +25,7 @@ Minimalist Collection of Dark Colorschemes Created with [Colorbuddy helper](http
 
 ```vim
 Plug 'tjdevries/colorbuddy.vim'
-Plug 'DilanGMB/nightbuddy', {'branch':'main'}
+Plug 'DilanGMB/nightbuddy'
 ```
 
 ##### [Packer.nvim](https://github.com/wbthomason/packer.nvim)
@@ -53,6 +53,7 @@ require('colorbuddy').colorscheme('nightbuddy')
 - twilight
 - midnight
 
+More variants coming soon !!
 ## Preview
 
 #### Twilight
@@ -63,27 +64,6 @@ require('colorbuddy').colorscheme('nightbuddy')
 
 #### Midnight
 ![midnight](./media/midnight.gif)
-
-## Lualine scheme
-If you want to use the custom colorscheme of lualine, put the following code in your init
-(make sure you have nightbuddy and lualine installed, otherwise it may not work):
-
-```lua
-require('lualine').setup {
-  options = {
-    -- theme name
-    theme = 'nightbuddy'
-  }
-}
-```
-
-More variants of the color scheme and status line coming soon!
-
-### Preview
-
-![midnight](./media/lualine.gif)
-
-*\- Preview with Midnight variant*
 
 ### NOTE
 
