@@ -3,743 +3,805 @@
 -- Author:       DilanGMB <Dilan.baron79@gmail.com>
 -- Website:      https://github.com/DilanGMB/nightbuddy
 
--- Setup Colorbuddy
-local Group = require('colorbuddy.group').Group
-local c = require('colorbuddy.color').colors
-local g = require('colorbuddy.group').groups
-local s = require('colorbuddy.style').styles
-
-local b = s.bold
-local i = s.italic
-local uc = s.undercurl
-local ul = s.underline
-local r = s.reverse
-local no = s.NONE
-local global = vim.g
-
-global.colors_name = 'nightbuddy'
+local scheme = require("scheme.colors")
+local setup = {}
 
 ---------------------
---  STYLE SELECTOR --
+-- EDITOR SETTINGS --
 ---------------------
-if global.nb_style == "twilight" then
-  require("twilight")
-elseif global.nb_style == "midnight" then
-  require("midnight")
-else
-  -- Default - Classic Nightbuddy
-  require("night")
+function setup.loadSyntax()
+  local syntax = {
+
+    String =           { fg = scheme.Green,      bg = scheme.none,       style = "italic" },
+    Delimiter =        { fg = scheme.Green,      bg = scheme.none,       scheme.none },
+    Character =        { fg = scheme.Orange,     bg = scheme.none,       scheme.none },
+    Constant =         { fg = scheme.Orange,     bg = scheme.none,       scheme.none },
+    Boolean =          { fg = scheme.DarkYellow, bg = scheme.none,       scheme.none },
+    Float =            { fg = scheme.Orange,     bg = scheme.none,       scheme.none },
+    Tag =              { fg = scheme.Orange,     bg = scheme.none,       scheme.none },
+    DiffText =         { fg = scheme.Yellow,     bg = scheme.none,       style = "reverse" },
+    Label =            { fg = scheme.DarkYellow, bg = scheme.none,       scheme.none },
+    PreProc =          { fg = scheme.Yellow,     bg = scheme.none,       scheme.none },
+    Type =             { fg = scheme.Yellow,     bg = scheme.none,       scheme.none },
+    StorageClass =     { fg = scheme.Yellow,     bg = scheme.none,       scheme.none  },
+    Special =          { fg = scheme.Yellow,     bg = scheme.none,       style = "italic" },
+    Todo =             { fg = scheme.DarkYellow, bg = scheme.none,       style = "bold,italic" },
+    Identifier =       { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
+    Function =         { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
+    Include =          { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
+    SpecialChar =      { fg = scheme.Blue,       bg = scheme.none,       scheme.none },
+    Underlined =       { fg = scheme.Blue,       bg = scheme.none,       syle = "underline" },
+    Conceal =          { fg = scheme.Blue,       bg = scheme.none,       scheme.none },
+    Statement =        { fg = scheme.Purple,     bg = scheme.none,       scheme.none },
+    Repeat =           { fg = scheme.Purple,     bg = scheme.none,       scheme.none },
+    Structure =        { fg = scheme.Purple,     bg = scheme.none,       scheme.none },
+    Define =           { fg = scheme.Purple,     bg = scheme.none,       scheme.none },
+    Operator =         { fg = scheme.White,      bg = scheme.none,       scheme.none },
+    Keyword =          { fg = scheme.Red,        bg = scheme.none,       scheme.none },
+    Macro =            { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
+    Typedef =          { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
+    Comment =          { fg = scheme.DarkGrey,   bg = scheme.none,       style = "italic" },
+    Ignore =           { fg = scheme.none,       bg = scheme.none,       scheme.none },
+    Error =            { fg = scheme.DarkRed,    bg = scheme.none,       style = "bold,underline" },
+    Debug =            { fg = scheme.DarkRed ,   bg = scheme.none,       scheme.none },
+    Exception =        { fg = scheme.DarkRed ,   bg = scheme.none,       scheme.none },
+    ColorColumn =      { fg = scheme.none,       bg = scheme.Grey_2,     scheme.none },
+    Cursor =           { fg = scheme.none,       bg = scheme.Orange,     scheme.none },
+    CursorIM =         { fg = scheme.none,       bg = scheme.Grey_2,     scheme.none },
+    CursorColumn =     { fg = scheme.none,       bg = scheme.Grey_2,     scheme.none },
+    CursorLineNr =     { fg = scheme.White,      bg = scheme.Grey_2,     scheme.none },
+    CursorLine =       { fg = scheme.none,       bg = scheme.Grey_2,     scheme.none },
+    Folded =           { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
+    FoldColumn =       { fg = scheme.Grey,       bg = scheme.DarkGrey,   scheme.none },
+    SignColumn =       { fg = scheme.none,       bg = scheme.none,       scheme.none },
+    IncSearch =        { fg = scheme.Black,      bg = scheme.DarkCyan,   scheme.none },
+    PMenu =            { fg = scheme.none,       bg = scheme.Grey_2,     scheme.none },
+    PMenuSel =         { fg = scheme.Black,      bg = scheme.Orange,     scheme.none },
+    PMenuSbar =        { fg = scheme.none,       bg = scheme.Grey,       scheme.none },
+    PMenuThumb =       { fg = scheme.none,       bg = scheme.Yellow,     scheme.none },
+    Directory =        { fg = scheme.Blue,       bg = scheme.none,       style = "bold" },
+    DiffAdd =          { fg = scheme.Green,      bg = scheme.none,       style = "reverse" },
+    DiffChange =       { fg = scheme.Orange,     bg = scheme.none,       style = "reverse" },
+    StatusLine =       { fg = scheme.White,      bg = scheme.Grey,       scheme.none },
+    StatusLineNC =     { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
+    DiffDelete =       { fg = scheme.Red,        bg = scheme.none,       style = "reverse" },
+    WarningMsg =       { fg = scheme.DarkRed,    bg = scheme.none,       scheme.none },
+    Warnings =         { fg = scheme.Orange,     bg = scheme.none,       scheme.none },
+    WildMenu =         { fg = scheme.Orange,     bg = scheme.Black,      style = "bold" },
+    EndOfBuffer =      { fg = scheme.Custom_1,   bg = scheme.none,       scheme.none },
+    ErrorMsg =         { fg = scheme.DarkRed,    bg = scheme.none,       scheme.none },
+    VertSplit =        { fg = scheme.Pink,       bg = scheme.none,       scheme.none },
+    LineNr =           { fg = scheme.DarkGrey,   bg = scheme.none,       scheme.none },
+    MatchParen =       { fg = scheme.Cyan,       bg = scheme.none,       style = "bold" },
+    ModeMsg =          { fg = scheme.Blue,       bg = scheme.none,       scheme.none },
+    NonText =          { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
+    Normal =           { fg = scheme.White,      bg = scheme.background, scheme.none },
+    NormalFloat =      { fg = scheme.White,      bg = scheme.Grey_2,     scheme.none },
+    Question =         { fg = scheme.DarkCyan,   bg = scheme.none,       style = "bold" },
+    qfLineNr =         { fg = scheme.Yellow,     bg = scheme.Yellow,     scheme.Yellow },
+    Search =           { fg = scheme.Black,      bg = scheme.Yellow,     scheme.none },
+    SpecialKey =       { fg = scheme.Purple,     bg = scheme.none,       style = "bold" },
+    Title =            { fg = scheme.White,      bg = scheme.none,       style = "bold" },
+    Visual =           { fg = scheme.White,      bg = scheme.Custom_1,   scheme.none },
+    VisualNOS =        { fg = scheme.White,      bg = scheme.Custom_1,   scheme.none },
+    StatusLineTerm =   { fg = scheme.Black,      bg = scheme.Green,      scheme.Grey },
+    StatusLineTermNC = { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
+    Conditional =      { fg = scheme.Red,        bg = scheme.none,       scheme.none },
+    QuickFixLine =     { fg = scheme.Black,      bg = scheme.Yellow,     scheme.none },
+    TabLineFill =      { fg = scheme.Grey,       bg = scheme.Black,      scheme.none },
+    TabLineSel =       { fg = scheme.Black,      bg = scheme.DarkCyan,   scheme.none },
+    TabLine =          { fg = scheme.Grey,       bg = scheme.Black,      scheme.none },
+  }
+  return syntax
 end
-
--- MORE VARIANTS COMING SOON !!
 
 --------------------------------------------------------------------------
 --                        COLOR LANGUAGE SETTINGS                       --
 --------------------------------------------------------------------------
 
----------
--- GIT --
----------
-gitcommitSelectedArrow',  g.gitcommitSelectedFile,  g.gitcommitSelectedFile,  g.gitcommitSelectedFile)
-gitcommitUnmergedArrow',  g.gitcommitUnmergedFile,  g.gitcommitUnmergedFile,  g.gitcommitUnmergedFile)
-GitGutterAdd',            g.SignifySignAdd,         g.SignifySignAdd,         g.SignifySignAdd)
-GitGutterChange',         g.SignifySignChange,      g.SignifySignChange,      g.SignifySignChange)
-gitcommitFile',           c.none,                   c.none,                   no)
-gitcommitNoBranch',       g.gitcommitBranch,        g.gitcommitBranch,        g.gitcommitBranch)
-gitcommitUntracked',      g.gitcommitComment,       g.gitcommitComment,       g.gitcommitComment)
-gitcommitDiscarded',      g.gitcommitComment,       g.gitcommitComment,       g.gitcommitComment)
-gitcommitDiscardedArrow', g.gitcommitDiscardedFile, g.gitcommitDiscardedFile, g.gitcommitDiscardedFile)
-GitGutterDelete',         g.SignifySignDelete,      g.SignifySignDelete,      g.SignifySignDelete)
+function setup.loadPlugs()
+  local syntax = {
+    ---------
+    -- GIT --
+    ---------
+    gitcommitComment =        { fg = scheme.Grey,   bg = scheme.none,  scheme.none },
+    SignifySignAdd =          { fg = scheme.Green,  bg = scheme.none,  scheme.none },
+    SignifySignChange =       { fg = scheme.Yellow, bg = scheme.none,  scheme.none },
+    SignifySignDelete =       { fg = scheme.Red,    bg = scheme.none,  scheme.none },
+    gitcommitDiscardedType =  { fg = scheme.Red,    bg = scheme.none,  scheme.none },
+    gitcommitSelectedType =   { fg = scheme.Green,  bg = scheme.none,  scheme.none },
+    gitcommitHeader =         { fg = scheme.none,   bg = scheme.none,  scheme.none },
+    gitcommitUntrackedFile =  { fg = scheme.Cyan,   bg = scheme.none,  scheme.none },
+    gitcommitDiscardedFile =  { fg = scheme.Red,    bg = scheme.none,  scheme.none },
+    gitcommitUnmerged =       { fg = scheme.Green,  bg = scheme.none,  scheme.none },
+    gitcommitOnBranch =       { fg = scheme.none,   bg = scheme.none,  scheme.none },
+    gitcommitBranch =         { fg = scheme.Purple, bg = scheme.none,  scheme.none },
+    gitcommitSelectedFile =   { fg = scheme.Green,  bg = scheme.none,  scheme.none },
+    gitcommitUnmergedFile =   { fg = scheme.Yellow, bg = scheme.none,  scheme.none },
 
-----------
--- DIFF --
-----------
-Group.new('diffAdded',   c.Green,  c.none, no)
-Group.new('diffFile',    c.Orange, c.none, no)
-Group.new('diffNewFile', c.Yellow, c.none, no)
-Group.new('diffChanged', c.Cyan,   c.none, no)
-Group.new('diffRemoved', c.Red,    c.none, no)
-Group.new('diffLine',    c.Blue,   c.none, no)
+    ----------
+    -- DIFF --
+    ----------
+    diffAdded =   { fg = scheme.Green,  bg = scheme.none, scheme.none },
+    diffFile =    { fg = scheme.Orange, bg = scheme.none, scheme.none },
+    diffNewFile = { fg = scheme.Yellow, bg = scheme.none, scheme.none },
+    diffChanged = { fg = scheme.Cyan,   bg = scheme.none, scheme.none },
+    diffRemoved = { fg = scheme.Red,    bg = scheme.none, scheme.none },
+    diffLine =    { fg = scheme.Blue,   bg = scheme.none, scheme.none },
 
---------------
--- MARKDOWN --
---------------
-Group.new('markdownUrl',               c.Purple,     c.none, no)
-Group.new('markdownH1',                c.Red,        c.none, no)
-Group.new('markdownH2',                c.Red,        c.none, no)
-Group.new('markdownH3',                c.Red,        c.none, no)
-Group.new('markdownH3',                c.Red,        c.none, no)
-Group.new('markdownH4',                c.Red,        c.none, no)
-Group.new('markdownH5',                c.Red,        c.none, no)
-Group.new('markdownH6',                c.Red,        c.none, no)
-Group.new('markdownItalic',            c.Orange,     c.none, b)
-Group.new('markdownBold',              c.Orange,     c.none, b)
-Group.new('markdownListMarker',        c.DarkYellow, c.none, no)
-Group.new('markdownCode',              c.Green,      c.none, no)
-Group.new('markdownCodeBlock',         c.Yellow,     c.none, no)
-Group.new('markdownCodeDelimiter',     c.Green,      c.none, no)
-Group.new('markdownRule',              c.Grey,       c.none, no)
-Group.new('markdownHeadingRule',       c.Grey,       c.none, no)
-Group.new('markdownUrlDelimiter',      c.DarkGray,   c.none, no)
-Group.new('markdownLinkDelimiter',     c.DarkGray,   c.none, no)
-Group.new('markdownLinkTextDelimiter', c.DarkGray,   c.none, no)
-Group.new('markdownHeadingDelimiter',  c.Orange,     c.none, no)
-Group.new('markdownUrlTitleDelimiter', c.Green,      c.none, no)
-Group.new('markdownHeadingDelimiter',  c.DarkOrange, c.none, no)
-Group.new('markdownOrderedListMarker', c.Grey,       c.none, no)
+    --------------
+    -- MARKDOWN --
+    --------------
+    markdownUrl =               { fg = scheme.Purple,     bg = scheme.none, scheme.none },
+    markdownH1 =                { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    markdownH2 =                { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    markdownH3 =                { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    markdownH4 =                { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    markdownH5 =                { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    markdownH6 =                { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    markdownItalic =            { fg = scheme.Orange,     bg = scheme.none, style = "bold" },
+    markdownBold =              { fg = scheme.Orange,     bg = scheme.none, style = "bold" },
+    markdownListMarker =        { fg = scheme.DarkYellow, bg = scheme.none, scheme.none },
+    markdownCode =              { fg = scheme.Green,      bg = scheme.none, scheme.none },
+    markdownCodeBlock =         { fg = scheme.Yellow,     bg = scheme.none, scheme.none },
+    markdownCodeDelimiter =     { fg = scheme.Green,      bg = scheme.none, scheme.none },
+    markdownRule =              { fg = scheme.Grey,       bg = scheme.none, scheme.none },
+    markdownHeadingRule =       { fg = scheme.Grey,       bg = scheme.none, scheme.none },
+    markdownUrlDelimiter =      { fg = scheme.DarkGray,   bg = scheme.none, scheme.none },
+    markdownLinkDelimiter =     { fg = scheme.DarkGray,   bg = scheme.none, scheme.none },
+    markdownLinkTextDelimiter = { fg = scheme.DarkGray,   bg = scheme.none, scheme.none },
+    markdownUrlTitleDelimiter = { fg = scheme.Green,      bg = scheme.none, scheme.none },
+    markdownHeadingDelimiter =  { fg = scheme.DarkOrange, bg = scheme.none, scheme.none },
+    markdownOrderedListMarker = { fg = scheme.Grey,       bg = scheme.none, scheme.none },
 
-----------
--- HTML --
-----------
-Group.new('htmlSpecialTagName', c.Red,      c.none,     no)
-Group.new('htmlArg',            c.Orange,   c.none,     no)
-Group.new('htmlTagName',        c.Red,      c.none,     no)
-Group.new('htmlTagN',           c.Red,      c.none,     no)
-Group.new('htmlEndTag',         c.DarkGrey, c.none,     no)
-Group.new('htmlTag',            c.DarkGrey, c.none,     no)
-Group.new('MatchTag',           c.Red,      c.DarkGrey, ul + b)
+    ----------
+    -- HTML --
+    ----------
+    htmlSpecialTagName = { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    htmlArg =            { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    htmlTagName =        { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    htmlTagN =           { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    htmlEndTag =         { fg = scheme.DarkGrey, bg = scheme.none, scheme.none },
+    htmlTag =            { fg = scheme.DarkGrey, bg = scheme.none, scheme.none },
+    MatchTag =           { fg = scheme.Red,      bg = scheme.none, style = "bold,underline" },
 
------------
---  XML  --
------------
-Group.new('xmlTag',             c.Red,    c.none, no)
-Group.new('xmlEndTag',          c.Red,    c.none, no)
-Group.new('xmlTagName',         c.Red,    c.none, no)
-Group.new('xmlAttrib',          c.Yellow, c.none, no)
-Group.new('xmlEqual',           c.Red,    c.none, no)
-Group.new('docbkKeyword',       c.Cyan,   c.none,  b)
-Group.new('xmlDocTypeDecl',     c.Grey,   c.none, no)
-Group.new('xmlDocTypeKeyword',  c.Purple, c.none, no)
-Group.new('xmlCdataStart',      c.Grey,   c.none, no)
-Group.new('xmlCdataCdata',      c.Purple, c.none, no)
-Group.new('xmlProcessingDelim', c.Grey,   c.none, no)
-Group.new('xmlAttribPunct',     c.Grey,   c.none, no)
-Group.new('xmlEntity',          c.Orange, c.none, no)
-Group.new('xmlEntityPunct',     c.Orange, c.none, no)
+    -----------
+    --  XML  --
+    -----------
+    xmlTag =             { fg = scheme.Red,    bg = scheme.none, scheme.none },
+    xmlEndTag =          { fg = scheme.Red,    bg = scheme.none, scheme.none },
+    xmlTagName =         { fg = scheme.Red,    bg = scheme.none, scheme.none },
+    xmlAttrib =          { fg = scheme.Yellow, bg = scheme.none, scheme.none },
+    xmlEqual =           { fg = scheme.Red,    bg = scheme.none, scheme.none },
+    docbkKeyword =       { fg = scheme.Cyan,   bg = scheme.none, style = "bold" },
+    xmlDocTypeDecl =     { fg = scheme.Grey,   bg = scheme.none, scheme.none },
+    xmlDocTypeKeyword =  { fg = scheme.Purple, bg = scheme.none, scheme.none },
+    xmlCdataStart =      { fg = scheme.Grey,   bg = scheme.none, scheme.none },
+    xmlCdataCdata =      { fg = scheme.Purple, bg = scheme.none, scheme.none },
+    xmlProcessingDelim = { fg = scheme.Grey,   bg = scheme.none, scheme.none },
+    xmlAttribPunct =     { fg = scheme.Grey,   bg = scheme.none, scheme.none },
+    xmlEntity =          { fg = scheme.Orange, bg = scheme.none, scheme.none },
+    xmlEntityPunct =     { fg = scheme.Orange, bg = scheme.none, scheme.none },
 
----------
--- PUG --
----------
-Group.new('pugDocType',             c.Grey,    c.none, i)
-Group.new('pugClass',               c.Orange,  c.none, no)
-Group.new('pugTag',                 c.Red,     c.none, no)
-Group.new('pugAttributesDelimiter', c.Orange,  c.none, no)
+    ---------
+    -- PUG --
+    ---------
+    pugDocType =             { fg = scheme.Grey,    bg = scheme.none, style = "italic" },
+    pugClass =               { fg = scheme.Orange,  bg = scheme.none, scheme.none },
+    pugTag =                 { fg = scheme.Red,     bg = scheme.none, scheme.none },
+    pugAttributesDelimiter = { fg = scheme.Orange,  bg = scheme.none, scheme.none },
 
----------
--- CSS --
----------
-Group.new('cssFontAttr',          c.Orange,    c.none, no)
-Group.new('cssAttrComma',         c.Purple,    c.none, no)
-Group.new('cssIdentifier',        c.DarkCyan,  c.none, no)
-Group.new('cssImportant',         c.Purple,    c.none, no)
-Group.new('cssInclude',           c.White,     c.none, no)
-Group.new('cssIncludeKeyword',    c.Purple,    c.none, no)
-Group.new('cssMediaType',         c.Orange,    c.none, no)
-Group.new('cssProp',              c.Cyan,      c.none, no)
-Group.new('cssAttributeSelector', c.Green,     c.none, no)
-Group.new('cssBraces',            c.White,  c.none, no)
-Group.new('cssClassName',         c.Orange,    c.none, no)
-Group.new('cssClassNameDot',      c.Orange,    c.none, no)
-Group.new('cssDefinition',        c.Purple,    c.none, no)
-Group.new('cssFontDescriptor',    c.Purple,    c.none, no)
-Group.new('cssFunctionName',      c.DarkCyan,  c.none, no)
-Group.new('cssPseudoClassId',     c.Orange,    c.none, no)
-Group.new('cssSelectorOp',        c.Purple,    c.none, no)
-Group.new('cssSelectorOp2',       c.Purple,    c.none, no)
-Group.new('cssStringQ',           c.Green,     c.none, no)
-Group.new('cssStringQQ',          c.Green,     c.none, no)
-Group.new('cssTagName',           c.Red,       c.none, no)
-Group.new('cssAttr',              c.Orange,    c.none, no)
+    ---------
+    -- CSS --
+    ---------
+    cssFontAttr =          { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    cssAttrComma =         { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cssIdentifier =        { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    cssImportant =         { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cssInclude =           { fg = scheme.White,    bg = scheme.none, scheme.none },
+    cssIncludeKeyword =    { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cssMediaType =         { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    cssProp =              { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    cssAttributeSelector = { fg = scheme.Green,    bg = scheme.none, scheme.none },
+    cssBraces =            { fg = scheme.White,    bg = scheme.none, scheme.none },
+    cssClassName =         { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    cssClassNameDot =      { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    cssDefinition =        { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cssFontDescriptor =    { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cssFunctionName =      { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    cssPseudoClassId =     { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    cssSelectorOp =        { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cssSelectorOp2 =       { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cssStringQ =           { fg = scheme.Green,    bg = scheme.none, scheme.none },
+    cssStringQQ =          { fg = scheme.Green,    bg = scheme.none, scheme.none },
+    cssTagName =           { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    cssAttr =              { fg = scheme.Orange,   bg = scheme.none, scheme.none },
 
-----------
--- SASS --
-----------
-Group.new('sassId',             c.DarkCyan, c.none, no)
-Group.new('sassInclude',        c.Purple,   c.none, no)
-Group.new('sassMedia',          c.Purple,   c.none, no)
-Group.new('sassMediaOperators', c.White,    c.none, no)
-Group.new('sassMixin',          c.Purple,   c.none, no)
-Group.new('sassMixinName',      c.DarkCyan, c.none, no)
-Group.new('sassMixing',         c.Purple,   c.none, no)
-Group.new('sassAmpersand',      c.Red,      c.none, no)
-Group.new('sassClass',          c.Yellow,   c.none, no)
-Group.new('sassControl',        c.Purple,   c.none, no)
-Group.new('sassExtend',         c.Purple,   c.none, no)
-Group.new('sassFor',            c.White,    c.none, no)
-Group.new('sassProperty',       c.Cyan,     c.none, no)
-Group.new('sassFunction',       c.Cyan,     c.none, no)
-Group.new('scssSelectorName',   c.Yellow,   c.none, no)
+    ----------
+    -- SASS --
+    ----------
+    sassId =             { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    sassInclude =        { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    sassMedia =          { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    sassMediaOperators = { fg = scheme.White,    bg = scheme.none, scheme.none },
+    sassMixin =          { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    sassMixinName =      { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    sassMixing =         { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    sassAmpersand =      { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    sassClass =          { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    sassControl =        { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    sassExtend =         { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    sassFor =            { fg = scheme.White,    bg = scheme.none, scheme.none },
+    sassProperty =       { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    sassFunction =       { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    scssSelectorName =   { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
 
-----------------
--- JAVASCRIPT --
-----------------
-Group.new('jsClassKeyword',                 g.Keyword,    g.Keyword,    g.Keyword)
-Group.new('jsExtendsKeyword',               g.Keyword,    g.Keyword,    g.Keyword)
-Group.new('jsGlobalNodeObjects',            g.Keyword,    g.Keyword,    g.Keyword)
-Group.new('jsGlobalObjects',                g.Keyword,    g.Keyword,    g.Keyword)
-Group.new('jsFunction',                     g.Function,   g.Function,   g.Function)
-Group.new('jsObjectProp',                   g.Identifier, g.Identifier, g.Identifier)
-Group.new('jsUndefined',                    g.ErrorMsg,   g.ErrorMsg,   g.ErrorMsg)
-Group.new('jsObjectBraces',                 g.Special,    g.Special,    g.Special)
-Group.new('javascriptDocTags',              c.DarkGrey,   c.none,       no)
-Group.new('javascriptDocNotation',          c.DarkGrey,   c.none,       no)
-Group.new('javascriptDocParamType',         c.DarkGrey,   c.none,       no)
-Group.new('javascriptDocNamedParamType',    c.DarkGrey,   c.none,       no)
-Group.new('javascriptDocParamName',         c.DarkGrey,   c.none,       no)
-Group.new('javaScriptParens',               c.White,     c.none,       no)
-Group.new('jsClassDefinition',              c.Yellow,     c.none,       no)
-Group.new('javascriptArrowFunc',            c.Yellow,     c.none,       no)
-Group.new('javascriptClassName',            c.Yellow,     c.none,       no)
-Group.new('javascriptClassSuperName',       c.Yellow,     c.none,       no)
-Group.new('javascriptGlobal',               c.Yellow,     c.none,       no)
-Group.new('jsFuncArgs',                     c.Blue,       c.none,       no)
-Group.new('jsExportDefault',                c.Blue,       c.none,       b)
-Group.new('jsObjectKey',                    c.Blue,       c.none,       no)
-Group.new('jsFunctionKey',                  c.Blue,       c.none,       no)
-Group.new('javascriptCacheMethod',          c.White,      c.none,       no)
-Group.new('javascriptDateMethod',           c.White,      c.none,       no)
-Group.new('javascriptMathStaticMethod',     c.White,      c.none,       no)
-Group.new('javascriptURLUtilsProp',         c.White,      c.none,       no)
-Group.new('jsFuncBraces',                   c.Blue,       c.none,       no)
-Group.new('jsClassBlock',                   c.Blue,       c.none,       no)
-Group.new('jsFuncArgs',                     c.Blue,       c.none,       no)
-Group.new('jsStorageClass',                 c.Blue,       c.none,       no)
-Group.new('jsxRegion',                      c.Blue,       c.none,       no)
-Group.new('javaScriptMember',               c.Blue,       c.none,       no)
-Group.new('jsObjectValue',                  c.Green,      c.none,       no)
-Group.new('javaScriptIdentifier',           c.Red,        c.none,       no)
-Group.new('jsParens',                       c.White,        c.none,       no)
-Group.new('javascriptAsyncFuncKeyword',     c.Red,        c.none,       b)
-Group.new('jsBracket',                      c.Red,        c.none,       no)
-Group.new('jsObjectColon',                  c.Red,        c.none,       no)
-Group.new('javascriptAwaitFuncKeyword',     c.Red,        c.none,       b)
-Group.new('javascriptOperator',             c.Red,        c.none,       no)
-Group.new('javascriptForOperator',          c.Red,        c.none,       no)
-Group.new('javascriptYield',                c.Red,        c.none,       no)
-Group.new('javascriptExceptions',           g.Error,      c.none,       no)
-Group.new('javascriptMessage',              c.Red,        c.none,       no)
-Group.new('jsFutureKeys',                   c.Orange,     c.none,       b)
-Group.new('jsFuncParens',                   c.Orange,     c.none,       no)
-Group.new('javascriptVariable',             c.Orange,     c.none,       no)
-Group.new('javascriptHeadersMethod',        c.White,      c.none,       no)
-Group.new('javascriptObjectLabel',          c.White,      c.none,       no)
-Group.new('javascriptPropertyName',         c.White,      c.none,       no)
-Group.new('javascriptLogicSymbols',         c.White,      c.none,       no)
-Group.new('jsVariableDef',                  c.White,      c.none,       no)
-Group.new('javascriptGlobalMethod',         c.White,      c.none,       no)
-Group.new('javaScriptBraces',               c.White,      c.none,       no)
-Group.new('javascriptNodeGlobal',           c.White,      c.none,       no)
-Group.new('javascriptBOMWindowProp',        c.White,      c.none,       no)
-Group.new('javascriptArrayMethod',          c.White,      c.none,       no)
-Group.new('javascriptArrayStaticMethod',    c.White,      c.none,       no)
-Group.new('javascriptIdentifier',           c.Orange,     c.none,       no)
-Group.new('javascriptClassSuper',           c.Orange,     c.none,       no)
-Group.new('javascriptClassStatic',          c.Orange,     c.none,       no)
-Group.new('javaScriptNumber',               c.Purple,     c.none,       no)
-Group.new('javaScriptNull',                 c.Purple,     c.none,       no)
-Group.new('jsNull',                         c.Purple,     c.none,       no)
-Group.new('javascriptImport',               c.Cyan,       c.none,       no)
-Group.new('javascriptTemplateSB',           c.Cyan,       c.none,       no)
-Group.new('jsTemplateBraces',               c.Cyan,       c.none,       no)
-Group.new('javascriptFuncKeyword',          c.Cyan,       c.none,       no)
-Group.new('javascriptEndColons',            c.White,      c.none,       no)
-Group.new('javascriptFuncArg',              c.White,      c.none,       no)
-Group.new('javascriptLabel',                c.White,      c.none,       no)
-Group.new('javascriptBrackets',             c.White,      c.none,       no)
-Group.new('javascriptTemplateSubstitution', c.White,      c.none,       no)
-Group.new('javascriptStringMethod',         c.White,      c.none,       no)
-Group.new('javascriptBOMWindowMethod',      c.White,      c.none,       no)
-Group.new('javascriptAsyncFunc',            c.Cyan,       c.none,       no)
-Group.new('javascriptClassKeyword',         c.Cyan,       c.none,       no)
-Group.new('javascriptClassExtends',         c.Cyan,       c.none,       no)
-Group.new('javascriptDefault',              c.Cyan,       c.none,       no)
-Group.new('javaScriptFunction',             c.Cyan,       c.none,       no)
-Group.new('javascriptExport',               c.Cyan,       c.none,       no)
-Group.new('javascriptDOMElemAttrs',         c.White,      c.none,       no)
-Group.new('javascriptDOMEventMethod',       c.White,      c.none,       no)
-Group.new('javascriptDOMNodeMethod',        c.White,      c.none,       no)
-Group.new('javascriptDOMStorageMethod',     c.White,      c.none,       no)
-Group.new('javascriptBOMNavigatorProp',     c.White,      c.none,       no)
-Group.new('javascriptDOMDocMethod',         c.White,      c.none,       no)
-Group.new('javascriptDOMDocProp',           c.White,      c.none,       no)
-Group.new('javascriptBOMLocationMethod',    c.White,      c.none,       no)
+    ----------------
+    -- JAVASCRIPT --
+    ----------------
+    jsClassKeyword =                  { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    jsExtendsKeyword =                { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    jsGlobalNodeObjects =             { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    jsGlobalObjects =                 { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    jsFunction =                      { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    jsObjectProp =                    { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    jsUndefined =                     { fg = scheme.DarkRed,  bg = scheme.none, scheme.none },
+    jsObjectBraces =                  { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    javascriptDocTags =               { fg = scheme.DarkGray, bg = scheme.none, scheme.none },
+    javascriptDocNotation =           { fg = scheme.DarkGray, bg = scheme.none, scheme.none },
+    javascriptDocParamType =          { fg = scheme.DarkGray, bg = scheme.none, scheme.none },
+    javascriptDocNamedParamType =     { fg = scheme.DarkGray, bg = scheme.none, scheme.none },
+    javascriptDocParamName =          { fg = scheme.DarkGray, bg = scheme.none, scheme.none },
+    javaScriptParens =                { fg = scheme.White,    bg = scheme.none, scheme.none },
+    jsClassDefinition =               { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    javascriptArrowFunc =             { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    javascriptClassName =             { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    javascriptClassSuperName =        { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    javascriptGlobal =                { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    jsFuncArgs =                      { fg = scheme.Blue,     bg = scheme.none, scheme.none },
+    jsExportDefault =                 { fg = scheme.Blue,     bg = scheme.none, style = "bold" },
+    jsObjectKey =                     { fg = scheme.Blue,     bg = scheme.none, scheme.none },
+    jsFunctionKey =                   { fg = scheme.Blue,     bg = scheme.none, scheme.none },
+    javascriptCacheMethod =           { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptDateMethod =            { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptMathStaticMethod =      { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptURLUtilsProp =          { fg = scheme.White,    bg = scheme.none, scheme.none },
+    jsFuncBraces =                    { fg = scheme.Blue,     bg = scheme.none, scheme.none },
+    jsClassBlock =                    { fg = scheme.Blue,     bg = scheme.none, scheme.none },
+    jsStorageClass =                  { fg = scheme.Blue,     bg = scheme.none, scheme.none },
+    jsxRegion =                       { fg = scheme.Blue,     bg = scheme.none, scheme.none },
+    javaScriptMember =                { fg = scheme.Blue,     bg = scheme.none, scheme.none },
+    jsObjectValue =                   { fg = scheme.Green,    bg = scheme.none, scheme.none },
+    javaScriptIdentifier =            { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    jsParens =                        { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptAsyncFuncKeyword =      { fg = scheme.Red,      bg = scheme.none, style = "bold" },
+    jsBracket =                       { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    jsObjectColon =                   { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    javascriptAwaitFuncKeyword =      { fg = scheme.Red,      bg = scheme.none, style = "bold" },
+    javascriptOperator =              { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    javascriptForOperator =           { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    javascriptYield =                 { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    javascriptExceptions =            { fg = scheme.DarkRed,  bg = scheme.none, scheme.none },
+    javascriptMessage =               { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    jsFutureKeys =                    { fg = scheme.Orange,   bg = scheme.none, style = "bold" },
+    jsFuncParens =                    { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    javascriptVariable =              { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    javascriptHeadersMethod =         { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptObjectLabel =           { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptPropertyName =          { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptLogicSymbols =          { fg = scheme.White,    bg = scheme.none, scheme.none },
+    jsVariableDef =                   { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptGlobalMethod =          { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javaScriptBraces =                { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptNodeGlobal =            { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptBOMWindowProp =         { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptArrayMethod =           { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptArrayStaticMethod =     { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptIdentifier =            { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    javascriptClassSuper =            { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    javascriptClassStatic =           { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    javaScriptNumber =                { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    javaScriptNull =                  { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    jsNull =                          { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    javascriptImport =                { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    javascriptTemplateSB =            { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    jsTemplateBraces =                { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    javascriptFuncKeyword =           { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    javascriptEndColons =             { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptFuncArg =               { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptLabel =                 { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptBrackets =              { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptTemplateSubstitution =  { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptStringMethod =          { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptBOMWindowMethod =       { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptAsyncFunc =             { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    javascriptClassKeyword =          { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    javascriptClassExtends =          { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    javascriptDefault =               { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    javaScriptFunction =              { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    javascriptExport =                { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    javascriptDOMElemAttrs =          { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptDOMEventMethod =        { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptDOMNodeMethod =         { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptDOMStorageMethod =      { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptBOMNavigatorProp =      { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptDOMDocMethod =          { fg = scheme.White,    bg = scheme.none, scheme.none },
+    javascriptDOMDocProp =            { fg = scheme.White,    bg = scheme.none, scheme.none },
 
-----------------
--- TYPESCRIPT --
-----------------
-Group.new('typeScriptDocParam',               g.Comment,         g.Comment,         g.Comment)
-Group.new('typeScriptDocTags',                g.vimCommentTitle, g.vimCommentTitle, g.vimCommentTitle)
-Group.new('typeScriptGlobalObjects',          g.Keyword,         g.Keyword,         g.Keyword)
-Group.new('typeScriptFuncKeyword',            g.Function,        g.Function,        g.Function)
-Group.new('typeScriptIdentifier',             g.Identifier,      g.Identifier,      g.Identifier)
-Group.new('typeScriptBraces',                 c.Red,             c.none,            no)
-Group.new('typeScriptEndColons',              c.White,           c.none,            no)
-Group.new('typeScriptDOMObjects',             c.White,           c.none,            no)
-Group.new('typeScriptParens',                 c.Blue,            c.none,            no)
-Group.new('typeScriptOpSymbols',              g.Operator,        g.Operator,        g.Operator)
-Group.new('typeScriptHtmlElemProperties',     g.Special,         g.Special,         g.Special)
-Group.new('typeScriptNull',                   c.Purple,          c.none,            b)
-Group.new('typeScriptInterpolationDelimiter', c.Cyan,            c.none,            no)
-Group.new('typeScriptReserved',               c.Cyan,            c.none,            no)
-Group.new('typeScriptLabel',                  g.Label,           g.Label,           g.Label)
-Group.new('typeScriptAjaxMethods',            g.Function,        g.Function,        g.Function)
-Group.new('typeScriptLogicSymbols',           c.White,           c.none,            no)
-Group.new('typeScriptDocSeeTag',              g.Comment,         g.Comment,         g.Comment)
+    ----------------
+    -- TYPESCRIPT --
+    ----------------
+    typeScriptDocParam =               { fg = scheme.DarkGrey,   bg = scheme.none, scheme.none },
+    typeScriptDocTags =                { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    typeScriptGlobalObjects =          { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    typeScriptFuncKeyword =            { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    typeScriptIdentifier =             { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    typeScriptBraces =                 { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    typeScriptEndColons =              { fg = scheme.White,      bg = scheme.none, scheme.none },
+    typeScriptDOMObjects =             { fg = scheme.White,      bg = scheme.none, scheme.none },
+    typeScriptParens =                 { fg = scheme.Blue,       bg = scheme.none, scheme.none },
+    typeScriptOpSymbols =              { fg = scheme.White,      bg = scheme.none, scheme.none },
+    typeScriptHtmlElemProperties =     { fg = scheme.Yellow,     bg = scheme.none, scheme.none },
+    typeScriptNull =                   { fg = scheme.Purple,     bg = scheme.none, style = "bold" },
+    typeScriptInterpolationDelimiter = { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    typeScriptReserved =               { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    typeScriptLabel =                  { fg = scheme.DarkYellow, bg = scheme.none, scheme.none },
+    typeScriptAjaxMethods =            { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    typeScriptLogicSymbols =           { fg = scheme.White,      bg = scheme.none, scheme.none },
+    typeScriptDocSeeTag =              { fg = scheme.DarkGrey,   bg = scheme.none, scheme.none },
 
-----------
--- JSON --
-----------
-Group.new('jsonKeyword',            c.Red,      c.none, no)
-Group.new('jsonNumber',             c.Orange,   c.none, no)
-Group.new('jsonStringSQError',      c.Red,      c.none, r)
-Group.new('jsonNumError',           c.Red,      c.none, r)
-Group.new('jsonQuote',              c.DarkGray, c.none, no)
-Group.new('jsonTrailingCommaError', c.Red,      c.none, r)
-Group.new('jsonMissingCommaError',  c.Red,      c.none, r)
-Group.new('jsonNoQuotesError',      c.Red,      c.none, r)
-Group.new('jsonString',             c.Green,    c.none, no)
-Group.new('jsonBoolean',            c.Purple,   c.none, no)
-Group.new('jsonCommentError',       c.White,    c.none, no)
-Group.new('jsonSemicolonError',     c.Red,      c.none, r)
+    ----------
+    -- JSON --
+    ----------
+    jsonKeyword =            { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    jsonNumber =             { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    jsonStringSQError =      { fg = scheme.Red,      bg = scheme.none, syle = "reverse" },
+    jsonNumError =           { fg = scheme.Red,      bg = scheme.none, syle = "reverse" },
+    jsonQuote =              { fg = scheme.DarkGray, bg = scheme.none, scheme.none },
+    jsonTrailingCommaError = { fg = scheme.Red,      bg = scheme.none, syle = "reverse" },
+    jsonMissingCommaError =  { fg = scheme.Red,      bg = scheme.none, syle = "reverse" },
+    jsonNoQuotesError =      { fg = scheme.Red,      bg = scheme.none, syle = "reverse" },
+    jsonString =             { fg = scheme.Green,    bg = scheme.none, scheme.none },
+    jsonBoolean =            { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    jsonCommentError =       { fg = scheme.White,    bg = scheme.none, scheme.none },
+    jsonSemicolonError =     { fg = scheme.Red,      bg = scheme.none, syle = "reverse" },
 
--------------
--- CLOJURE --
--------------
-Group.new('clojureFunc',             c.Yellow,   c.none, no)
-Group.new('clojureRepeat',           c.Yellow,   c.none, no)
-Group.new('clojureParen',            c.DarkGray, c.none, no)
-Group.new('clojureAnonArg',          c.Yellow,   c.none, no)
-Group.new('clojureKeyword',          c.Blue,     c.none, no)
-Group.new('clojureCond',             c.Orange,   c.none, no)
-Group.new('clojureSpecial',          c.Orange,   c.none, no)
-Group.new('clojureRegexpCharClass',  c.DarkGray, c.none, b)
-Group.new('clojureMeta',             c.Yellow,   c.none, no)
-Group.new('clojureDeref',            c.Yellow,   c.none, no)
-Group.new('clojureQuote',            c.Yellow,   c.none, no)
-Group.new('clojureDefine',           c.Orange,   c.none, no)
-Group.new('clojureVariable',         c.Blue,     c.none, no)
-Group.new('clojureMacro',            c.Orange,   c.none, no)
-Group.new('clojureCharacter',        c.Cyan,     c.none, no)
-Group.new('clojureStringEscape',     c.Cyan,     c.none, no)
-Group.new('clojureException',        c.Red,      c.none, no)
-Group.new('clojureRegexp',           c.Cyan,     c.none, no)
-Group.new('clojureRegexpEscape',     c.Cyan,     c.none, no)
-Group.new('clojureUnquote',          c.Yellow,   c.none, no)
-Group.new('clojureRegexpMod',        g.clojureRegexpCharClass, g.clojureRegexpCharClass, g.clojureRegexpCharClass)
-Group.new('clojureRegexpQuantifier', g.clojureRegexpCharClass, g.clojureRegexpCharClass, g.clojureRegexpCharClass)
+    -------------
+    -- CLOJURE --
+    -------------
+    clojureFunc =             { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    clojureRepeat =           { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    clojureParen =            { fg = scheme.DarkGray, bg = scheme.none, scheme.none },
+    clojureAnonArg =          { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    clojureKeyword =          { fg = scheme.Blue,     bg = scheme.none, scheme.none },
+    clojureCond =             { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    clojureSpecial =          { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    clojureRegexpCharClass =  { fg = scheme.DarkGray, bg = scheme.none, style = "bold" },
+    clojureMeta =             { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    clojureDeref =            { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    clojureQuote =            { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    clojureDefine =           { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    clojureVariable =         { fg = scheme.Blue,     bg = scheme.none, scheme.none },
+    clojureMacro =            { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    clojureCharacter =        { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    clojureStringEscape =     { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    clojureException =        { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    clojureRegexp =           { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    clojureRegexpEscape =     { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    clojureUnquote =          { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
 
--------------
--- HASKELL --
--------------
-Group.new('haskellDeclKeyword',    c.DarkCyan, c.none, no)
-Group.new('haskellType',           c.Green,    c.none, no)
-Group.new('haskellWhere',          c.Red,      c.none, no)
-Group.new('haskellImportKeywords', c.DarkCyan, c.none, no)
-Group.new('haskellOperators',      c.Red,      c.none, no)
-Group.new('haskellDelimiter',      c.DarkCyan, c.none, no)
-Group.new('haskellIdentifier',     c.Orange,   c.none, no)
-Group.new('haskellKeyword',        c.Red,      c.none, no)
-Group.new('haskellNumber',         c.Cyan,     c.none, no)
-Group.new('haskellString',         c.Cyan,     c.none, no)
-Group.new('haskellBacktick',       c.Orange,   c.none, no)
-Group.new('haskellDeriving',       c.Cyan,     c.none, no)
-Group.new('haskellAssocType',      c.Cyan,     c.none, no)
-Group.new('haskellPragma',         c.Purple,   c.none, no)
-Group.new('haskellChar',           c.Green,    c.none, no)
-Group.new('haskellStatement',      c.Orange,   c.none, no)
-Group.new('haskellBottom',         c.Cyan,     c.none, no)
-Group.new('haskellBlockKeywords',  c.Cyan,     c.none, no)
-Group.new('haskellConditional',    c.Orange,   c.none, no)
-Group.new('haskellLet',            c.Cyan,     c.none, no)
-Group.new('haskellDefault',        c.Cyan,     c.none, no)
+    -------------
+    -- HASKELL --
+    -------------
+    haskellDeclKeyword =    { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    haskellType =           { fg = scheme.Green,    bg = scheme.none, scheme.none },
+    haskellWhere =          { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    haskellImportKeywords = { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    haskellOperators =      { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    haskellDelimiter =      { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    haskellIdentifier =     { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    haskellKeyword =        { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    haskellNumber =         { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    haskellString =         { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    haskellBacktick =       { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    haskellDeriving =       { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    haskellAssocType =      { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    haskellPragma =         { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    haskellChar =           { fg = scheme.Green,    bg = scheme.none, scheme.none },
+    haskellStatement =      { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    haskellBottom =         { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    haskellBlockKeywords =  { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    haskellConditional =    { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    haskellLet =            { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    haskellDefault =        { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
 
----------
--- PHP --
----------
-Group.new('phpClass',        c.Yellow,   c.none, no)
-Group.new('phpFunction',     c.DarkCyan, c.none, no)
-Group.new('phpFunctions',    c.DarkCyan, c.none, no)
-Group.new('phpInclude',      c.Purple,   c.none, no)
-Group.new('phpKeyword',      c.Purple,   c.none, no)
-Group.new('phpParent',       c.White,    c.none, no)
-Group.new('phpType',         c.Purple,   c.none, no)
-Group.new('phpSuperGlobals', c.Red,      c.none, no)
+    ---------
+    -- PHP --
+    ---------
+    phpClass =        { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    phpFunction =     { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    phpFunctions =    { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    phpInclude =      { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    phpKeyword =      { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    phpParent =       { fg = scheme.White,    bg = scheme.none, scheme.none },
+    phpType =         { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    phpSuperGlobals = { fg = scheme.Red,      bg = scheme.none, scheme.none },
 
-----------
--- RUST --
-----------
-Group.new('rustCommentLineDocError',  c.Grey,     c.none, no)
-Group.new('rustCommentBlock',         c.Grey,     c.none, no)
-Group.new('rustDeriveTrait',          c.Green,    c.none, no)
-Group.new('SpecialComment',           c.Grey,     c.none, no)
-Group.new('rustCommentLine',          c.Grey,     c.none, no)
-Group.new('rustCommentBlockDoc',      c.Grey,     c.none, no)
-Group.new('rustExternCrate',          c.Red,      c.none, b)
-Group.new('rustIdentifier',           c.DarkCyan, c.none, no)
-Group.new('rustCommentLineDoc',       c.Grey,     c.none, no)
-Group.new('rustCommentBlockDocError', c.Grey,     c.none, no)
+    ----------
+    -- RUST --
+    ----------
+    rustCommentLineDocError =  { fg = scheme.Grey,     bg = scheme.none, scheme.none },
+    rustCommentBlock =         { fg = scheme.Grey,     bg = scheme.none, scheme.none },
+    rustDeriveTrait =          { fg = scheme.Green,    bg = scheme.none, scheme.none },
+    SpecialComment =           { fg = scheme.Grey,     bg = scheme.none, scheme.none },
+    rustCommentLine =          { fg = scheme.Grey,     bg = scheme.none, scheme.none },
+    rustCommentBlockDoc =      { fg = scheme.Grey,     bg = scheme.none, scheme.none },
+    rustExternCrate =          { fg = scheme.Red,      bg = scheme.none, style = "bold" },
+    rustIdentifier =           { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    rustCommentLineDoc =       { fg = scheme.Grey,     bg = scheme.none, scheme.none },
+    rustCommentBlockDocError = { fg = scheme.Grey,     bg = scheme.none, scheme.none },
 
------------
--- C/C++ --
------------
-Group.new('cType',              c.DarkCyan, c.none, no)
-Group.new('cStorageClass',      c.Purple,   c.none, no)
-Group.new('cStructure',         c.Cyan,     c.none, no)
-Group.new('cInclude',           c.Purple,   c.none, no)
-Group.new('cppStructure',       c.Purple,   c.none, no)
-Group.new('cppModifier',        c.Purple,   c.none, no)
-Group.new('cppOperator',        c.Pink,     c.none, no)
-Group.new('cppAccess',          c.Purple,   c.none, no)
-Group.new('cppStatement',       c.Purple,   c.none, no)
-Group.new('cppConstant',        c.Red,      c.none, no)
-Group.new('cTODO',              c.Purple,   c.none, no)
-Group.new('cConstant',          c.Orange,   c.none, no)
-Group.new('cSpecial',           c.Cyan,     c.none, no)
-Group.new('cSpecialCharacter',  c.Cyan,     c.none, no)
-Group.new('cString',            c.Green,    c.none, no)
-Group.new('cppType',            c.Purple,   c.none, no)
-Group.new('cppStorageClass',    c.Purple,   c.none, no)
-Group.new('cPreCondit',         c.Purple,   c.none, no)
-Group.new('cPreConditMatch',    c.Purple,   c.none, no)
-Group.new('cOperator',          c.Purple,   c.none, no)
-Group.new('cStatement',         c.Purple,   c.none, no)
-Group.new('cCppString',         c.Green,    c.none, no)
+    -----------
+    -- C/C++ --
+    -----------
+    cType =             { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    cStorageClass =     { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cStructure =        { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    cInclude =          { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cppStructure =      { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cppModifier =       { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cppOperator =       { fg = scheme.Pink,     bg = scheme.none, scheme.none },
+    cppAccess =         { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cppStatement =      { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cppConstant =       { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    cTODO =             { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cConstant =         { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    cSpecial =          { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    cSpecialCharacter = { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    cString =           { fg = scheme.Green,    bg = scheme.none, scheme.none },
+    cppType =           { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cppStorageClass =   { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cPreCondit =        { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cPreConditMatch =   { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cOperator =         { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cStatement =        { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    cCppString =        { fg = scheme.Green,    bg = scheme.none, scheme.none },
 
---------
--- C# --
---------
-Group.new('csBraces',                 c.White, c.none, no)
-Group.new('csEndColon',               c.White, c.none, no)
-Group.new('csLogicSymbols',           c.White, c.none, no)
-Group.new('csParens',                 c.White,  c.none, no)
-Group.new('csOpSymbols',              c.Grey,  c.none, no)
-Group.new('csInterpolationDelimiter', c.Grey,  c.none, no)
-Group.new('csInterpolationAlignDel',  c.Grey,  c.none,  b)
-Group.new('csInterpolationFormat',    c.Grey,  c.none, no)
-Group.new('csInterpolationFormatDel', c.Grey,  c.none,  b)
+    --------
+    -- C# --
+    --------
+    csBraces =                 { fg = scheme.White, bg = scheme.none, scheme.none },
+    csEndColon =               { fg = scheme.White, bg = scheme.none, scheme.none },
+    csLogicSymbols =           { fg = scheme.White, bg = scheme.none, scheme.none },
+    csParens =                 { fg = scheme.White, bg = scheme.none, scheme.none },
+    csOpSymbols =              { fg = scheme.Grey,  bg = scheme.none, scheme.none },
+    csInterpolationDelimiter = { fg = scheme.Grey,  bg = scheme.none, scheme.none },
+    csInterpolationAlignDel =  { fg = scheme.Grey,  bg = scheme.none, syle = "bold" },
+    csInterpolationFormat =    { fg = scheme.Grey,  bg = scheme.none, scheme.none },
+    csInterpolationFormatDel = { fg = scheme.Grey,  bg = scheme.none, syle = "bold" },
 
---------------
--- CUCUMBER --
---------------
-Group.new('cucumberThenAnd',         c.DarkCyan, c.none, no)
-Group.new('cucumberFeature',         c.Red,      c.none, b)
-Group.new('cucumberScenarioOutline', c.Purple,   c.none, b)
-Group.new('cucumberThen',            c.DarkCyan, c.none, no)
-Group.new('cucumberUnparsed',        c.Orange,   c.none, no)
-Group.new('cucumberGiven',           c.DarkCyan, c.none, no)
-Group.new('cucumberWhenAnd',         c.DarkCyan, c.none, no)
-Group.new('cucumberBackground',      c.Purple,   c.none, b)
-Group.new('cucumberScenario',        c.Purple,   c.none, b)
-Group.new('cucumberWhen',            c.DarkCyan, c.none, no)
-Group.new('cucumberTags',            c.Grey,     c.none, b)
-Group.new('cucumberDelimiter',       c.Grey,     c.none, b)
+    --------------
+    -- CUCUMBER --
+    --------------
+    cucumberThenAnd =         { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    cucumberFeature =         { fg = scheme.Red,      bg = scheme.none, syle = "bold" },
+    cucumberScenarioOutline = { fg = scheme.Purple,   bg = scheme.none, syle = "bold" },
+    cucumberThen =            { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    cucumberUnparsed =        { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    cucumberGiven =           { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    cucumberWhenAnd =         { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    cucumberBackground =      { fg = scheme.Purple,   bg = scheme.none, syle = "bold" },
+    cucumberScenario =        { fg = scheme.Purple,   bg = scheme.none, syle = "bold" },
+    cucumberWhen =            { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    cucumberTags =            { fg = scheme.Grey,     bg = scheme.none, syle = "bold" },
+    cucumberDelimiter =       { fg = scheme.Grey,     bg = scheme.none, syle = "bold" },
 
------------
--- SPELL --
------------
-Group.new('SpellBad',         c.Red,    c.none, i + uc)
-Group.new('SpellCap',         c.Blue,   c.none, i + uc)
-Group.new('SpellLocal',       c.Cyan,   c.none, i + uc)
-Group.new('SpellRare',        c.Purple, c.none, i + uc)
+    -----------
+    -- SPELL --
+    -----------
+    SpellBad =   { fg = scheme.Red,    bg = scheme.none, style = "italic,undercurl" },
+    SpellCap =   { fg = scheme.Blue,   bg = scheme.none, style = "italic,undercurl" },
+    SpellLocal = { fg = scheme.Cyan,   bg = scheme.none, style = "italic,undercurl" },
+    SpellRare =  { fg = scheme.Purple, bg = scheme.none, style = "italic,undercurl" },
 
-------------
--- ELIXIR --
-------------
-Group.new('elixirModuleDeclaration', c.Orange,  c.none,    no)
-Group.new('elixirOperator',          c.Orange,  c.none,    no)
-Group.new('elixirModuleDefine',      g.Define,  g.Define,  g.Define)
-Group.new('elixirDocString',         g.Comment, g.Comment, g.Comment)
-Group.new('elixirInclude',           c.Red,     c.none,    no)
-Group.new('elixirAlias',             c.Yellow,  c.none,    no)
-Group.new('elixirAtom',              c.Cyan,    c.none,    no)
-Group.new('elixirBlockDefinition',   c.Purple,  c.none,    no)
+    ------------
+    -- ELIXIR --
+    ------------
+    elixirModuleDeclaration = { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    elixirOperator =          { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    elixirModuleDefine =      { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    elixirDocString =         { fg = scheme.DarkGray, bg = scheme.none, scheme.none },
+    elixirInclude =           { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    elixirAlias =             { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    elixirAtom =              { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    elixirBlockDefinition =   { fg = scheme.Purple,   bg = scheme.none, scheme.none },
 
-------------
--- GOLANG --
-------------
-Group.new('goField',        c.Red,     c.none,    no)
-Group.new('goMethod',       c.Cyan,    c.none,    no)
-Group.new('goType',         c.Purple,  c.none,    no)
-Group.new('goDeclaration',  c.Purple,  c.none,    no)
-Group.new('goUnsignedInts', c.Cyan,    c.none,    no)
-Group.new('goDeclaration',  g.Keyword, g.Keyword, g.Keyword)
+    ------------
+    -- GOLANG --
+    ------------
+    goField =        { fg = scheme.Red,    bg = scheme.none, scheme.none },
+    goMethod =       { fg = scheme.Cyan,   bg = scheme.none, scheme.none },
+    goType =         { fg = scheme.Purple, bg = scheme.none, scheme.none },
+    goUnsignedInts = { fg = scheme.Purple, bg = scheme.none, scheme.none },
+    goDeclaration =  { fg = scheme.Cyan,   bg = scheme.none, scheme.none },
 
-------------
--- PYTHON --
-------------
-Group.new('pythonEscape',            c.Red,         c.none,        no)
-Group.new('pythonSelf',              c.DarkGrey,    c.none,        i)
-Group.new('pythonSelfArg',           c.Grey_2,      c.none,        s.italic)
-Group.new('pythonImport',            c.Purple,      c.none,        no)
-Group.new('pythonBuiltin',           c.Cyan,        c.none,        no)
-Group.new('pythonModule',            c.Purple,      c.none,        no)
-Group.new('pythonStringDelimiter',   c.Green,       c.none,        no)
-Group.new('pythonParam',             c.Orange,      c.none,        no)
-Group.new('pythonFunction',          c.DarkCyan,    c.none,        no)
-Group.new('pythonKeyword',           c.DarkCyan,    c.none,        no)
-Group.new('pythonStatement',         c.Purple,      c.none,        no)
-Group.new('pythonClass',             c.DarkCyan,    c.none,        no)
-Group.new('pythonOperator',          c.Purple,      c.none,        no)
-Group.new('pythonSymbol',            c.Cyan,        c.none,        no)
-Group.new('pythonBytes',             c.green,       c.none,        s.italic)
-Group.new('pythonBytesError',        g.Error,       g.Error,       g.Error)
-Group.new('pythonBytesEscapeError',  g.Error,       g.Error,       g.Error)
-Group.new('pythonBytesEscape',       g.Special,     g.Special,     g.Special)
-Group.new('pythonRawBytes',          g.pythonBytes, g.pythonBytes, g.pythonBytes)
-Group.new('pythonBytesContent',      g.pythonBytes, g.pythonBytes, g.pythonBytes)
+    ------------
+    -- PYTHON --
+    ------------
+    pythonEscape =           { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    pythonSelf =             { fg = scheme.DarkGrey, bg = scheme.none, style = "italic" },
+    pythonSelfArg =          { fg = scheme.Grey_2,   bg = scheme.none, style = "italic" },
+    pythonImport =           { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    pythonBuiltin =          { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    pythonModule =           { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    pythonStringDelimiter =  { fg = scheme.Green,    bg = scheme.none, scheme.none },
+    pythonParam =            { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    pythonFunction =         { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    pythonKeyword =          { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    pythonStatement =        { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    pythonClass =            { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    pythonOperator =         { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    pythonSymbol =           { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    pythonBytes =            { fg = scheme.Green,    bg = scheme.none, style = "italic" },
+    pythonBytesError =       { fg = scheme.DarkRed,  bg = scheme.none, scheme.none },
+    pythonBytesEscapeError = { fg = scheme.DarkRed,  bg = scheme.none, scheme.none },
+    pythonBytesEscape =      { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    pythonRawBytes =         { fg = scheme.Green,    bg = scheme.none, scheme.none },
+    pythonBytesContent =     { fg = scheme.Green,    bg = scheme.none, scheme.none },
 
-----------------
--- PURESCRIPT --
-----------------
-Group.new('purescriptKeyword',     c.Purple, c.none, no)
-Group.new('purescriptModuleName',  c.White,  c.none, no)
-Group.new('purescriptType',        c.Yellow, c.none, no)
-Group.new('purescriptTypeVar',     c.Red,    c.none, no)
-Group.new('purescriptIdentifier',  c.White,  c.none, no)
-Group.new('purescriptConstructor', c.Red,    c.none, no)
-Group.new('purescriptOperator',    c.White,  c.none, no)
+    ----------------
+    -- PURESCRIPT --
+    ----------------
+    purescriptKeyword =     { fg = scheme.Purple, bg = scheme.none, scheme.none },
+    purescriptModuleName =  { fg = scheme.White,  bg = scheme.none, scheme.none },
+    purescriptType =        { fg = scheme.Yellow, bg = scheme.none, scheme.none },
+    purescriptTypeVar =     { fg = scheme.Red,    bg = scheme.none, scheme.none },
+    purescriptIdentifier =  { fg = scheme.White,  bg = scheme.none, scheme.none },
+    purescriptConstructor = { fg = scheme.Red,    bg = scheme.none, scheme.none },
+    purescriptOperator =    { fg = scheme.White,  bg = scheme.none, scheme.none },
 
----------
--- VIM --
----------
-Group.new('vimSep',          c.DarkGrey, c.none,     no)
-Group.new('vimCommentTitle', c.Grey,     c.none,     b)
-Group.new('vimLineComment',  c.Grey,     c.none,     i)
-Group.new('vimParenSep',     c.White,    c.none,     no)
-Group.new('vimFuncName',     c.Purple,   c.none,     no)
-Group.new('vimHighlight',    c.DarkCyan, c.none,     no)
-Group.new('vimUserFunc',     c.Cyan,     c.none,     no)
-Group.new('vimVar',          c.Red,      c.none,     no)
-Group.new('vimLet',          c.Blue,     c.none,     no)
-Group.new('vimNorm',         c.Blue,     c.none,     no)
-Group.new('vimBracket',      c.White,    c.none,     no)
-Group.new('vimMapModKey',    c.Orange,   c.none,     no)
-Group.new('vimNotation',     c.Orange,   c.none,     no)
-Group.new('vimGroup',        c.Blue,     c.none,     no)
-Group.new('vimSep',          c.DarkGrey, c.none,     no)
-Group.new('vimContinue',     c.Yellow,   c.none,     no)
-Group.new('vimSetSep',       c.DarkGray, c.none,     no)
-Group.new('vimHiGroup',      g.Type,     g.Type,     g.Type)
-Group.new('vimFunction',     g.Function, g.Function, g.Function)
-Group.new('vimFuncSID',      g.Function, g.Function, g.Function)
-Group.new('vimCommentTitle', c.Blue,     c.none,     b)
-Group.new('vimCommand',      c.Cyan,     c.none,     b)
-Group.new('vimNotFunc',      c.Blue,     c.none,     no)
-Group.new('vimFuncVar',      c.Purple,   c.none,     no)
-Group.new('vimMapModKey',    c.Cyan,     c.none,     no)
-Group.new('vimMapLHS',       c.Yellow,   c.none,     no)
-Group.new('vimMap',          c.Aqua,     c.none,     no)
-Group.new('nvimMap',         g.vimMap,   c.none,     no)
+    ---------
+    -- VIM --
+    ---------
+    vimSep =          { fg = scheme.DarkGrey, bg = scheme.none, scheme.none },
+    vimCommentTitle = { fg = scheme.Grey,     bg = scheme.none, syle = "bold" },
+    vimLineComment =  { fg = scheme.Grey,     bg = scheme.none, syle = "italic" },
+    vimParenSep =     { fg = scheme.White,    bg = scheme.none, scheme.none },
+    vimFuncName =     { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    vimHighlight =    { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    vimUserFunc =     { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    vimVar =          { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    vimLet =          { fg = scheme.Blue,     bg = scheme.none, scheme.none },
+    vimNorm =         { fg = scheme.Blue,     bg = scheme.none, scheme.none },
+    vimBracket =      { fg = scheme.White,    bg = scheme.none, scheme.none },
+    vimMapModKey =    { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    vimNotation =     { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    vimGroup =        { fg = scheme.Blue,     bg = scheme.none, scheme.none },
+    vimContinue =     { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    vimSetSep =       { fg = scheme.DarkGray, bg = scheme.none, scheme.none },
+    vimHiGroup =      { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    vimFunction =     { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    vimFuncSID =      { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    vimCommand =      { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    vimNotFunc =      { fg = scheme.Blue,     bg = scheme.none, scheme.none },
+    vimFuncVar =      { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    vimMapLHS =       { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    vimMap =          { fg = scheme.Aqua,     bg = scheme.none, scheme.none },
 
----------
--- ZSH --
----------
-Group.new('zshSubst',       c.Red,    c.none, no)
-Group.new('zshCommands',    c.White,  c.none, no)
-Group.new('zshKeyword',     c.Purple, c.none, no)
-Group.new('zshTypes',       c.Purple, c.none, no)
-Group.new('zshDeref',       c.Red,    c.none, no)
-Group.new('zshShortDeref',  c.Red,    c.none, no)
-Group.new('zshVariableDef', c.Orange, c.none, no)
-Group.new('zshSubstDelim',  c.Grey,   c.none, no)
-Group.new('zshFunction',    c.Cyan,   c.none, no)
 
-----------
--- RUBY --
-----------
-Group.new('rubyInstanceVariable',          c.Red,      c.none, no)
-Group.new('rubyBlockParameterList',        c.Red,      c.none, no)
-Group.new('rubyRegexp',                    c.Cyan,     c.none, no)
-Group.new('rubyRegexpDelimiter',           c.Cyan,     c.none, no)
-Group.new('rubyStringDelimiter',           c.Green,    c.none, no)
-Group.new('rubySymbol',                    c.Cyan,     c.none, no)
-Group.new('rubyClass',                     c.Purple,   c.none, no)
-Group.new('rubyConstant',                  c.Yellow,   c.none, no)
-Group.new('rubyBlockParameter',            c.Red,      c.none, no)
-Group.new('rubyEscape',                    c.Red,      c.none, no)
-Group.new('rubyControl',                   c.Purple,   c.none, no)
-Group.new('rubyFunction',                  c.DarkCyan, c.none, no)
-Group.new('rubyGlobalVariable',            c.Red,      c.none, no)
-Group.new('rubyCapitalizedMethod',         c.Purple,   c.none, no)
-Group.new('rubyInclude',                   c.DarkCyan, c.none, no)
-Group.new('rubyIncluderubyGlobalVariable', c.Red,      c.none, no)
-Group.new('rubyBlock',                     c.Purple,   c.none, no)
-Group.new('rubyInterpolation',             c.Cyan,     c.none, no)
-Group.new('rubyInterpolationDelimiter',    c.Red,      c.none, no)
-Group.new('rubyKeyword',                   c.DarkCyan, c.none, no)
-Group.new('rubyModule',                    c.Purple,   c.none, no)
-Group.new('rubyDefine',                    c.Purple,   c.none, no)
-Group.new('rubyPseudoVariable',            c.Red,      c.none, no)
 
-----------
--- JAVA --
-----------
-Group.new('javaParen',        c.White,           c.none,            no)
-Group.new('javaOperator',     c.Orange,          c.none,            no)
-Group.new('javaVarArg',       c.Green,           c.none,            no)
-Group.new('javaParen1',       c.White,           c.none,            no)
-Group.new('javaParen2',       c.White,           c.none,            no)
-Group.new('javaParen3',       c.White,           c.none,            no)
-Group.new('javaParen4',       c.White,           c.none,            no)
-Group.new('javaParen5',       c.White,           c.none,            no)
-Group.new('javaAnnotation',   c.Cyan,            c.none,            no)
-Group.new('javaDocTags',      c.Blue,            c.none,            no)
-Group.new('javaCommentTitle', g.vimCommentTitle, g.vimCommentTitle, g.vimCommentTitle)
+    ---------
+    -- ZSH --
+    ---------
+    zshSubst =       { fg = scheme.Red,    bg = scheme.none, scheme.none },
+    zshCommands =    { fg = scheme.White,  bg = scheme.none, scheme.none },
+    zshKeyword =     { fg = scheme.Purple, bg = scheme.none, scheme.none },
+    zshTypes =       { fg = scheme.Purple, bg = scheme.none, scheme.none },
+    zshDeref =       { fg = scheme.Red,    bg = scheme.none, scheme.none },
+    zshShortDeref =  { fg = scheme.Red,    bg = scheme.none, scheme.none },
+    zshVariableDef = { fg = scheme.Orange, bg = scheme.none, scheme.none },
+    zshSubstDelim =  { fg = scheme.Grey,   bg = scheme.none, scheme.none },
+    zshFunction =    { fg = scheme.Cyan,   bg = scheme.none, scheme.none },
 
------------
--- OCAML --
------------
-Group.new('ocamlOperator',       c.Grey,   c.none,  no )
-Group.new('ocamlArrow',          c.Orange, c.none , no )
-Group.new('ocamlKeyChar',        c.Orange, c.none , no )
-Group.new('ocamlInfixOpKeyword', c.Red,    c.none , no )
-Group.new('ocamlConstructor',    c.Orange, c.none , no )
+    ----------
+    -- RUBY --
+    ----------
+    rubyInstanceVariable =          { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    rubyBlockParameterList =        { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    rubyRegexp =                    { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    rubyRegexpDelimiter =           { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    rubyStringDelimiter =           { fg = scheme.Green,    bg = scheme.none, scheme.none },
+    rubySymbol =                    { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    rubyClass =                     { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    rubyConstant =                  { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
+    rubyBlockParameter =            { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    rubyEscape =                    { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    rubyControl =                   { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    rubyFunction =                  { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    rubyGlobalVariable =            { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    rubyCapitalizedMethod =         { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    rubyInclude =                   { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    rubyIncluderubyGlobalVariable = { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    rubyBlock =                     { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    rubyInterpolation =             { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    rubyInterpolationDelimiter =    { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    rubyKeyword =                   { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
+    rubyModule =                    { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    rubyDefine =                    { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    rubyPseudoVariable =            { fg = scheme.Red,      bg = scheme.none, scheme.none },
 
----------
--- LUA --
----------
-Group.new('luaFunction',             c.Cyan,               c.none,               no)
-Group.new('luaTable',                c.Orange,             c.none,               no)
-Group.new('luaIn',                   c.Red,                c.none,               no)
-Group.new('luaStatement',            c.DarkYellow,         c.none,               s.bold)
-Group.new('luaKeyword',              c.DarkOrange,         c.none,               s.bold)
-Group.new('luaMyKeyword',            c.Violet,             c.none,               s.bold)
-Group.new('luaFunctionCall',         c.DarkBlue,           c.none,               nil)
-Group.new('luaSpecialFunctions',     c.DarkBlue,           c.none,               nil)
-Group.new('luaMetatableEvents',      c.Purple,             c.none,               nil)
-Group.new('luaMetatableArithmetic',  g.luaMetatableEvents, g.luaMetatableEvents, g.luaMetatableEvents)
-Group.new('luaMetatableEquivalence', g.luaMetatableEvents, g.luaMetatableEvents, g.luaMetatableEvents)
+    ----------
+    -- JAVA --
+    ----------
+    javaParen =        { fg = scheme.White,  bg = scheme.none, scheme.none },
+    javaOperator =     { fg = scheme.Orange, bg = scheme.none, scheme.none },
+    javaVarArg =       { fg = scheme.Green,  bg = scheme.none, scheme.none },
+    javaParen1 =       { fg = scheme.White,  bg = scheme.none, scheme.none },
+    javaParen2 =       { fg = scheme.White,  bg = scheme.none, scheme.none },
+    javaParen3 =       { fg = scheme.White,  bg = scheme.none, scheme.none },
+    javaParen4 =       { fg = scheme.White,  bg = scheme.none, scheme.none },
+    javaParen5 =       { fg = scheme.White,  bg = scheme.none, scheme.none },
+    javaAnnotation =   { fg = scheme.Cyan,   bg = scheme.none, scheme.none },
+    javaDocTags =      { fg = scheme.Blue,   bg = scheme.none, scheme.none },
+    javaCommentTitle = { fg = scheme.Grey,   bg = scheme.none, scheme.none },
 
------------
--- SCALA --
------------
-Group.new('scalaTypeTypePostDeclaration', c.Yellow, c.none, no)
-Group.new('scalaInstanceDeclaration',     c.White,  c.none, no)
-Group.new('scalaInterpolation',           c.Cyan,   c.none, no)
-Group.new('scalaOperator',                c.White,  c.none, no)
-Group.new('scalaNameDefinition',          c.White,  c.none, no)
-Group.new('scalaCaseFollowing',           c.White,  c.none, no)
-Group.new('scalaCapitalWord',             c.White,  c.none, no)
-Group.new('scalaTypeExtension',           c.White,  c.none, no)
-Group.new('scalaKeyword',                 c.Red,    c.none,  b)
-Group.new('scalaKeywordModifier',         c.Red,    c.none, no)
-Group.new('scalaSpecial',                 c.Cyan,   c.none, no)
-Group.new('scalaTypeDeclaration',         c.Yellow, c.none, no)
+    -----------
+    -- OCAML --
+    -----------
+    ocamlOperator =       { fg = scheme.Grey,   bg = scheme.none, scheme.none },
+    ocamlArrow =          { fg = scheme.Orange, bg = scheme.none, scheme.none },
+    ocamlKeyChar =        { fg = scheme.Orange, bg = scheme.none, scheme.none },
+    ocamlInfixOpKeyword = { fg = scheme.Red,    bg = scheme.none, scheme.none },
+    ocamlConstructor =    { fg = scheme.Orange, bg = scheme.none, scheme.none },
 
------------
---  SQL  --
------------
-Group.new('SqlKeyword', c.Red)
+    ---------
+    -- LUA --
+    ---------
+    luaFunction =             { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    luaTable =                { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    luaIn =                   { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    luaStatement =            { fg = scheme.DarkYellow, bg = scheme.none, style = "bold" },
+    luaKeyword =              { fg = scheme.DarkOrange, bg = scheme.none, style = "bold" },
+    luaMyKeyword =            { fg = scheme.Violet,     bg = scheme.none, style = "bold" },
+    luaFunctionCall =         { fg = scheme.DarkBlue,   bg = scheme.none, scheme.none },
+    luaSpecialFunctions =     { fg = scheme.DarkBlue,   bg = scheme.none, scheme.none },
+    luaMetatableEvents =      { fg = scheme.Purple,     bg = scheme.none, scheme.none },
 
---------------------------------------------------------------------------
---                           PLUGINS SETTINGS                            -
---------------------------------------------------------------------------
+    -----------
+    -- SCALA --
+    -----------
+    scalaTypeTypePostDeclaration = { fg = scheme.Yellow, bg = scheme.none, scheme.none },
+    scalaInstanceDeclaration =     { fg = scheme.White,  bg = scheme.none, scheme.none },
+    scalaInterpolation =           { fg = scheme.Cyan,   bg = scheme.none, scheme.none },
+    scalaOperator =                { fg = scheme.White,  bg = scheme.none, scheme.none },
+    scalaNameDefinition =          { fg = scheme.White,  bg = scheme.none, scheme.none },
+    scalaCaseFollowing =           { fg = scheme.White,  bg = scheme.none, scheme.none },
+    scalaCapitalWord =             { fg = scheme.White,  bg = scheme.none, scheme.none },
+    scalaTypeExtension =           { fg = scheme.White,  bg = scheme.none, scheme.none },
+    scalaKeyword =                 { fg = scheme.Red,    bg = scheme.none, style = "bold" },
+    scalaKeywordModifier =         { fg = scheme.Red,    bg = scheme.none, scheme.none },
+    scalaSpecial =                 { fg = scheme.Cyan,   bg = scheme.none, scheme.none },
+    scalaTypeDeclaration =         { fg = scheme.Yellow, bg = scheme.none, scheme.none },
 
-----------------
--- LSP COLORS --
-----------------
-Group.new('LspDiagnosticsVirtualTextHint',        c.Custom_2,   c.none, no)
-Group.new('LspDiagnosticsSignWarning',            c.DarkOrange, c.none, no)
-Group.new('LspDiagnosticsSignInformation',        c.Custom_3,   c.none, no)
-Group.new('LspDiagnosticsSignHint',               c.Custom_2,   c.none, no)
-Group.new('LspDiagnosticsFloatingHint',           c.Custom_2,   c.none, ul)
-Group.new('LspDiagnosticsSignError',              c.DarkRed,    c.none, no)
-Group.new('LspDiagnosticsDefaultWarning',         c.DarkOrange, c.none, no)
-Group.new('LspDiagnosticsDefaultError',           c.DarkRed,    c.none, no)
-Group.new('LspDiagnosticsFloatingError',          c.DarkRed,    c.none, ul)
-Group.new('LspDiagnosticsFloatingWarning',        c.DarkOrange, c.none, ul)
-Group.new('LspDiagnosticsFloatingInformation',    c.Custom_3,   c.none, ul)
-Group.new('LspDiagnosticsUnderlineInformation',   c.none,       c.none, ul)
-Group.new('LspDiagnosticsUnderlineHint',          c.none,       c.none, ul)
-Group.new('LspDiagnosticsDefaultInformation',     c.Cyan,       c.none, no)
-Group.new('LspDiagnosticsDefaultHint',            c.Custom_2,   c.none, no)
-Group.new('LspDiagnosticsUnderlineError',         c.none,       c.none, ul)
-Group.new('LspDiagnosticsVirtualTextError',       c.DarkRed,    c.none, no)
-Group.new('LspDiagnosticsVirtualTextWarning',     c.DarkOrange, c.none, no)
-Group.new('LspDiagnosticsVirtualTextInformation', c.Custom_3,   c.none, no)
-Group.new('LspDiagnosticsUnderlineWarning',       c.none,       c.none, ul)
-Group.new("LspReferenceText",                     c.DarkOrange, c.Cyan, no)
-Group.new("LspReferenceRead",                     c.DarkOrange, c.Cyan, no)
-Group.new("LspReferenceWrite",                    c.DarkOrange, c.Cyan, no)
+    -----------
+    --  SQL  --
+    -----------
+    SqlKeyword = { fg = scheme.Red, bg = scheme.none, scheme.none },
 
----------------
---  LSPSAGA  --
----------------
-Group.new("LspSagaRenamePromptPrefix", c.Green,  c.none)
-Group.new("DiagnosticHint",            c.Purple, c.none)
-Group.new("DefinitionPreviewTitle",    c.Yellow, c.none)
-Group.new("LspSagaRenameBorder",       c.Green,  c.none)
-Group.new("DiagnosticInformation",     c.Blue,   c.none)
-Group.new("LspSagaDefPreviewBorder",   c.Yellow, c.none)
-Group.new("LspSagaHoverBorder",        c.Cyan,   c.none)
-Group.new("DiagnosticWarning",         c.Yellow, c.none)
-Group.new("DiagnosticError",           g.Error,  c.none)
+    --------------------------------------------------------------------------
+    --                           PLUGINS SETTINGS                            -
+    --------------------------------------------------------------------------
 
------------------------
--- TREESITTER COLORS --
------------------------
-Group.new('TSFloat',              g.Float,       c.none, no)
-Group.new('TSFunction',           g.Function,    c.none, no)
-Group.new('TSType',               g.Type,        c.none, no)
-Group.new('TSTypeBuiltin',        g.Type,        c.none, no)
-Group.new('TSLabel',              g.Label,       c.none, no)
-Group.new('TSCharacter',          g.Character,   c.none, no)
-Group.new('TSConditional',        g.Conditional, c.none, no)
-Group.new('TSConstant',           g.Constant,    c.none, no)
-Group.new('TSConstBuiltin',       g.Constant,    c.none, no)
-Group.new('TSConstMacro',         g.Constant,    c.none, no)
-Group.new('TSFuncBuiltin',        g.Function,    c.none, no)
-Group.new("TSMethod",             g.Function,    c.none, no)
-Group.new('TSStructure',          g.Structure,   c.none, no)
-Group.new('TSTagDelimiter',       g.Delimiter,   c.none, no)
-Group.new('TSNumber',             g.Number,      c.none, no)
-Group.new('TSFuncMacro',          g.Function,    c.none, no)
-Group.new('TSInclude',            g.Include,     c.none, no)
-Group.new('TSKeyword',            g.Keyword,     c.none, no)
-Group.new('TSException',          g.Exception,   c.none, no)
-Group.new('TSBoolean',            g.Boolean,     c.none, no)
-Group.new('TSError',              g.Error,       c.none, no)
-Group.new('TSString',             g.String,      c.none, no)
-Group.new('TSStringEscape',       c.Orange,      c.none, no)
-Group.new('TSStringRegex',        c.Red,         c.none, no)
-Group.new('TSProperty',           c.DarkCyan,    c.none, no)
-Group.new('TSField',              c.Purple,      c.none, no)
-Group.new('TSParameter',          c.Cyan,        c.none, no)
-Group.new('TSVariable',           c.Cyan,        c.none, no)
-Group.new('TSPunctBracket',       c.White,       c.none, no)
-Group.new('TSOperator',           c.White,       c.none, no)
-Group.new('TSVariableBuiltin',    c.Orange,      c.none, no)
-Group.new('TSConstructor',        c.DarkYellow,  c.none, no)
+    ----------------
+    -- LSP COLORS --
+    ----------------
+    LspDiagnosticsVirtualTextHint =        { fg = scheme.Custom_2,    bg = scheme.none, scheme.none },
+    LspDiagnosticsSignWarning =            { fg = scheme.DarkOrange,  bg = scheme.none, scheme.none },
+    LspDiagnosticsSignInformation =        { fg = scheme.Custom_3,    bg = scheme.none, scheme.none },
+    LspDiagnosticsSignHint =               { fg = scheme.Custom_2,    bg = scheme.none, scheme.none },
+    LspDiagnosticsFloatingHint =           { fg = scheme.Custom_2,    bg = scheme.none, style = "underline" },
+    LspDiagnosticsSignError =              { fg = scheme.DarkRed,     bg = scheme.none, scheme.none },
+    LspDiagnosticsDefaultWarning =         { fg = scheme.DarkOrange,  bg = scheme.none, scheme.none },
+    LspDiagnosticsDefaultError =           { fg = scheme.DarkRed,     bg = scheme.none, scheme.none },
+    LspDiagnosticsFloatingError =          { fg = scheme.DarkRed,     bg = scheme.none, style = "underline" },
+    LspDiagnosticsFloatingWarning =        { fg = scheme.DarkOrange,  bg = scheme.none, style = "underline" },
+    LspDiagnosticsFloatingInformation =    { fg = scheme.Custom_3,    bg = scheme.none, style = "underline" },
+    LspDiagnosticsUnderlineInformation =   { fg = scheme.none,        bg = scheme.none, style = "underline" },
+    LspDiagnosticsUnderlineHint =          { fg = scheme.none,        bg = scheme.none, style = "underline" },
+    LspDiagnosticsDefaultInformation =     { fg = scheme.Cyan,        bg = scheme.none, scheme.none },
+    LspDiagnosticsDefaultHint =            { fg = scheme.Custom_2,    bg = scheme.none, scheme.none },
+    LspDiagnosticsUnderlineError =         { fg = scheme.none,        bg = scheme.none, style = "underline" },
+    LspDiagnosticsVirtualTextError =       { fg = scheme.DarkRed,     bg = scheme.none, scheme.none },
+    LspDiagnosticsVirtualTextWarning =     { fg = scheme.DarkOrange,  bg = scheme.none, scheme.none },
+    LspDiagnosticsVirtualTextInformation = { fg = scheme.Custom_3,    bg = scheme.none, scheme.none },
+    LspDiagnosticsUnderlineWarning =       { fg = scheme.none,        bg = scheme.none, style = "underline" },
+    LspReferenceText =                     { fg = scheme.DarkOrange,  bg = scheme.Cyan, scheme.none },
+    LspReferenceRead =                     { fg = scheme.DarkOrange,  bg = scheme.Cyan, scheme.none },
+    LspReferenceWrite =                    { fg = scheme.DarkOrange,  bg = scheme.Cyan, scheme.none },
 
----------------
--- TELESCOPE --
----------------
-Group.new('TelescopeNormal',          c.White,       c.none,   no)
-Group.new('TelescopeSelection',       c.White,       c.Grey,  b)
-Group.new('TelescopeSelectionCaret',   c.Red,         c.none,   no)
-Group.new('TelescopeMultiSelection ', c.Grey_2,      c.none,   no)
-Group.new('TelescopeBorder',          c.DarkOrange,  c.none,   no)
-Group.new('TelescopePromptBorder',    c.DarkBlue,    c.none,   no)
-Group.new('TelescopeResultsBorder',   c.DarkOrange,  c.none,   no)
-Group.new('TelescopePreviewBorder',   c.DarkMagenta, c.none,   no)
-Group.new('TelescopeMatching ',       c.Yellow,      c.none,   no)
-Group.new('TelescopePromptPrefix',    c.Red,         c.none,   no)
-Group.new('TelescopePrompt',          c.Red,         c.none,   no)
+    ---------------
+    --  LSPSAGA  --
+    ---------------
+    LspSagaRenamePromptPrefix = { fg = scheme.Green,   bg = scheme.none, scheme.none },
+    DiagnosticHint =            { fg = scheme.Purple,  bg = scheme.none, scheme.none },
+    DefinitionPreviewTitle =    { fg = scheme.Yellow,  bg = scheme.none, scheme.none },
+    LspSagaRenameBorder =       { fg = scheme.Green,   bg = scheme.none, scheme.none },
+    DiagnosticInformation =     { fg = scheme.Blue,    bg = scheme.none, scheme.none },
+    LspSagaDefPreviewBorder =   { fg = scheme.Yellow,  bg = scheme.none, scheme.none },
+    LspSagaHoverBorder =        { fg = scheme.Cyan,    bg = scheme.none, scheme.none },
+    DiagnosticWarning =         { fg = scheme.Yellow,  bg = scheme.none, scheme.none },
+    DiagnosticError =           { fg = scheme.DarkRed, bg = scheme.none, scheme.none },
 
----------------
--- NVIM TREE --
----------------
-Group.new('NvimTreeFolderName',       c.Blue,       c.none, no)
-Group.new('NvimTreeFolderIcon',       c.Orange,     c.none, no)
-Group.new('NvimTreeExecFile',         c.Green,      c.none, no)
-Group.new('NvimTreeImageFile',        c.Pink,       c.none, no)
-Group.new('NvimTreeEmptyFolderName',  c.DarkGrey_2, c.none, no)
-Group.new('NvimTreeIndentMarker',     c.Blue,       c.none, no)
+    -----------------------
+    -- TREESITTER COLORS --
+    -----------------------
+    TSFloat =           { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    TSFunction =        { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    TSType =            { fg = scheme.Yellow,     bg = scheme.none, scheme.none },
+    TSTypeBuiltin =     { fg = scheme.Yellow,     bg = scheme.none, scheme.none },
+    TSLabel =           { fg = scheme.DarkYellow, bg = scheme.none, scheme.none },
+    TSCharacter =       { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    TSConditional =     { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    TSConstant =        { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    TSConstBuiltin =    { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    TSConstMacro =      { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    TSFuncBuiltin =     { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    TSMethod =          { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    TSStructure =       { fg = scheme.Purple,     bg = scheme.none, scheme.none },
+    TSTagDelimiter =    { fg = scheme.Green,      bg = scheme.none, scheme.none },
+    TSNumber =          { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    TSFuncMacro =       { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    TSInclude =         { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    TSKeyword =         { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    TSException =       { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
+    TSBoolean =         { fg = scheme.DarkYellow, bg = scheme.none, scheme.none },
+    TSError =           { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
+    TSString =          { fg = scheme.Green,      bg = scheme.none, scheme.none },
+    TSStringEscape =    { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    TSStringRegex =     { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    TSProperty =        { fg = scheme.DarkCyan,   bg = scheme.none, scheme.none },
+    TSField =           { fg = scheme.Purple,     bg = scheme.none, scheme.none },
+    TSParameter =       { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    TSVariable =        { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    TSPunctBracket =    { fg = scheme.White,      bg = scheme.none, scheme.none },
+    TSOperator =        { fg = scheme.White,      bg = scheme.none, scheme.none },
+    TSVariableBuiltin = { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    TSConstructor =     { fg = scheme.DarkYellow, bg = scheme.none, scheme.none },
 
----------------
---  STARTIFY --
----------------
-Group.new('startifyheader',  c.DarkOrange, c.none, no)
-Group.new('startifypath',    c.Green,      c.none, no)
-Group.new('startifyslash',   c.Blue,       c.none, no)
-Group.new('startifyfile',    c.DarkRed,    c.none, no)
+    ---------------
+    -- TELESCOPE --
+    ---------------
+    TelescopeNormal =         { fg = scheme.White,       bg = scheme.none, scheme.none },
+    TelescopeSelection =      { fg = scheme.White,       bg = scheme.Grey, style = "bold" },
+    TelescopeSelectionCaret = { fg = scheme.Red,         bg = scheme.none, scheme.none },
+    TelescopeMultiSelection = { fg = scheme.Grey_2,      bg = scheme.none, scheme.none },
+    TelescopeBorder =         { fg = scheme.DarkOrange,  bg = scheme.none, scheme.none },
+    TelescopePromptBorder =   { fg = scheme.DarkBlue,    bg = scheme.none, scheme.none },
+    TelescopeResultsBorder =  { fg = scheme.DarkOrange,  bg = scheme.none, scheme.none },
+    TelescopePreviewBorder =  { fg = scheme.DarkMagenta, bg = scheme.none, scheme.none },
+    TelescopeMatching =       { fg = scheme.Yellow,      bg = scheme.none, scheme.none },
+    TelescopePromptPrefix =   { fg = scheme.Red,         bg = scheme.none, scheme.none },
+    TelescopePrompt =         { fg = scheme.Red,         bg = scheme.none, scheme.none },
+
+    ---------------
+    -- NVIM TREE --
+    ---------------
+    NvimTreeFolderName =      { fg = scheme.Blue,       bg = scheme.none, scheme.none },
+    NvimTreeFolderIcon =      { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    NvimTreeExecFile =        { fg = scheme.Green,      bg = scheme.none, scheme.none },
+    NvimTreeImageFile =       { fg = scheme.Pink,       bg = scheme.none, scheme.none },
+    NvimTreeEmptyFolderName = { fg = scheme.DarkGrey_2, bg = scheme.none, scheme.none },
+    NvimTreeIndentMarker =    { fg = scheme.Blue,       bg = scheme.none, scheme.none },
+
+    ---------------
+    --  STARTIFY --
+    ---------------
+    startifyheader = { fg = scheme.c.DarkOrange, bg = scheme.none, scheme.none },
+    startifypath =   { fg = scheme.c.Green,      bg = scheme.none, scheme.none },
+    startifyslash =  { fg = scheme.c.Blue,       bg = scheme.none, scheme.none },
+    startifyfile =   { fg = scheme.c.DarkRed,    bg = scheme.none, scheme.none },
+  }
+  return syntax
+end
+
+return setup
