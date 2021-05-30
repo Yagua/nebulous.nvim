@@ -68,7 +68,8 @@ elseif vim.g.nb_style  == "twilight" then
   Colors.DarkGrey    = "#5E5E5E"
   Colors.DarkGrey_2  = "#828989"
 
-else --Default schema
+ elseif vim.g.nb_style == "night" then
+--else --Default schema
   --Light colors
   Colors.background  = "#0b1015"
   Colors.Red         = "#FB467B"

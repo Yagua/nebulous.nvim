@@ -23,18 +23,14 @@ function utils.apply_highlights(group, color)
 
 end
 
--- Load editor colors
-for g, c in pairs(base_colors) do
-  utils.apply_highlights(g, c)
+function utils.setup()
+  -- Load editor colors
+  for g, c in pairs(base_colors) do utils.apply_highlights(g, c) end
+  -- Load plugin colors
+  for g, c in pairs(plugin_colors) do utils.apply_highlights(g, c) end
+
+  -- Load terminal colors
+  scheme.colors_terminal()
 end
-
--- Load plugin colors
-for g, c in pairs(plugin_colors) do
-  utils.apply_highlights(g, c)
-end
-
--- Load terminal colors
-scheme.colors_terminal()
-
 
 return utils
