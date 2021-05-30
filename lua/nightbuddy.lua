@@ -5,13 +5,14 @@
 
 local scheme = require("scheme.colors")
 local setup = {}
+local g = vim.g
 
 ---------------------
 -- EDITOR SETTINGS --
 ---------------------
-function setup.loadSyntax()
-  local syntax = {
 
+function setup.load_syntax()
+  local syntax = {
     String =           { fg = scheme.Green,      bg = scheme.none,       style = "italic" },
     Delimiter =        { fg = scheme.Green,      bg = scheme.none,       scheme.none },
     Character =        { fg = scheme.Orange,     bg = scheme.none,       scheme.none },
@@ -27,7 +28,7 @@ function setup.loadSyntax()
     Special =          { fg = scheme.Yellow,     bg = scheme.none,       style = "italic" },
     Todo =             { fg = scheme.DarkYellow, bg = scheme.none,       style = "bold,italic" },
     Identifier =       { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
-    Function =         { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
+    Function =         { fg = scheme.Aqua,       bg = scheme.none,       scheme.none },
     Include =          { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
     SpecialChar =      { fg = scheme.Blue,       bg = scheme.none,       scheme.none },
     Underlined =       { fg = scheme.Blue,       bg = scheme.none,       syle = "underline" },
@@ -43,11 +44,11 @@ function setup.loadSyntax()
     Comment =          { fg = scheme.DarkGrey,   bg = scheme.none,       style = "italic" },
     Ignore =           { fg = scheme.none,       bg = scheme.none,       scheme.none },
     Error =            { fg = scheme.DarkRed,    bg = scheme.none,       style = "bold,underline" },
-    Debug =            { fg = scheme.DarkRed ,   bg = scheme.none,       scheme.none },
-    Exception =        { fg = scheme.DarkRed ,   bg = scheme.none,       scheme.none },
+    Debug =            { fg = scheme.DarkRed,    bg = scheme.none,       scheme.none },
+    Exception =        { fg = scheme.DarkRed,    bg = scheme.none,       scheme.none },
     ColorColumn =      { fg = scheme.none,       bg = scheme.Grey_2,     scheme.none },
     Cursor =           { fg = scheme.none,       bg = scheme.Orange,     scheme.none },
-    CursorIM =         { fg = scheme.none,       bg = scheme.Grey_2,     scheme.none },
+    CursorIM =         { fg = scheme.none,       bg = scheme.none,       scheme.none },
     CursorColumn =     { fg = scheme.none,       bg = scheme.Grey_2,     scheme.none },
     CursorLineNr =     { fg = scheme.White,      bg = scheme.Grey_2,     scheme.none },
     CursorLine =       { fg = scheme.none,       bg = scheme.Grey_2,     scheme.none },
@@ -66,14 +67,14 @@ function setup.loadSyntax()
     StatusLineNC =     { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
     DiffDelete =       { fg = scheme.Red,        bg = scheme.none,       style = "reverse" },
     WarningMsg =       { fg = scheme.DarkRed,    bg = scheme.none,       scheme.none },
-    Warnings =         { fg = scheme.Orange,     bg = scheme.none,       scheme.none },
+    Warnings =         { fg = scheme.Orange,     bg = scheme.none,       style = "reverse" },
     WildMenu =         { fg = scheme.Orange,     bg = scheme.Black,      style = "bold" },
     EndOfBuffer =      { fg = scheme.Custom_1,   bg = scheme.none,       scheme.none },
     ErrorMsg =         { fg = scheme.DarkRed,    bg = scheme.none,       scheme.none },
     VertSplit =        { fg = scheme.Pink,       bg = scheme.none,       scheme.none },
     LineNr =           { fg = scheme.DarkGrey,   bg = scheme.none,       scheme.none },
     MatchParen =       { fg = scheme.Cyan,       bg = scheme.none,       style = "bold" },
-    ModeMsg =          { fg = scheme.Blue,       bg = scheme.none,       scheme.none },
+    odeMsg =           { fg = scheme.Blue,       bg = scheme.none,       scheme.none },
     NonText =          { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
     Normal =           { fg = scheme.White,      bg = scheme.background, scheme.none },
     NormalFloat =      { fg = scheme.White,      bg = scheme.Grey_2,     scheme.none },
@@ -84,14 +85,15 @@ function setup.loadSyntax()
     Title =            { fg = scheme.White,      bg = scheme.none,       style = "bold" },
     Visual =           { fg = scheme.White,      bg = scheme.Custom_1,   scheme.none },
     VisualNOS =        { fg = scheme.White,      bg = scheme.Custom_1,   scheme.none },
-    StatusLineTerm =   { fg = scheme.Black,      bg = scheme.Green,      scheme.Grey },
+    StatusLineTerm =   { fg = scheme.Black,      bg = scheme.Green,      scheme.none },
     StatusLineTermNC = { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
     Conditional =      { fg = scheme.Red,        bg = scheme.none,       scheme.none },
-    QuickFixLine =     { fg = scheme.Black,      bg = scheme.Yellow,     scheme.none },
-    TabLineFill =      { fg = scheme.Grey,       bg = scheme.Black,      scheme.none },
-    TabLineSel =       { fg = scheme.Black,      bg = scheme.DarkCyan,   scheme.none },
-    TabLine =          { fg = scheme.Grey,       bg = scheme.Black,      scheme.none },
+    QuickFixLine =     { fg = scheme.Black,      bg = scheme.none,       scheme.none },
+    TabLineFill =      { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
+    TabLineSel =       { fg = scheme.Black,      bg = scheme.none,       scheme.none },
+    TabLine =          { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
   }
+
   return syntax
 end
 
@@ -99,7 +101,7 @@ end
 --                        COLOR LANGUAGE SETTINGS                       --
 --------------------------------------------------------------------------
 
-function setup.loadPlugs()
+function setup.load_plugins()
   local syntax = {
     ---------
     -- GIT --
@@ -796,12 +798,32 @@ function setup.loadPlugs()
     ---------------
     --  STARTIFY --
     ---------------
-    startifyheader = { fg = scheme.c.DarkOrange, bg = scheme.none, scheme.none },
-    startifypath =   { fg = scheme.c.Green,      bg = scheme.none, scheme.none },
-    startifyslash =  { fg = scheme.c.Blue,       bg = scheme.none, scheme.none },
-    startifyfile =   { fg = scheme.c.DarkRed,    bg = scheme.none, scheme.none },
+    startifyheader = { fg = scheme.DarkOrange, bg = scheme.none, scheme.none },
+    startifypath =   { fg = scheme.Green,      bg = scheme.none, scheme.none },
+    startifyslash =  { fg = scheme.Blue,       bg = scheme.none, scheme.none },
+    startifyfile =   { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
   }
+
   return syntax
+end
+
+function setup.colors_terminal()
+  g.terminal_color_0  = scheme.Black
+  g.terminal_color_1  = scheme.Red
+  g.terminal_color_2  = scheme.Green
+  g.terminal_color_3  = scheme.Yellow
+  g.terminal_color_4  = scheme.Blue
+  g.terminal_color_5  = scheme.Purple
+  g.terminal_color_6  = scheme.Cyan
+  g.terminal_color_7  = scheme.White
+  g.terminal_color_8  = scheme.Gray
+  g.terminal_color_9  = scheme.Red
+  g.terminal_color_10 = scheme.Green
+  g.terminal_color_11 = scheme.Yellow
+  g.terminal_color_12 = scheme.Blue
+  g.terminal_color_13 = scheme.Purple
+  g.terminal_color_14 = scheme.Cyan
+  g.terminal_color_15 = scheme.White
 end
 
 return setup
