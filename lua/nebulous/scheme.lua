@@ -1,17 +1,14 @@
--- Name:         Nightbuddy
--- Description:  Minimalist Collection of Dark Colorschemes Written in Lua
--- Author:       DilanGMB <Dilan.baron79@gmail.com>
--- Website:      https://github.com/DilanGMB/nightbuddy
-
-local scheme = require("scheme.colors")
+local scheme = require("nebulous.colors")
+local opts = require("nebulous.config")
 local setup = {}
 local g = vim.g
 
----------------------
--- EDITOR SETTINGS --
----------------------
-
-function setup.load_syntax()
+---Color table for the editor
+--@return syntax table: table with the groups and its respective colors
+function setup.load_editor()
+  ---------------------
+  --  EDITOR COLORS  --
+  ---------------------
   local syntax = {
     String =           { fg = scheme.Green,      bg = scheme.none,       style = "italic" },
     Delimiter =        { fg = scheme.Green,      bg = scheme.none,       scheme.none },
@@ -27,8 +24,8 @@ function setup.load_syntax()
     StorageClass =     { fg = scheme.Yellow,     bg = scheme.none,       scheme.none  },
     Special =          { fg = scheme.Yellow,     bg = scheme.none,       style = "italic" },
     Todo =             { fg = scheme.DarkYellow, bg = scheme.none,       style = "bold,italic" },
-    Identifier =       { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
-    Function =         { fg = scheme.Aqua,       bg = scheme.none,       scheme.none },
+    Identifier =       { fg = scheme.Cyan,       bg = scheme.none,       style = opts.conf.st_variables },
+    Function =         { fg = scheme.Aqua,       bg = scheme.none,       style = opts.conf.st_functions },
     Include =          { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
     SpecialChar =      { fg = scheme.Blue,       bg = scheme.none,       scheme.none },
     Underlined =       { fg = scheme.Blue,       bg = scheme.none,       syle = "underline" },
@@ -38,10 +35,10 @@ function setup.load_syntax()
     Structure =        { fg = scheme.Purple,     bg = scheme.none,       scheme.none },
     Define =           { fg = scheme.Purple,     bg = scheme.none,       scheme.none },
     Operator =         { fg = scheme.White,      bg = scheme.none,       scheme.none },
-    Keyword =          { fg = scheme.Red,        bg = scheme.none,       scheme.none },
+    Keyword =          { fg = scheme.Red,        bg = scheme.none,       style = opts.conf.st_keywords },
     Macro =            { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
     Typedef =          { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
-    Comment =          { fg = scheme.DarkGrey,   bg = scheme.none,       style = "italic" },
+    Comment =          { fg = scheme.DarkGrey,   bg = scheme.none,       style = opts.conf.st_comments },
     Ignore =           { fg = scheme.none,       bg = scheme.none,       scheme.none },
     Error =            { fg = scheme.DarkRed,    bg = scheme.none,       style = "bold,underline" },
     Debug =            { fg = scheme.DarkRed,    bg = scheme.none,       scheme.none },
@@ -88,20 +85,21 @@ function setup.load_syntax()
     StatusLineTerm =   { fg = scheme.Black,      bg = scheme.Green,      scheme.none },
     StatusLineTermNC = { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
     Conditional =      { fg = scheme.Red,        bg = scheme.none,       scheme.none },
-    QuickFixLine =     { fg = scheme.Black,      bg = scheme.none,       scheme.none },
-    TabLineFill =      { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
-    TabLineSel =       { fg = scheme.Black,      bg = scheme.none,       scheme.none },
-    TabLine =          { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
+    QuickFixLine =     { fg = scheme.Black,      bg = scheme.Yellow,     scheme.none },
+    TabLineFill =      { fg = scheme.Grey,       bg = scheme.Black,      scheme.none },
+    TabLineSel =       { fg = scheme.Black,      bg = scheme.DarkCyan,   scheme.none },
+    TabLine =          { fg = scheme.Grey,       bg = scheme.Black,      scheme.none },
   }
 
   return syntax
 end
 
---------------------------------------------------------------------------
---                        COLOR LANGUAGE SETTINGS                       --
---------------------------------------------------------------------------
-
-function setup.load_plugins()
+---Color table for the languages
+--@return syntax table: table with the groups and its respective colors
+function setup.load_langs()
+  ---------------------
+  -- LANGUAGE COLORS --
+  ---------------------
   local syntax = {
     ---------
     -- GIT --
@@ -690,9 +688,53 @@ function setup.load_plugins()
     -----------
     SqlKeyword = { fg = scheme.Red, bg = scheme.none, scheme.none },
 
-    --------------------------------------------------------------------------
-    --                           PLUGINS SETTINGS                            -
-    --------------------------------------------------------------------------
+  }
+
+  return syntax
+end
+
+---Color table for the plugins
+--@return syntax table: table with the groups and its respective colors
+function setup.load_plugins()
+  ---------------------
+  --  PLUGIN COLORS  --
+  ---------------------
+  local syntax = {
+    -----------------------
+    -- TREESITTER COLORS --
+    -----------------------
+    TSFloat =           { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    TSFunction =        { fg = scheme.Cyan,       bg = scheme.none, style = opts.conf.st_functions },
+    TSType =            { fg = scheme.Yellow,     bg = scheme.none, scheme.none },
+    TSTypeBuiltin =     { fg = scheme.Yellow,     bg = scheme.none, scheme.none },
+    TSLabel =           { fg = scheme.DarkYellow, bg = scheme.none, scheme.none },
+    TSCharacter =       { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    TSConditional =     { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    TSConstant =        { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    TSConstBuiltin =    { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    TSConstMacro =      { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    TSFuncBuiltin =     { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    TSMethod =          { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    TSStructure =       { fg = scheme.Purple,     bg = scheme.none, scheme.none },
+    TSTagDelimiter =    { fg = scheme.Green,      bg = scheme.none, scheme.none },
+    TSNumber =          { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    TSFuncMacro =       { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    TSInclude =         { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    TSKeyword =         { fg = scheme.Red,        bg = scheme.none, style = opts.conf.st_keywords },
+    TSException =       { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
+    TSBoolean =         { fg = scheme.DarkYellow, bg = scheme.none, scheme.none },
+    TSError =           { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
+    TSString =          { fg = scheme.Green,      bg = scheme.none, scheme.none },
+    TSStringEscape =    { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    TSStringRegex =     { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    TSProperty =        { fg = scheme.DarkCyan,   bg = scheme.none, scheme.none },
+    TSField =           { fg = scheme.Purple,     bg = scheme.none, scheme.none },
+    TSParameter =       { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    TSVariable =        { fg = scheme.Cyan,       bg = scheme.none, style = opts.conf.st_variables },
+    TSPunctBracket =    { fg = scheme.White,      bg = scheme.none, scheme.none },
+    TSOperator =        { fg = scheme.White,      bg = scheme.none, scheme.none },
+    TSVariableBuiltin = { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    TSConstructor =     { fg = scheme.DarkYellow, bg = scheme.none, scheme.none },
 
     ----------------
     -- LSP COLORS --
@@ -734,42 +776,6 @@ function setup.load_plugins()
     DiagnosticWarning =         { fg = scheme.Yellow,  bg = scheme.none, scheme.none },
     DiagnosticError =           { fg = scheme.DarkRed, bg = scheme.none, scheme.none },
 
-    -----------------------
-    -- TREESITTER COLORS --
-    -----------------------
-    TSFloat =           { fg = scheme.Orange,     bg = scheme.none, scheme.none },
-    TSFunction =        { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
-    TSType =            { fg = scheme.Yellow,     bg = scheme.none, scheme.none },
-    TSTypeBuiltin =     { fg = scheme.Yellow,     bg = scheme.none, scheme.none },
-    TSLabel =           { fg = scheme.DarkYellow, bg = scheme.none, scheme.none },
-    TSCharacter =       { fg = scheme.Orange,     bg = scheme.none, scheme.none },
-    TSConditional =     { fg = scheme.Red,        bg = scheme.none, scheme.none },
-    TSConstant =        { fg = scheme.Orange,     bg = scheme.none, scheme.none },
-    TSConstBuiltin =    { fg = scheme.Orange,     bg = scheme.none, scheme.none },
-    TSConstMacro =      { fg = scheme.Orange,     bg = scheme.none, scheme.none },
-    TSFuncBuiltin =     { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
-    TSMethod =          { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
-    TSStructure =       { fg = scheme.Purple,     bg = scheme.none, scheme.none },
-    TSTagDelimiter =    { fg = scheme.Green,      bg = scheme.none, scheme.none },
-    TSNumber =          { fg = scheme.Red,        bg = scheme.none, scheme.none },
-    TSFuncMacro =       { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
-    TSInclude =         { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
-    TSKeyword =         { fg = scheme.Red,        bg = scheme.none, scheme.none },
-    TSException =       { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
-    TSBoolean =         { fg = scheme.DarkYellow, bg = scheme.none, scheme.none },
-    TSError =           { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
-    TSString =          { fg = scheme.Green,      bg = scheme.none, scheme.none },
-    TSStringEscape =    { fg = scheme.Orange,     bg = scheme.none, scheme.none },
-    TSStringRegex =     { fg = scheme.Red,        bg = scheme.none, scheme.none },
-    TSProperty =        { fg = scheme.DarkCyan,   bg = scheme.none, scheme.none },
-    TSField =           { fg = scheme.Purple,     bg = scheme.none, scheme.none },
-    TSParameter =       { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
-    TSVariable =        { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
-    TSPunctBracket =    { fg = scheme.White,      bg = scheme.none, scheme.none },
-    TSOperator =        { fg = scheme.White,      bg = scheme.none, scheme.none },
-    TSVariableBuiltin = { fg = scheme.Orange,     bg = scheme.none, scheme.none },
-    TSConstructor =     { fg = scheme.DarkYellow, bg = scheme.none, scheme.none },
-
     ---------------
     -- TELESCOPE --
     ---------------
@@ -798,12 +804,13 @@ function setup.load_plugins()
     ---------------
     --  STARTIFY --
     ---------------
-    startifyheader = { fg = scheme.DarkOrange, bg = scheme.none, scheme.none },
-    startifypath =   { fg = scheme.Green,      bg = scheme.none, scheme.none },
-    startifyslash =  { fg = scheme.Blue,       bg = scheme.none, scheme.none },
-    startifyfile =   { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
+    startifyheader =  { fg = scheme.DarkOrange, bg = scheme.none, scheme.none },
+    StartifyNumber =  { fg = scheme.Pink,       bg = scheme.none, scheme.none },
+    StartifyBracket = { fg = scheme.Red,        bg = scheme.none, scheme.none },
+    startifypath =    { fg = scheme.Green,      bg = scheme.none, scheme.none },
+    startifyslash =   { fg = scheme.Blue,       bg = scheme.none, scheme.none },
+    startifyfile =    { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
   }
-
   return syntax
 end
 

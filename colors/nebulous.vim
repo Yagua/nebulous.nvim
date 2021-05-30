@@ -6,4 +6,5 @@ package.loaded['nebulous.colors'] = nil
 package.loaded['nebulous.scheme'] = nil
 package.loaded['nebulous.utils'] = nil
 
+require("nebulous").setup()
 EOF

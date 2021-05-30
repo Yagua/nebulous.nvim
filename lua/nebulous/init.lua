@@ -16,10 +16,10 @@
 --]]
 
 local utils = require("nebulous.utils")
+local M = {}
 
-local function setup(style)
-  vim.g.nb_style = style or "night"
-  utils.setup()
+function M.setup()
+  utils.load_colorscheme()
 end
 
-return { setup = setup }
+return M

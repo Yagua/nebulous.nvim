@@ -1,36 +1,43 @@
-local scheme = require("nightbuddy")
+local scheme = require("nebulous.scheme")
 local utils = {}
-local base_colors = scheme.load_syntax()
-local plugin_colors = scheme.load_plugins()
 local api = vim.api
+local color_tables = { 
+  scheme.load_editor(),
+  scheme.load_plugins(),
+  scheme.load_langs(),
+}
 
----Apply colors
---@param group string: group of colors
---@param color string:
-function utils.apply_highlights(group, color)
-  local foreground = color.fg    and "guifg=" .. color.fg    or "guifg=NONE"
-  local background = color.bg    and "guibg=" .. color.bg    or "guibg=NONE"
-  local style      = color.style and "gui="   .. color.style or "gui=NONE"
-  local special    = color.sp    and "guisp=" .. color.sp    or ""
-
-  if color.link then
-    api.nvim_command("highlight! link " .. group .. " " .. color.link)
-  end
-
-  api.nvim_command(string.format("highlight %s %s %s %s %s",
-    group, style, foreground, background, special
+---Apply colors in the editor
+function utils.set_highlights(group, color)
+  api.nvim_command(string.format('highlight %s gui=%s guifg=%s guibg=%s guisp=%s',
+    group,
+    color.style or "NONE",
+    color.fg    or "NONE",
+    color.bg    or "NONE",
+    color.sp    or "NONE"
   ))
 
+  if color.link then
+    api.nvim_command(string.format("highlight! link %s %s", group, color.link))
+  end
 end
 
-function utils.setup()
-  -- Load editor colors
-  for g, c in pairs(base_colors) do utils.apply_highlights(g, c) end
-  -- Load plugin colors
-  for g, c in pairs(plugin_colors) do utils.apply_highlights(g, c) end
+---Load colorscheme
+function utils.load_colorscheme()
+  api.nvim_command("highlight clear")
+  if vim.fn.exists("sintax_on") then api.nvim_command("syntax reset") end
+  vim.g.colors_name = "nebulous"
+  vim.o.background = "dark"
+  vim.o.termguicolors = true
 
   -- Load terminal colors
   scheme.colors_terminal()
+  -- Load editor colors
+  for _, c_table in pairs(color_tables) do
+    for group, color in pairs(c_table) do
+      utils.set_highlights(group, color)
+    end
+  end
 end
 
 return utils
