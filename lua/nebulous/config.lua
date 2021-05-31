@@ -1,16 +1,17 @@
 local M = {}
 
----Obtain the value of the past options
+---Get the value of secheme options
 --@param opt string: name of the option
 --@param value number|boolean: value of the option
+--@returns number | boolean: value of the indexed option
 local function options(opt, value)
-  local option = string.format("nb_%s", opt)
-  if vim.g[option] == nil then return value end
-  if vim.g[option] == 0 then return false end
-  return vim.g[option]
+  local nb_option = string.format("nb_%s", opt)
+  if vim.g[nb_option] == nil then return value end
+  if vim.g[nb_option] == 0 then return false end
+  return vim.g[nb_option]
 end
 
----Default options
+---Define default config
 M.conf = {
   st_comments  = options("italic_comments", false)  and "italic" or "NONE",
   st_keywords  = options("italic_keywords", false)  and "italic" or "NONE",

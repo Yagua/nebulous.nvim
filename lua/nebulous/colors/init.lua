@@ -1,9 +1,10 @@
 local Colors = {}
+local variant = vim.g.nb_style
 
 ---Variants selector
-if vim.g.nb_style  == "midnight" then
+if  variant == "midnight" then
   Colors = require("nebulous.colors.midnight")
-elseif vim.g.nb_style  == "twilight" then
+elseif variant == "twilight" then
   Colors = require("nebulous.colors.twilight")
 else
   Colors = require("nebulous.colors.night") --Default schema

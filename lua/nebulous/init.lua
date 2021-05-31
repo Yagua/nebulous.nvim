@@ -9,17 +9,17 @@
   /**    //***//******/****** //****** ***//****** //****** ******
   //      ///  ////// /////    ////// ///  //////   ////// //////
 
-  -- Description:  Minimalist Collection of Dark Colorschemes Written in Lua
+  -- Description:  Minimalist Collection of Colorschemes Written in Lua
   -- Author:       DilanGMB <Dilan.baron79@gmail.com>
   -- Website:      https://github.com/DilanGMB/nebulous
 
 --]]
 
 local utils = require("nebulous.utils")
-local M = {}
+local nebulous = {}
 
-function M.setup()
+function nebulous.setup()
   utils.load_colorscheme()
 end
 
-return M
+return nebulous
