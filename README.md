@@ -147,10 +147,6 @@ require('lualine').setup {
 }
 ```
 
-## Preview
-
-![lualine_prev](./media/lualine_prev.gif =1200x)
-
 ## Special Features
 
 | Option              | Default Value |  Description                        |
