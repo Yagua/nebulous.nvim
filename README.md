@@ -77,16 +77,16 @@ Plug 'DilanGMB/nebulous.nvim'
 " Put this lines inside your vimrc to set the colorscheme
 colorscheme nebulous
 " or
-lua require("nobulous").setup()
+lua require("nebulous").setup()
 ```
 
 ##### Lua
 
 ```lua
 -- Put this lines inside your vimrc to set the colorscheme
-require("nobulous").setup()
+require("nebulous").setup()
 --or
-vim.cmd("colorscheme nobulous")
+vim.cmd("colorscheme nebulous")
 ```
 
 ## Colorscheme Settings
