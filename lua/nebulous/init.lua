@@ -11,7 +11,7 @@
 
   -- Description:  Minimalist Collection of Colorschemes Written in Lua
   -- Author:       DilanGMB <Dilan.baron79@gmail.com>
-  -- Website:      https://github.com/DilanGMB/nebulous
+  -- Website:      https://github.com/DilanGMB/nebulous.nvim
 
 --]]
 
