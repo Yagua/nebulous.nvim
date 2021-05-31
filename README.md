@@ -38,6 +38,7 @@
 Minimalist Collection of Colorschemes Written in Lua
 
 ## Features
+
 - These color schemes are compatible with LSP, Tree-Sitter, Telescope, Nvim-Tree and others.
 - Support for Vim Terminal Colors
 - Lualine scheme
@@ -80,6 +81,7 @@ lua require("nobulous").setup()
 ```
 
 ##### Lua
+
 ```lua
 -- Put this lines inside your vimrc to set the colorscheme
 require("nobulous").setup()
@@ -88,10 +90,12 @@ vim.cmd("colorscheme nobulous")
 ```
 
 ## Colorscheme Settings
+
 It is important to mention that the configurations listed hereafter, have to be
 set before loading the colorscheme.
 
 ##### Color variants
+
 - night (default style if no variant is specified)
 - twilight
 - midnight
@@ -100,12 +104,14 @@ More variants coming soon !!
 
 Example of use:
 ##### Lua
+
 ```lua
 vim.g.nb_style = "night"
 require("nebulous").setup()
 ```
 
 ##### VimScript
+
 ```vim
 let g:nb_style = "night"
 colorscheme nebulous
@@ -114,12 +120,15 @@ colorscheme nebulous
 ## Preview
 
 #### Twilight
+
 ![kosmos](./media/twilight.gif)
 
 #### Night
+
 ![night](./media/night.gif)
 
 #### Midnight
+
 ![midnight](./media/midnight.gif)
 
 ### Lualine scheme
@@ -137,6 +146,10 @@ require('lualine').setup {
   }
 }
 ```
+
+## Preview
+
+![lualine_prev](./media/lualine_prev.gif =1200x)
 
 ## Special Features
 
