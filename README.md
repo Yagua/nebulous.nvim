@@ -1,3 +1,5 @@
+# Nebulous.nvim
+
 ```
  .    .     .         _____  .      .       *     .      0      .     .      *      .    .   ..   *
      .       .     .-'.     ':'-.                                        *       +
@@ -33,12 +35,12 @@
 ```
 
 
-Minimalist Collection of Dark Colorschemes Created with [Colorbuddy helper](https://github.com/tjdevries/colorbuddy.vim)
-
-- Check the root file here: [`nightbuddy.lua`](./lua/nightbuddy.lua)
+Minimalist Collection of Colorschemes Written in Lua
 
 ## Features
-- These color schemes are compatible with Tree-Sitter, Telescope, Nvim-Tree and others.
+- These color schemes are compatible with LSP, Tree-Sitter, Telescope, Nvim-Tree and others.
+- Support for Vim Terminal Colors
+- Lualine scheme
 - They support a large number of terminal emulation environments, such as:
     - [Alacritty](https://github.com/alacritty/alacritty)
     - [Kitty](https://github.com/kovidgoyal/kitty)
@@ -48,44 +50,67 @@ Minimalist Collection of Dark Colorschemes Created with [Colorbuddy helper](http
 ## Prequisites
 
 - [Neovim version 0.5+](https://github.com/neovim/neovim/releases)
-- [Colorbuddy helper](https://github.com/tjdevries/colorbuddy.vim)
 - (Recommended) [Tree-Sitter](https://github.com/nvim-treesitter/nvim-treesitter) Highlight for a better use of colors
 
 ## Installation
 
-##### [Vim Plug](https://github.com/junegunn/vim-plug)
-
-```vim
-Plug 'tjdevries/colorbuddy.vim'
-Plug 'DilanGMB/nightbuddy'
-```
+You can install colorsecheme with any package manager, for example:
 
 ##### [Packer.nvim](https://github.com/wbthomason/packer.nvim)
 
 ```lua
-use 'tjdevries/colorbuddy.vim'
-use 'DilanGMB/nightbuddy'
+use 'DilanGMB/nebulous.nvim'
+```
+
+##### [Vim Plug](https://github.com/junegunn/vim-plug)
+
+```vim
+Plug 'DilanGMB/nebulous.nvim'
 ```
 
 ## Configuration & Use
+
 ##### VimScript
+
 ```vim
 " Put this lines inside your vimrc to set the colorscheme
-let g:nb_style = "STYLE"
-lua require('colorbuddy').colorscheme('nightbuddy')
+colorscheme nebulous
+" or
+lua require("nobulous").setup()
 ```
+
 ##### Lua
 ```lua
 -- Put this lines inside your vimrc to set the colorscheme
-vim.g.nb_style = "STYLE"
-require('colorbuddy').colorscheme('nightbuddy')
+require("nobulous").setup()
+--or
+vim.cmd("colorscheme nobulous")
 ```
-#### Colorscheme Styles
+
+## Colorscheme Settings
+It is important to mention that the configurations listed hereafter, have to be
+set before loading the colorscheme.
+
+##### Color variants
 - night (default style if no variant is specified)
 - twilight
 - midnight
 
 More variants coming soon !!
+
+Example of use:
+##### Lua
+```lua
+vim.g.nb_style = "night"
+require("nebulous").setup()
+```
+
+##### VimScript
+```vim
+let g:nb_style = "night"
+colorscheme nebulous
+```
+
 ## Preview
 
 #### Twilight
@@ -97,9 +122,46 @@ More variants coming soon !!
 #### Midnight
 ![midnight](./media/midnight.gif)
 
-### NOTE
+### Lualine scheme
 
-- It is good to remember that these colorscheme may not work if the above requirements are not taken into account.
+If you want to use the custom colorscheme of lualine, put the following code in
+your init (make sure you have nebulous and lualine installed, otherwise it may not work):
+
+##### Lua
+
+```lua
+require('lualine').setup {
+  options = {
+    -- theme name
+    theme = 'nebulous'
+  }
+}
+```
+
+## Special Features
+
+| Option              | Default Value |  Description                        |
+| --------------------| --------------|-------------------------------------|
+| nb_italic_comments  | `false`       | Enable "italic" style in comments   |
+| nb_italic_functions | `false`       | Enable "italic" style in functions  |
+| nb_italic_variables | `false`       | Enable "italic" style in variables  |
+| nb_italic_keywords  | `false`       | Enable "italic" style in keywords   |
+
+Example of use:
+
+```lua
+--Nebulous Settings
+vim.g.nb_italic_comments  = false
+vim.g.nb_italic_keywords  = true
+vim.g.nb_italic_functions = false
+vim.g.nb_italic_variables = true
+vim.g.nb_style = "midnight"
+
+require("nebulous").setup()
+```
+More features to come in future updates
+
+### NOTE
 - In case you find an error in any color scheme, please make an appropriate issue describing in detail the problem found.
 - Also, if you want to make any contribution, please make the PR descriptive for easy integration.
 

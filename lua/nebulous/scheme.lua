@@ -10,7 +10,7 @@ function setup.load_editor()
   --  EDITOR COLORS  --
   ---------------------
   local syntax = {
-    String =           { fg = scheme.Green,      bg = scheme.none,       style = "italic" },
+    String =           { fg = scheme.Green,      bg = scheme.none,       scheme.none },
     Delimiter =        { fg = scheme.Green,      bg = scheme.none,       scheme.none },
     Character =        { fg = scheme.Orange,     bg = scheme.none,       scheme.none },
     Constant =         { fg = scheme.Orange,     bg = scheme.none,       scheme.none },
