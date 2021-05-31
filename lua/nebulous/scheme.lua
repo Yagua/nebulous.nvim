@@ -76,7 +76,7 @@ function setup.load_editor()
     Normal =           { fg = scheme.White,      bg = scheme.background, scheme.none },
     NormalFloat =      { fg = scheme.White,      bg = scheme.LightGrey,  scheme.none },
     Question =         { fg = scheme.DarkCyan,   bg = scheme.none,       style = "bold" },
-    qfLineNr =         { fg = scheme.Yellow,     bg = scheme.Yellow,     scheme.Yellow },
+    qfLineNr =         { fg = scheme.Yellow,     bg = scheme.none,       scheme.none },
     Search =           { fg = scheme.Black,      bg = scheme.Yellow,     scheme.none },
     SpecialKey =       { fg = scheme.Purple,     bg = scheme.none,       style = "bold" },
     Title =            { fg = scheme.White,      bg = scheme.none,       style = "bold" },
@@ -86,9 +86,9 @@ function setup.load_editor()
     StatusLineTermNC = { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
     Conditional =      { fg = scheme.Red,        bg = scheme.none,       scheme.none },
     QuickFixLine =     { fg = scheme.Black,      bg = scheme.Yellow,     scheme.none },
-    TabLineFill =      { fg = scheme.Grey,       bg = scheme.Black,      scheme.none },
+    TabLineFill =      { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
     TabLineSel =       { fg = scheme.Black,      bg = scheme.DarkCyan,   scheme.none },
-    TabLine =          { fg = scheme.Grey,       bg = scheme.Black,      scheme.none },
+    TabLine =          { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
   }
 
   return syntax

@@ -1,6 +1,7 @@
 local scheme = require("nebulous.scheme")
 local utils = {}
 local api = vim.api
+
 local color_tables = { 
   scheme.load_editor(),
   scheme.load_plugins(),
