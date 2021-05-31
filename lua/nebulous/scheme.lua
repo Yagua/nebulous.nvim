@@ -10,7 +10,7 @@ function setup.load_editor()
   --  EDITOR COLORS  --
   ---------------------
   local syntax = {
-    String =           { fg = scheme.Green,      bg = scheme.none,       scheme.none },
+    String =           { fg = scheme.Green,      bg = scheme.none,       style = "italic" },
     Delimiter =        { fg = scheme.Green,      bg = scheme.none,       scheme.none },
     Character =        { fg = scheme.Orange,     bg = scheme.none,       scheme.none },
     Constant =         { fg = scheme.Orange,     bg = scheme.none,       scheme.none },
@@ -811,7 +811,48 @@ function setup.load_plugins()
     startifypath =    { fg = scheme.Green,      bg = scheme.none, scheme.none },
     startifyslash =   { fg = scheme.Blue,       bg = scheme.none, scheme.none },
     startifyfile =    { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
+
+    ---------------
+    --   NEOGIT  --
+    ---------------
+    NeogitDiffContextHighlight =   { fg = scheme.Orange,    bg = scheme.LightGrey,  scheme.none },
+    NeogitDiffDeleteHighlight =    { fg = scheme.DarkRed,   bg = scheme.LightGrey,  scheme.none },
+    NeogitDiffAddHighlight =       { fg = scheme.DarkGreen, bg = scheme.LightGrey,  scheme.none },
+    NeogitHunkHeader =             { fg = scheme.White,     bg = scheme.Background, scheme.none },
+    NeogitHunkHeaderHighlight =    { fg = scheme.Blue,      bg = scheme.LightGrey,  scheme.none },
+    NeogitBranch =                 { fg = scheme.Yellow,    bg = scheme.none,       scheme.none },
+    NeogitRemote =                 { fg = scheme.Yellow,    bg = scheme.none,       scheme.none },
+    NeogitObjectId =               { fg = scheme.Purple,    bg = scheme.none,       scheme.none },
+
+    ---------------
+    -- GITGUTTER --
+    ---------------
+    GitGutterChange =  { fg = scheme.DarkOrange, bg = scheme.none, scheme.none },
+    GitGutterAdd =     { fg = scheme.DarkGreen,  bg = scheme.none, scheme.none },
+    GitGutterDelete =  { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
+
+    ----------------
+    --  GitSigns  --
+    ----------------
+    GitSignsChange =   { fg = scheme.DarkOrange, bg = scheme.none, scheme.none },
+    GitSignsChangeLn = { fg = scheme.DarkOrange, bg = scheme.none, scheme.none },
+    GitSignsChangeNr = { fg = scheme.DarkOrange, bg = scheme.none, scheme.none },
+    GitSignsAdd =      { fg = scheme.DarkGreen,  bg = scheme.none, scheme.none },
+    GitSignsAddLn =    { fg = scheme.DarkGreen,  bg = scheme.none, scheme.none },
+    GitSignsAddNr =    { fg = scheme.DarkGreen,  bg = scheme.none, scheme.none },
+    GitSignsDelete =   { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
+    GitSignsDeleteLn = { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
+    GitSignsDeleteNr = { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
+
+    ----------------
+    --  WHICHKEY  --
+    ----------------
+    WhichKeyGroup =     { fg = scheme.DarkGreen,  bg = scheme.none, scheme.none },
+    WhichKeyDesc =      { fg = scheme.DarkOrange, bg = scheme.none, scheme.none },
+    WhichKeySeperator = { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
+    WhichKey =          { fg = scheme.DarkBlue,   bg = scheme.none, scheme.none },
   }
+
   return syntax
 end
 
