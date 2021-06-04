@@ -96,9 +96,11 @@ set before loading the colorscheme.
 
 ##### Color variants
 
-- night (default style if no variant is specified)
-- twilight
-- midnight
+| Variant             | Value         |
+| --------------------| --------------|
+| night               | `default`     |
+| twilight            | `alternative` |
+| midnight            | `alternative` |
 
 More variants coming soon !!
 
@@ -147,19 +149,25 @@ require('lualine').setup {
 }
 ```
 
-## Special Features
+## Preview
+![lualine_prev](./media/lualine_pre.gif)
 
-| Option              | Default Value |  Description                        |
-| --------------------| --------------|-------------------------------------|
-| nb_italic_comments  | `false`       | Enable "italic" style in comments   |
-| nb_italic_functions | `false`       | Enable "italic" style in functions  |
-| nb_italic_variables | `false`       | Enable "italic" style in variables  |
-| nb_italic_keywords  | `false`       | Enable "italic" style in keywords   |
+## Summary of options
+
+| Option                | Default Value |  Description                         |
+| ----------------------|---------------|------------------------------------- |
+| nb_style              | `night`       | Select color variant                 |
+| nb_disable_background | `false`       | Disable background in the editor     |
+| nb_italic_comments    | `false`       | Enable "italic" style in comments    |
+| nb_italic_functions   | `false`       | Enable "italic" style in functions   |
+| nb_italic_variables   | `false`       | Enable "italic" style in variables   |
+| nb_italic_keywords    | `false`       | Enable "italic" style in keywords    |
 
 Example of use:
 
 ```lua
 --Nebulous Settings
+vim.g.nb_disable_background = true
 vim.g.nb_italic_comments  = false
 vim.g.nb_italic_keywords  = true
 vim.g.nb_italic_functions = false
