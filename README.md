@@ -60,13 +60,13 @@ You can install colorsecheme with any package manager, for example:
 ##### [Packer.nvim](https://github.com/wbthomason/packer.nvim)
 
 ```lua
-use 'DilanGMB/nebulous.nvim'
+use 'Yagua/nebulous.nvim'
 ```
 
 ##### [Vim Plug](https://github.com/junegunn/vim-plug)
 
 ```vim
-Plug 'DilanGMB/nebulous.nvim'
+Plug 'Yagua/nebulous.nvim'
 ```
 
 ## Configuration & Use
