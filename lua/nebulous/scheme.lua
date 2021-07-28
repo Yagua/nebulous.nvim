@@ -737,6 +737,18 @@ function setup.load_plugins()
     TSVariableBuiltin = { fg = scheme.Orange,     bg = scheme.none, scheme.none },
     TSConstructor =     { fg = scheme.DarkYellow, bg = scheme.none, scheme.none },
 
+    ------------------------
+    -- TREESITTER RAINBOW --
+    ------------------------
+    rainbowcol1 = { fg = scheme.Red,    bg = scheme.none, scheme.none },
+    rainbowcol2 = { fg = scheme.Grey, bg = scheme.none, scheme.none },
+    rainbowcol3 = { fg = scheme.Purple, bg = scheme.none, scheme.none },
+    rainbowcol4 = { fg = scheme.Yellow,  bg = scheme.none, scheme.none },
+    rainbowcol5 = { fg = scheme.Aqua,   bg = scheme.none, scheme.none },
+    rainbowcol6 = { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    rainbowcol6 = { fg = scheme.Blue, bg = scheme.none, scheme.none },
+
+
     ----------------
     -- LSP COLORS --
     ----------------
