@@ -718,7 +718,7 @@ function setup.load_plugins()
     TSMethod =          { fg = scheme.Aqua,       bg = scheme.none, scheme.none },
     TSStructure =       { fg = scheme.Purple,     bg = scheme.none, scheme.none },
     TSTagDelimiter =    { fg = scheme.Green,      bg = scheme.none, scheme.none },
-    TSTagAttribute =    { fg = scheme.none,       bg = scheme.none, style = "italic"},
+    TSTagAttribute =    { fg = scheme.none,       bg = scheme.none, style = opts.config.st_html_attributes},
     TSNumber =          { fg = scheme.Red,        bg = scheme.none, scheme.none },
     TSFuncMacro =       { fg = scheme.Aqua,       bg = scheme.none, scheme.none },
     TSInclude =         { fg = scheme.Cyan,       bg = scheme.none, scheme.none },

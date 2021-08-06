@@ -13,11 +13,12 @@ end
 
 ---Define default config
 M.config = {
-  st_disable_bg = options("disable_background", false) and "NONE",
-  st_comments  =  options("italic_comments", false)    and "italic" or "NONE",
-  st_keywords  =  options("italic_keywords", false)    and "italic" or "NONE",
-  st_functions =  options("italic_functions", false)   and "italic" or "NONE",
-  st_variables =  options("italic_variables", false)   and "italic" or "NONE",
+  st_disable_bg = options("disable_background", false)           and "NONE",
+  st_comments  =  options("italic_comments", false)              and "italic" or "NONE",
+  st_keywords  =  options("italic_keywords", false)              and "italic" or "NONE",
+  st_functions =  options("italic_functions", false)             and "italic" or "NONE",
+  st_variables =  options("italic_variables", false)             and "italic" or "NONE",
+  st_html_attributes =  options("italic_html_attributes", false) and "italic" or "NONE",
 }
 
 return M
