@@ -1,6 +1,8 @@
 local colors = {}
 
----Variants selector
+---Select variant color and return it
+--@param variant string: name of the selected color variant
+--@return scheme table: editor elements with its respective colors
 function colors.set_scheme(variant)
   local scheme = {}
   if  variant == "midnight" then

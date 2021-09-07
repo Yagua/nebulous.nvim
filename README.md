@@ -108,15 +108,20 @@ Example of use:
 ##### Lua
 
 ```lua
-vim.g.nb_style = "night"
-require("nebulous").setup()
+require("nebulous").setup {
+  variant = "night"
+  ...
+}
 ```
 
 ##### VimScript
 
 ```vim
-let g:nb_style = "night"
-colorscheme nebulous
+lua require("nebulous").setup {
+    \variant = "night",
+    \ ...
+    \}
+
 ```
 
 ## Preview
@@ -154,27 +159,29 @@ require('lualine').setup {
 
 ## Summary of options
 
-| Option                | Default Value |  Description                         |
-| ----------------------|---------------|------------------------------------- |
-| nb_style              | `night`       | Select color variant                 |
-| nb_disable_background | `false`       | Disable background in the editor     |
-| nb_italic_comments    | `false`       | Enable "italic" style in comments    |
-| nb_italic_functions   | `false`       | Enable "italic" style in functions   |
-| nb_italic_variables   | `false`       | Enable "italic" style in variables   |
-| nb_italic_keywords    | `false`       | Enable "italic" style in keywords    |
+| Option                               | Default Value |  Description                         |
+| -------------------------------------|---------------|------------------------------------- |
+| variant                              | `night`       | Select color variant                 |
+| disable_background                   | `false`       | Disable background in the editor     |
+| <b>italic_elements</b>.comments      | `false`       | Enable "italic" style in comments    |
+| <b>italic_elements</b>.functions     | `false`       | Enable "italic" style in functions   |
+| <b>italic_elements</b>.variables     | `false`       | Enable "italic" style in variables   |
+| <b>italic_elements</b>.keywords      | `false`       | Enable "italic" style in keywords    |
 
 Example of use:
 
 ```lua
 --Nebulous Settings
-vim.g.nb_disable_background = true
-vim.g.nb_italic_comments  = false
-vim.g.nb_italic_keywords  = true
-vim.g.nb_italic_functions = false
-vim.g.nb_italic_variables = true
-vim.g.nb_style = "midnight"
-
-require("nebulous").setup()
+require("nebulous").setup {
+  variant = "midnight",
+  disable_bg = true,
+  italic_elements = {
+    comments   = false,
+    keywords   = true,
+    functions  = false,
+    variables  = true,
+  },
+}
 ```
 More features to come in future updates
 

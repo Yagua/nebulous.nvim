@@ -1,7 +1,9 @@
-local opts = require("nebulous.config")
+local config = require("nebulous.config")
 local setup = {}
 local g = vim.g
 
+---Load terminal colors
+--@param tab table: scheme colors to apply
 local function terminal_colors(tab)
   g.terminal_color_0  = tab.Black
   g.terminal_color_1  = tab.Red
@@ -21,13 +23,17 @@ local function terminal_colors(tab)
   g.terminal_color_15 = tab.White
 end
 
----Color table for the editor
---@return syntax table: table with the groups and its respective colors
-function setup.load_editor(scheme)
+---Load all colorscheme elements
+--@param scheme table: colors to apply
+--@param settings table: custom options to be applied to the scheme
+--@return editor table: all groups and its respectives colors
+function setup.load_editor(scheme, settings)
+  local opts = config.options(settings)
+
   ---------------------
   --  EDITOR COLORS  --
   ---------------------
-  local syntax = {
+  local editor = {
     String =           { fg = scheme.Green,      bg = scheme.none,       style = "italic" },
     Delimiter =        { fg = scheme.Green,      bg = scheme.none,       scheme.none },
     Character =        { fg = scheme.Orange,     bg = scheme.none,       scheme.none },
@@ -43,21 +49,21 @@ function setup.load_editor(scheme)
     StorageClass =     { fg = scheme.Yellow,     bg = scheme.none,       scheme.none  },
     Special =          { fg = scheme.Yellow,     bg = scheme.none,       style = "italic" },
     Todo =             { fg = scheme.DarkYellow, bg = scheme.none,       style = "bold,italic" },
-    Identifier =       { fg = scheme.Cyan,       bg = scheme.none,       style = opts.config.st_variables },
-    Function =         { fg = scheme.Aqua,       bg = scheme.none,       style = opts.config.st_functions },
+    Identifier =       { fg = scheme.Cyan,       bg = scheme.none,       style = opts.st_variables },
+    Function =         { fg = scheme.Aqua,       bg = scheme.none,       style = opts.st_functions },
     Include =          { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
     SpecialChar =      { fg = scheme.Blue,       bg = scheme.none,       scheme.none },
     Underlined =       { fg = scheme.Blue,       bg = scheme.none,       syle = "underline" },
     Conceal =          { fg = scheme.Blue,       bg = scheme.none,       scheme.none },
     Statement =        { fg = scheme.Purple,     bg = scheme.none,       scheme.none },
     Repeat =           { fg = scheme.Purple,     bg = scheme.none,       scheme.none },
-    Structure =        { fg = scheme.Purple,     bg = scheme.none,       style = opts.config.st_keywords },
+    Structure =        { fg = scheme.Purple,     bg = scheme.none,       style = opts.st_keywords },
     Define =           { fg = scheme.Purple,     bg = scheme.none,       scheme.none },
     Operator =         { fg = scheme.White,      bg = scheme.none,       scheme.none },
-    Keyword =          { fg = scheme.Red,        bg = scheme.none,       style = opts.config.st_keywords },
+    Keyword =          { fg = scheme.Red,        bg = scheme.none,       style = opts.st_keywords },
     Macro =            { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
     Typedef =          { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
-    Comment =          { fg = scheme.DarkGrey,   bg = scheme.none,       style = opts.config.st_comments },
+    Comment =          { fg = scheme.DarkGrey,   bg = scheme.none,       style = opts.st_comments },
     Ignore =           { fg = scheme.none,       bg = scheme.none,       scheme.none },
     Error =            { fg = scheme.DarkRed,    bg = scheme.none,       style = "bold,underline" },
     Debug =            { fg = scheme.DarkRed,    bg = scheme.none,       scheme.none },
@@ -92,7 +98,7 @@ function setup.load_editor(scheme)
     MatchParen =       { fg = scheme.Cyan,       bg = scheme.none,       style = "bold" },
     odeMsg =           { fg = scheme.Blue,       bg = scheme.none,       scheme.none },
     NonText =          { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
-    Normal =           { fg = scheme.White,      bg = opts.config.st_disable_bg or scheme.background, scheme.none },
+    Normal =           { fg = scheme.White,      bg = opts.st_disable_bg or scheme.background, scheme.none },
     NormalFloat =      { fg = scheme.White,      bg = scheme.LightGrey,  scheme.none },
     Question =         { fg = scheme.DarkCyan,   bg = scheme.none,       style = "bold" },
     qfLineNr =         { fg = scheme.Yellow,     bg = scheme.none,       scheme.none },
@@ -707,7 +713,7 @@ function setup.load_editor(scheme)
     -- TREESITTER COLORS --
     -----------------------
     TSFloat =           { fg = scheme.Orange,     bg = scheme.none, scheme.none },
-    TSFunction =        { fg = scheme.Aqua,       bg = scheme.none, style = opts.config.st_functions },
+    TSFunction =        { fg = scheme.Aqua,       bg = scheme.none, style = opts.st_functions },
     TSType =            { fg = scheme.Yellow,     bg = scheme.none, scheme.none },
     TSTypeBuiltin =     { fg = scheme.Yellow,     bg = scheme.none, scheme.none },
     TSLabel =           { fg = scheme.DarkYellow, bg = scheme.none, scheme.none },
@@ -723,7 +729,7 @@ function setup.load_editor(scheme)
     TSNumber =          { fg = scheme.Red,        bg = scheme.none, scheme.none },
     TSFuncMacro =       { fg = scheme.Aqua,       bg = scheme.none, scheme.none },
     TSInclude =         { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
-    TSKeyword =         { fg = scheme.Red,        bg = scheme.none, style = opts.config.st_keywords },
+    TSKeyword =         { fg = scheme.Red,        bg = scheme.none, style = opts.st_keywords },
     TSException =       { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
     TSBoolean =         { fg = scheme.DarkYellow, bg = scheme.none, scheme.none },
     TSError =           { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
@@ -733,7 +739,7 @@ function setup.load_editor(scheme)
     TSProperty =        { fg = scheme.DarkCyan,   bg = scheme.none, scheme.none },
     TSField =           { fg = scheme.Purple,     bg = scheme.none, scheme.none },
     TSParameter =       { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
-    TSVariable =        { fg = scheme.Cyan,       bg = scheme.none, style = opts.config.st_variables },
+    TSVariable =        { fg = scheme.Cyan,       bg = scheme.none, style = opts.st_variables },
     TSPunctBracket =    { fg = scheme.White,      bg = scheme.none, scheme.none },
     TSOperator =        { fg = scheme.White,      bg = scheme.none, scheme.none },
     TSVariableBuiltin = { fg = scheme.Orange,     bg = scheme.none, scheme.none },
@@ -868,7 +874,7 @@ function setup.load_editor(scheme)
   }
 
   terminal_colors(scheme)
-  return syntax
+  return editor
 end
 
 return setup
