@@ -1,11 +1,29 @@
-local scheme = require("nebulous.colors")
 local opts = require("nebulous.config")
 local setup = {}
 local g = vim.g
 
+local function terminal_colors(tab)
+  g.terminal_color_0  = tab.Black
+  g.terminal_color_1  = tab.Red
+  g.terminal_color_2  = tab.Green
+  g.terminal_color_3  = tab.Yellow
+  g.terminal_color_4  = tab.Blue
+  g.terminal_color_5  = tab.Purple
+  g.terminal_color_6  = tab.Cyan
+  g.terminal_color_7  = tab.White
+  g.terminal_color_8  = tab.Grey
+  g.terminal_color_9  = tab.Red
+  g.terminal_color_10 = tab.Green
+  g.terminal_color_11 = tab.Yellow
+  g.terminal_color_12 = tab.Blue
+  g.terminal_color_13 = tab.Purple
+  g.terminal_color_14 = tab.Cyan
+  g.terminal_color_15 = tab.White
+end
+
 ---Color table for the editor
 --@return syntax table: table with the groups and its respective colors
-function setup.load_editor()
+function setup.load_editor(scheme)
   ---------------------
   --  EDITOR COLORS  --
   ---------------------
@@ -90,18 +108,10 @@ function setup.load_editor()
     TabLineFill =      { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
     TabLineSel =       { fg = scheme.Black,      bg = scheme.DarkCyan,   scheme.none },
     TabLine =          { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
-  }
 
-  return syntax
-end
-
----Color table for the languages
---@return syntax table: table with the groups and its respective colors
-function setup.load_langs()
-  ---------------------
-  -- LANGUAGE COLORS --
-  ---------------------
-  local syntax = {
+    ---------------------
+    -- LANGUAGE COLORS --
+    ---------------------
     ---------
     -- GIT --
     ---------
@@ -689,18 +699,10 @@ function setup.load_langs()
     -----------
     SqlKeyword = { fg = scheme.Red, bg = scheme.none, scheme.none },
 
-  }
 
-  return syntax
-end
-
----Color table for the plugins
---@return syntax table: table with the groups and its respective colors
-function setup.load_plugins()
-  ---------------------
-  --  PLUGIN COLORS  --
-  ---------------------
-  local syntax = {
+    ---------------------
+    --  PLUGIN COLORS  --
+    ---------------------
     -----------------------
     -- TREESITTER COLORS --
     -----------------------
@@ -865,26 +867,8 @@ function setup.load_plugins()
     WhichKey =          { fg = scheme.DarkBlue,   bg = scheme.none, scheme.none },
   }
 
+  terminal_colors(scheme)
   return syntax
-end
-
-function setup.colors_terminal()
-  g.terminal_color_0  = scheme.Black
-  g.terminal_color_1  = scheme.Red
-  g.terminal_color_2  = scheme.Green
-  g.terminal_color_3  = scheme.Yellow
-  g.terminal_color_4  = scheme.Blue
-  g.terminal_color_5  = scheme.Purple
-  g.terminal_color_6  = scheme.Cyan
-  g.terminal_color_7  = scheme.White
-  g.terminal_color_8  = scheme.Grey
-  g.terminal_color_9  = scheme.Red
-  g.terminal_color_10 = scheme.Green
-  g.terminal_color_11 = scheme.Yellow
-  g.terminal_color_12 = scheme.Blue
-  g.terminal_color_13 = scheme.Purple
-  g.terminal_color_14 = scheme.Cyan
-  g.terminal_color_15 = scheme.White
 end
 
 return setup

@@ -13,6 +13,7 @@ end
 
 ---Define default config
 M.config = {
+  variant = vim.g.nb_style,
   st_disable_bg = options("disable_background", false) and "NONE",
   st_comments  =  options("italic_comments", false)    and "italic" or "NONE",
   st_keywords  =  options("italic_keywords", false)    and "italic" or "NONE",
