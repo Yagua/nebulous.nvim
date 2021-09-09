@@ -797,6 +797,13 @@ function setup.load_editor(scheme, settings)
     DiagnosticWarning =         { fg = scheme.Yellow,  bg = scheme.none, scheme.none },
     DiagnosticError =           { fg = scheme.DarkRed, bg = scheme.none, scheme.none },
 
+    -------------------
+    --  LSP TROUBLE  --
+    -------------------
+    LspTroubleText =   { fg = scheme.White, bg = scheme.none,       scheme.none },
+    LspTroubleCount =  { fg = scheme.Black, bg = scheme.DarkOrange, scheme.none },
+    LspTroubleNormal = { fg = scheme.White, bg = scheme.Background, scheme.none },
+
     ---------------
     -- TELESCOPE --
     ---------------
@@ -871,6 +878,46 @@ function setup.load_editor(scheme, settings)
     WhichKeyDesc =      { fg = scheme.DarkOrange, bg = scheme.none, scheme.none },
     WhichKeySeperator = { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
     WhichKey =          { fg = scheme.DarkBlue,   bg = scheme.none, scheme.none },
+
+    -------------
+    --  SNEAK  --
+    -------------
+    Sneak =       { fg = scheme.background, bg = scheme.DarkOrange, scheme.none },
+    SneakScope =  { fg = scheme.none,       bg = scheme.none,       syle = "reverse" },
+
+    ----------------
+    --  Dashboard --
+    ----------------
+    DashboardShortCut = { fg = scheme.Purple,     bg = scheme.none, scheme.none },
+    DashboardHeader =   { fg = scheme.DarkOrange, bg = scheme.none, scheme.none },
+    DashboardCenter =   { fg = scheme.Green,      bg = scheme.none, scheme.none },
+    DashboardFooter =   { fg = scheme.Blue,       bg = scheme.none, scheme.none },
+
+    -----------------
+    --  ILLUMINATE --
+    -----------------
+    illuminatedWord =    { fg = scheme.none, bg = scheme.Grey, scheme.none },
+    illuminatedCurWord = { fg = scheme.none, bg = scheme.Grey, scheme.none },
+
+    ------------------------
+    --  INDENT BLANKLINE  --
+    ------------------------
+    IndentBlanklineChar =        { fg = scheme.DarkGrey, bg = scheme.none, scheme.none },
+    IndentBlanklineContextChar = { fg = scheme.White,    bg = scheme.none, scheme.none },
+
+    ----------------
+    --  NVIM DAP  --
+    ----------------
+    DapBreakpoint = { fg = scheme.DarkRed,   bg = scheme.none, scheme.none },
+    DapStopped =    { fg = scheme.DarkGreen, bg = scheme.none, scheme.none },
+
+    ----------
+    --  HOP --
+    ----------
+    HopNextKey   = { fg = scheme.DarkOrange, bg = scheme.none, scheme.none },
+    HopNextKey1  = { fg = scheme.Purple,     bg = scheme.none, scheme.none },
+    HopNextKey2  = { fg = scheme.Blue,       bg = scheme.none, scheme.none },
+    HopUnmatched = { fg = scheme.DarkGrey,   bg = scheme.none, scheme.none },
   }
 
   terminal_colors(scheme)
