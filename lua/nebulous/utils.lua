@@ -24,12 +24,12 @@ function utils.load_colorscheme(scheme)
   local color_tables = scheme or {}
   api.nvim_command("highlight clear")
   if vim.fn.exists("sintax_on") then api.nvim_command("syntax reset") end
+  vim.opt.background = "dark"
   vim.g.colors_name = "nebulous"
-  vim.g.nebulous_loaded = 1
-  vim.o.background = "dark"
-  vim.o.termguicolors = true
+  vim.g.nebulous = 1
+  vim.opt.termguicolors = true
 
-  -- Load editor colors
+  --Load editor colors
   for group, color in pairs(color_tables) do
     utils.set_highlights(group, color)
   end

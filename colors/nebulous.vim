@@ -4,7 +4,7 @@ if !has('nvim-0.5')
   finish
 endif
 
-if exists("g:nebulous_loaded") | finish | endif
+if exists("g:nebulous") | finish | endif
 
 "Reload all modules
 lua  << EOF
