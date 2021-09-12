@@ -18,29 +18,18 @@
 local utils = require("nebulous.utils")
 local theme = require("nebulous.scheme")
 local color = require("nebulous.colors")
+local sch_opts = require("nebulous.config").scheme_options
 local nebulous = {}
-
----Default scheme options
-local scheme_options = {
-  variant = "night",
-  disable_bg = false,
-  italic_elements = {
-    comments   = false,
-    keywords   = false,
-    functions  = false,
-    variables  = false,
-  }
-}
 
 ---Setup function to load the colorscheme
 --@param opts table: custom options to be applied to the editor
 function nebulous.setup(opts)
   local options = opts or {}
-  utils.set_options(scheme_options, options)
+  utils.set_options(sch_opts, options)
 
-  local scheme = color.set_scheme(scheme_options.variant)
-  local editor_colors = theme.load_editor(scheme, scheme_options)
-  utils.load_colorscheme(editor_colors)
+  local scheme = color.set_scheme(sch_opts.variant)
+  local colors = theme.load_colors(scheme)
+  utils.load_colorscheme(colors)
 end
 
 return nebulous

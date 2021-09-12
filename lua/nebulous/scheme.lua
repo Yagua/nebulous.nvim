@@ -27,8 +27,8 @@ end
 --@param scheme table: colors to apply
 --@param settings table: custom options to be applied to the scheme
 --@return editor table: all groups and its respectives colors
-function setup.load_editor(scheme, settings)
-  local opts = config.options(settings)
+function setup.load_colors(scheme)
+  local opts = config.get_options()
 
   ---------------------
   --  EDITOR COLORS  --

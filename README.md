@@ -162,11 +162,11 @@ require('lualine').setup {
 | Option                               | Default Value |  Description                         |
 | -------------------------------------|---------------|------------------------------------- |
 | variant                              | `night`       | Select color variant                 |
-| disable_background                   | `false`       | Disable background in the editor     |
-| <b>italic_elements</b>.comments      | `false`       | Enable "italic" style in comments    |
-| <b>italic_elements</b>.functions     | `false`       | Enable "italic" style in functions   |
-| <b>italic_elements</b>.variables     | `false`       | Enable "italic" style in variables   |
-| <b>italic_elements</b>.keywords      | `false`       | Enable "italic" style in keywords    |
+| <b>disable</b>.background            | `false`       | Disable background in the editor     |
+| <b>italic</b>.comments               | `false`       | Enable "italic" style in comments    |
+| <b>italic</b>.functions              | `false`       | Enable "italic" style in functions   |
+| <b>italic</b>.variables              | `false`       | Enable "italic" style in variables   |
+| <b>italic</b>.keywords               | `false`       | Enable "italic" style in keywords    |
 
 Example of use:
 
@@ -174,8 +174,10 @@ Example of use:
 --Nebulous Settings
 require("nebulous").setup {
   variant = "midnight",
-  disable_bg = true,
-  italic_elements = {
+  disable = {
+    background = true,
+  },
+  italic = {
     comments   = false,
     keywords   = true,
     functions  = false,
