@@ -101,6 +101,7 @@ set before loading the colorscheme.
 | night               | `default`     |
 | twilight            | `alternative` |
 | midnight            | `alternative` |
+| fullmoon            | `alternative` |
 
 More variants coming soon !!
 
@@ -138,6 +139,10 @@ lua require("nebulous").setup {
 
 ![midnight](./media/midnight.gif)
 
+#### Fullmoon
+
+![midnight](./media/fullmoon.gif)
+
 ### Lualine scheme
 
 If you want to use the custom colorscheme of lualine, put the following code in
@@ -153,9 +158,6 @@ require('lualine').setup {
   }
 }
 ```
-
-## Preview
-![lualine_prev](./media/lualine_pre.gif)
 
 ## Summary of options
 

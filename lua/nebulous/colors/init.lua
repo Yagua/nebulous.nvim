@@ -3,6 +3,7 @@ local variants = {
   ["midnight"] = 1,
   ["twilight"] = 2,
   ["night"] = 3, --Default variant
+  ["fullmoon"] = 4,
 }
 
 ---Select variant color and return it
