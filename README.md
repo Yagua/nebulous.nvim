@@ -127,21 +127,21 @@ lua require("nebulous").setup {
 
 ## Preview
 
-#### Twilight
+#### Fullmoon
 
-![kosmos](./media/twilight.gif)
-
-#### Night
-
-![night](./media/night.gif)
+![fullmoon](./media/fullmoon.gif)
 
 #### Midnight
 
 ![midnight](./media/midnight.gif)
 
-#### Fullmoon
+#### Twilight
 
-![midnight](./media/fullmoon.gif)
+![twilight](./media/twilight.gif)
+
+#### Night
+
+![night](./media/night.gif)
 
 ### Lualine scheme
 
