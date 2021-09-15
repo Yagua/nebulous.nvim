@@ -91,7 +91,7 @@ function setup.load_colors(scheme)
     WarningMsg =       { fg = scheme.DarkRed,    bg = scheme.none,       scheme.none },
     Warnings =         { fg = scheme.Orange,     bg = scheme.none,       style = "reverse" },
     WildMenu =         { fg = scheme.Orange,     bg = scheme.Black,      style = "bold" },
-    EndOfBuffer =      { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
+    EndOfBuffer =      { fg = opts.st_eof and scheme.background or scheme.DarkGrey, bg = scheme.none, scheme.none },
     ErrorMsg =         { fg = scheme.DarkRed,    bg = scheme.none,       scheme.none },
     VertSplit =        { fg = scheme.Pink,       bg = scheme.none,       scheme.none },
     LineNr =           { fg = scheme.DarkGrey,   bg = scheme.none,       scheme.none },

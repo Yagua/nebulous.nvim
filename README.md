@@ -39,9 +39,12 @@ Minimalist Collection of Colorschemes Written in Lua
 
 ## Features
 
+- 4 available variants (for the moment)
 - These color schemes are compatible with LSP, Tree-Sitter, Telescope, Nvim-Tree and others.
 - Support for Vim Terminal Colors
 - Lualine scheme
+- Color customization
+- Italic elements in the editor
 - They support a large number of terminal emulation environments, such as:
     - [Alacritty](https://github.com/alacritty/alacritty)
     - [Kitty](https://github.com/kovidgoyal/kitty)
@@ -105,26 +108,6 @@ set before loading the colorscheme.
 
 More variants coming soon !!
 
-Example of use:
-##### Lua
-
-```lua
-require("nebulous").setup {
-  variant = "night"
-  ...
-}
-```
-
-##### VimScript
-
-```vim
-lua require("nebulous").setup {
-    \variant = "night",
-    \ ...
-    \}
-
-```
-
 ## Preview
 
 #### Fullmoon
@@ -161,14 +144,15 @@ require('lualine').setup {
 
 ## Summary of options
 
-| Option                               | Default Value |  Description                         |
-| -------------------------------------|---------------|------------------------------------- |
-| variant                              | `night`       | Select color variant                 |
-| <b>disable</b>.background            | `false`       | Disable background in the editor     |
-| <b>italic</b>.comments               | `false`       | Enable "italic" style in comments    |
-| <b>italic</b>.functions              | `false`       | Enable "italic" style in functions   |
-| <b>italic</b>.variables              | `false`       | Enable "italic" style in variables   |
-| <b>italic</b>.keywords               | `false`       | Enable "italic" style in keywords    |
+| Option                               | Default Value |  Description                                  |
+| -------------------------------------|---------------|-----------------------------------------------|
+| variant                              | `night`       | Select color variant                          |
+| <b>disable</b>.background            | `false`       | Enable/Disable background in the editor       |
+| <b>disable</b>.endOfBuffer           | `false`       | Enable/Disable lines at the end of the buffer |
+| <b>italic</b>.comments               | `false`       | Enable/Disable "italic" style in comments     |
+| <b>italic</b>.functions              | `false`       | Enable/Disable "italic" style in functions    |
+| <b>italic</b>.variables              | `false`       | Enable/Disable "italic" style in variables    |
+| <b>italic</b>.keywords               | `false`       | Enable/Disable "italic" style in keywords     |
 
 Example of use:
 
@@ -178,6 +162,7 @@ require("nebulous").setup {
   variant = "midnight",
   disable = {
     background = true,
+    endOfBuffer = false,
   },
   italic = {
     comments   = false,
@@ -185,6 +170,15 @@ require("nebulous").setup {
     functions  = false,
     variables  = true,
   },
+  custom_colors = { -- this table can hold any group of colors with their respective values
+    LineNr = { fg = "#5BBBDA", bg = "NONE", style = "NONE" },
+    CursorLineNr = { fg = "#E1CD6C", bg = "NONE", style = "NONE" },
+
+    -- it is possible to specify only the element to be changed
+    TelescopePreviewBorder = { fg = "#A13413" },
+    LspDiagnosticsDefaultError = { bg = "#E11313" },
+    TSTagDelimiter = { style = "bold,italic" },
+  }
 }
 ```
 More features to come in future updates

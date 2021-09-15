@@ -20,8 +20,11 @@ end
 
 ---Load colorscheme
 --@param scheme table: editor elements with its colors
-function utils.load_colorscheme(scheme)
-  local color_tables = scheme or {}
+--@param custom_tab table: custom color table
+function utils.load_colorscheme(scheme, custom_tab)
+  local color_table = scheme or {}
+  local custom_colors = custom_tab or {}
+
   api.nvim_command("highlight clear")
   if vim.fn.exists("sintax_on") then api.nvim_command("syntax reset") end
   vim.opt.background = "dark"
@@ -29,32 +32,17 @@ function utils.load_colorscheme(scheme)
   vim.g.nebulous = 1
   vim.opt.termguicolors = true
 
+  if type(custom_colors) == "table" then
+    if next(custom_colors) ~= nil then
+      color_table = vim.tbl_deep_extend("force", {}, color_table, custom_colors)
+    end
+  end
+
   --Load editor colors
-  for group, color in pairs(color_tables) do
+  for group, color in pairs(color_table) do
     utils.set_highlights(group, color)
   end
-end
 
----Set custom options to the editor
---@param def_table table: default options table
---@parama opts table: custom options for editor
-function utils.set_options(def_table, opts)
-  if next(opts) == nil then return end
-
-  --TODO: improve nonexistent option search
-  for key, val in pairs(opts) do
-    if def_table[key] == nil then
-      print(string.format("[Nebulous]: The options '%s' does not exists", key))
-    end
-
-    if type(def_table[key]) == "table" then
-      for k, v in pairs(val) do
-        def_table[key][k] = v
-      end
-    else
-      def_table[key] = val
-    end
-  end
 end
 
 return utils
