@@ -1,46 +1,13 @@
 # Nebulous.nvim
 
-```
- .    .     .         _____  .      .       *     .      0      .     .      *      .    .   ..   *
-     .       .     .-'.     ':'-.                                        *       +
-   .             .''   ::: .:    '.     .      '    .      .       .    '            .     |    .  .
-         ,      /      :::::'      \       ()                       ()    .-.,="``"=.    - o -   .
-            .  ;.   .   ':' `   .   ;    .            .      .             '=/_       \    |       .
-   ,       .   |          '..       |         *                        *   |  '=._    |            .
- .             ; '  .      ::::.    ;     .                 .               \     `=./`,    .  .  *
-            .   \          '::::   /   .          .               .      .   '=.__.=' `='       .   .
-  .     *        '.      .  :::  .'              .       +                               .     + .
-             .      '-.___'_.-'      .    O        .                O      *        '   .  .      .  .
-            .              .      .    .                     .                                  .
-   *   .        ****     **      .    **      .    .     **    .     .    0      *   .              .
-    \     .    /**/**   /**   .      /**    .           /**  .    .                              .
-     o         /**//**  /**   *****  /**       **   **  /**   ******   **   **   ****** .    +     .
-      .    *   /** //** /**  **///** /******  /**  /**  /**  **////** /**  /**  **////  .             .
-*      0    .  /**  //**/** /******* /**///** /**  /**  /** /**   /** /**  /** //*****   .    .      .
- .             /**   //**** /**////  /**  /** /**  /**  /** /**   /** /**  /**  /////** .           .
-         \     /**    //*** //****** /******  //******  *** //******  //******  ******    .    .     .
-   .      \    //      ///   //////  /////     //////  ///   //////    //////  //////         .
-           \    .            .           .              .                   .          0         .
-.       .   o        *            ,             .                 .           .      .      *     .   
-    .      #\##\#      .                 .                   .        .-' -=;::;::`;:::`-  .     *    0
-         #  #O##\###                .                      .       .-'"; `-;:"";`-;   ,;;'`-.  .
-        #*#  #\##\###     0                 ()       *           .''";;:     ,..   `.;;. .';;'.    .
-    .   ##*#  #\##\##               .                   .       /  ,;;::,     `--'  ,.;: ::  .;:\     .
-  .      ##*#  #o##\#       *  .                0          ,   ..- .; ;:,;,,.,   ,  ;;: ::;;:..;:. .
-      .     *#  #\#     .            .       .            .   ;   ;    .;::,    ;:.;:::::::::;., ;   .
-                  \          .                                |;. :      ;:;       `-;:::::-'""  | .
-^/\___^--____/\____O______________/\/\---/\_____/\____________| ;,'  ,;::     ;.     `-;::  `;:::|____
-\^   ^  ^    ^                  ^^ ^  '\ ^          ^        ---         ---        ^
-     --           -            --  -      -         ---  ___       ^   _       ^  --   -    ^    --
-```
-
+![Nebulous](./media/logo.png)
 
 Minimalist Collection of Colorschemes Written in Lua
 
 ## Features
 
 - 4 available variants (for the moment)
-- These color schemes are compatible with LSP, Tree-Sitter, Telescope, Nvim-Tree and others.
+- It has support for a large number of plugins such as LSP, Tree-Sitter, Telescope, Nvim-Tree and others.
 - Support for Vim Terminal Colors
 - Lualine scheme
 - Color customization
@@ -55,58 +22,6 @@ Minimalist Collection of Colorschemes Written in Lua
 
 - [Neovim version 0.5+](https://github.com/neovim/neovim/releases)
 - (Recommended) [Tree-Sitter](https://github.com/nvim-treesitter/nvim-treesitter) Highlight for a better use of colors
-
-## Installation
-
-You can install colorsecheme with any package manager, for example:
-
-##### [Packer.nvim](https://github.com/wbthomason/packer.nvim)
-
-```lua
-use 'Yagua/nebulous.nvim'
-```
-
-##### [Vim Plug](https://github.com/junegunn/vim-plug)
-
-```vim
-Plug 'Yagua/nebulous.nvim'
-```
-
-## Configuration & Use
-
-##### VimScript
-
-```vim
-" Put this lines inside your vimrc to set the colorscheme
-colorscheme nebulous
-" or
-lua require("nebulous").setup()
-```
-
-##### Lua
-
-```lua
--- Put this lines inside your vimrc to set the colorscheme
-require("nebulous").setup()
---or
-vim.cmd("colorscheme nebulous")
-```
-
-## Colorscheme Settings
-
-It is important to mention that the configurations listed hereafter, have to be
-set before loading the colorscheme.
-
-##### Color variants
-
-| Variant             | Value         |
-| --------------------| --------------|
-| night               | `default`     |
-| twilight            | `alternative` |
-| midnight            | `alternative` |
-| fullmoon            | `alternative` |
-
-More variants coming soon !!
 
 ## Preview
 
@@ -126,38 +41,27 @@ More variants coming soon !!
 
 ![night](./media/night.gif)
 
-### Lualine scheme
+## Installation
 
-If you want to use the custom colorscheme of lualine, put the following code in
-your init (make sure you have nebulous and lualine installed, otherwise it may not work):
+You can install colorsecheme with any package manager, for example:
 
-##### Lua
+##### [Packer.nvim](https://github.com/wbthomason/packer.nvim)
 
 ```lua
-require('lualine').setup {
-  options = {
-    -- theme name
-    theme = 'nebulous'
-  }
-}
+use 'Yagua/nebulous.nvim'
 ```
 
-## Summary of options
+##### [Vim Plug](https://github.com/junegunn/vim-plug)
 
-| Option                               | Default Value |  Description                                  |
-| -------------------------------------|---------------|-----------------------------------------------|
-| variant                              | `night`       | Select color variant                          |
-| <b>disable</b>.background            | `false`       | Enable/Disable background in the editor       |
-| <b>disable</b>.endOfBuffer           | `false`       | Enable/Disable lines at the end of the buffer |
-| <b>italic</b>.comments               | `false`       | Enable/Disable "italic" style in comments     |
-| <b>italic</b>.functions              | `false`       | Enable/Disable "italic" style in functions    |
-| <b>italic</b>.variables              | `false`       | Enable/Disable "italic" style in variables    |
-| <b>italic</b>.keywords               | `false`       | Enable/Disable "italic" style in keywords     |
+```vim
+Plug 'Yagua/nebulous.nvim'
+```
 
-Example of use:
+## Configuration & Use
 
+Setup example:
 ```lua
---Nebulous Settings
+--Put this lines inside your vimrc to set the colorscheme
 require("nebulous").setup {
   variant = "midnight",
   disable = {
@@ -179,9 +83,47 @@ require("nebulous").setup {
     LspDiagnosticsDefaultError = { bg = "#E11313" },
     TSTagDelimiter = { style = "bold,italic" },
   }
+```
+
+## Summary of options
+
+| Option                               | Default Value |  Description                                   |
+| -------------------------------------|---------------|------------------------------------------------|
+| variant                              | `night`       | Select color variant                           |
+| <b>disable</b>.background            | `false`       | Enable/Disable background in the editor        |
+| <b>disable</b>.endOfBuffer           | `false`       | Enable/Disable lines at the end of the buffer  |
+| <b>italic</b>.comments               | `false`       | Enable/Disable "italic" style in comments      |
+| <b>italic</b>.functions              | `false`       | Enable/Disable "italic" style in functions     |
+| <b>italic</b>.variables              | `false`       | Enable/Disable "italic" style in variables     |
+| <b>italic</b>.keywords               | `false`       | Enable/Disable "italic" style in keywords      |
+| custom_colors                        | `{}`          | Set custom colors for editor and plugin groups |
+
+#### Color variants
+
+| Variant             | Value         |
+| --------------------| --------------|
+| night               | `default`     |
+| twilight            | `alternative` |
+| midnight            | `alternative` |
+| fullmoon            | `alternative` |
+
+### Lualine scheme
+
+If you want to use the custom colorscheme of lualine, put the following code in
+your init (make sure you have nebulous and [lualine](https://github.com/hoob3rt/lualine.nvim)
+installed, otherwise it may not work):
+
+```lua
+require('lualine').setup {
+  options = {
+    -- theme name
+    theme = 'nebulous'
+  }
 }
 ```
-More features to come in future updates
+
+More features and color variants are coming in future updates!
+
 
 ### NOTE
 - In case you find an error in any color scheme, please make an appropriate issue describing in detail the problem found.

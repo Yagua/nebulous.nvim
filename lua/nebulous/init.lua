@@ -1,17 +1,9 @@
 --[[
 
-    ****     **           **                **
-   /**/**   /**          /**               /**
-   /**//**  /**   *****  /**       **   **  /**   ******   **   **   ******
-   /** //** /**  **///** /******  /**  /**  /**  **////** /**  /**  **////
-   /**  //**/** /******* /**///** /**  /**  /** /**   /** /**  /** //*****
-   /**   //**** /**////  /**  /** /**  /**  /** /**   /** /**  /**  /////**
-   /**    //*** //****** /******  //******  *** //******  //******  ******
-   //      ///   //////  /////     //////  ///   //////    //////  //////
-
-  -- Description:  Minimalist Collection of Colorschemes Written in Lua
-  -- Author:       Yagua <yagua.db@gmail.com>
-  -- Website:      https://github.com/Yagua/nebulous.nvim
+  Title:        Nebulous.nvim
+  Description:  Minimalist Collection of Colorschemes Written in Lua
+  Author:       Yagua <yagua.db@gmail.com>
+  Website:      https://github.com/Yagua/nebulous.nvim
 
 --]]
 
