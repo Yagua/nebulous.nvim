@@ -121,20 +121,20 @@ function setup.load_colors(scheme)
     ---------
     -- GIT --
     ---------
-    gitcommitComment =        { fg = scheme.Grey,   bg = scheme.none,  scheme.none },
-    SignifySignAdd =          { fg = scheme.Green,  bg = scheme.none,  scheme.none },
-    SignifySignChange =       { fg = scheme.Yellow, bg = scheme.none,  scheme.none },
-    SignifySignDelete =       { fg = scheme.Red,    bg = scheme.none,  scheme.none },
-    gitcommitDiscardedType =  { fg = scheme.Red,    bg = scheme.none,  scheme.none },
-    gitcommitSelectedType =   { fg = scheme.Green,  bg = scheme.none,  scheme.none },
-    gitcommitHeader =         { fg = scheme.none,   bg = scheme.none,  scheme.none },
-    gitcommitUntrackedFile =  { fg = scheme.Cyan,   bg = scheme.none,  scheme.none },
-    gitcommitDiscardedFile =  { fg = scheme.Red,    bg = scheme.none,  scheme.none },
-    gitcommitUnmerged =       { fg = scheme.Green,  bg = scheme.none,  scheme.none },
-    gitcommitOnBranch =       { fg = scheme.none,   bg = scheme.none,  scheme.none },
-    gitcommitBranch =         { fg = scheme.Purple, bg = scheme.none,  scheme.none },
-    gitcommitSelectedFile =   { fg = scheme.Green,  bg = scheme.none,  scheme.none },
-    gitcommitUnmergedFile =   { fg = scheme.Yellow, bg = scheme.none,  scheme.none },
+    gitcommitComment =        { fg = scheme.DarkGrey, bg = scheme.none,  scheme.none },
+    SignifySignAdd =          { fg = scheme.Green,    bg = scheme.none,  scheme.none },
+    SignifySignChange =       { fg = scheme.Yellow,   bg = scheme.none,  scheme.none },
+    SignifySignDelete =       { fg = scheme.Red,      bg = scheme.none,  scheme.none },
+    gitcommitDiscardedType =  { fg = scheme.Red,      bg = scheme.none,  scheme.none },
+    gitcommitSelectedType =   { fg = scheme.Green,    bg = scheme.none,  scheme.none },
+    gitcommitHeader =         { fg = scheme.none,     bg = scheme.none,  scheme.none },
+    gitcommitUntrackedFile =  { fg = scheme.Cyan,     bg = scheme.none,  scheme.none },
+    gitcommitDiscardedFile =  { fg = scheme.Red,      bg = scheme.none,  scheme.none },
+    gitcommitUnmerged =       { fg = scheme.Green,    bg = scheme.none,  scheme.none },
+    gitcommitOnBranch =       { fg = scheme.none,     bg = scheme.none,  scheme.none },
+    gitcommitBranch =         { fg = scheme.Purple,   bg = scheme.none,  scheme.none },
+    gitcommitSelectedFile =   { fg = scheme.Green,    bg = scheme.none,  scheme.none },
+    gitcommitUnmergedFile =   { fg = scheme.Yellow,   bg = scheme.none,  scheme.none },
 
     ----------
     -- DIFF --
@@ -370,18 +370,18 @@ function setup.load_colors(scheme)
     ----------
     -- JSON --
     ----------
-    jsonKeyword =            { fg = scheme.Red,      bg = scheme.none, scheme.none },
-    jsonNumber =             { fg = scheme.Orange,   bg = scheme.none, scheme.none },
-    jsonStringSQError =      { fg = scheme.Red,      bg = scheme.none, syle = "reverse" },
-    jsonNumError =           { fg = scheme.Red,      bg = scheme.none, syle = "reverse" },
-    jsonQuote =              { fg = scheme.DarkGrey, bg = scheme.none, scheme.none },
-    jsonTrailingCommaError = { fg = scheme.Red,      bg = scheme.none, syle = "reverse" },
-    jsonMissingCommaError =  { fg = scheme.Red,      bg = scheme.none, syle = "reverse" },
-    jsonNoQuotesError =      { fg = scheme.Red,      bg = scheme.none, syle = "reverse" },
-    jsonString =             { fg = scheme.Green,    bg = scheme.none, scheme.none },
-    jsonBoolean =            { fg = scheme.Purple,   bg = scheme.none, scheme.none },
-    jsonCommentError =       { fg = scheme.White,    bg = scheme.none, scheme.none },
-    jsonSemicolonError =     { fg = scheme.Red,      bg = scheme.none, syle = "reverse" },
+    jsonKeyword =            { fg = scheme.Red,    bg = scheme.none, scheme.none },
+    jsonNumber =             { fg = scheme.Orange, bg = scheme.none, scheme.none },
+    jsonStringSQError =      { fg = scheme.Red,    bg = scheme.none, syle = "reverse" },
+    jsonNumError =           { fg = scheme.Red,    bg = scheme.none, syle = "reverse" },
+    jsonQuote =              { fg = scheme.Green,  bg = scheme.none, scheme.none },
+    jsonTrailingCommaError = { fg = scheme.Red,    bg = scheme.none, syle = "reverse" },
+    jsonMissingCommaError =  { fg = scheme.Red,    bg = scheme.none, syle = "reverse" },
+    jsonNoQuotesError =      { fg = scheme.Red,    bg = scheme.none, syle = "reverse" },
+    jsonString =             { fg = scheme.Green,  bg = scheme.none, scheme.none },
+    jsonBoolean =            { fg = scheme.Purple, bg = scheme.none, scheme.none },
+    jsonCommentError =       { fg = scheme.Red,    bg = scheme.none, scheme.none },
+    jsonSemicolonError =     { fg = scheme.Red,    bg = scheme.none, syle = "reverse" },
 
     -------------
     -- CLOJURE --
@@ -447,16 +447,16 @@ function setup.load_colors(scheme)
     ----------
     -- RUST --
     ----------
-    rustCommentLineDocError =  { fg = scheme.Grey,     bg = scheme.none, scheme.none },
-    rustCommentBlock =         { fg = scheme.Grey,     bg = scheme.none, scheme.none },
+    rustCommentLineDocError =  { fg = scheme.DarkGrey, bg = scheme.none, scheme.none },
+    rustCommentBlock =         { fg = scheme.DarkGrey, bg = scheme.none, scheme.none },
     rustDeriveTrait =          { fg = scheme.Green,    bg = scheme.none, scheme.none },
-    SpecialComment =           { fg = scheme.Grey,     bg = scheme.none, scheme.none },
-    rustCommentLine =          { fg = scheme.Grey,     bg = scheme.none, scheme.none },
-    rustCommentBlockDoc =      { fg = scheme.Grey,     bg = scheme.none, scheme.none },
+    SpecialComment =           { fg = scheme.DarkGrey, bg = scheme.none, scheme.none },
+    rustCommentLine =          { fg = scheme.DarkGrey, bg = scheme.none, scheme.none },
+    rustCommentBlockDoc =      { fg = scheme.DarkGrey, bg = scheme.none, scheme.none },
     rustExternCrate =          { fg = scheme.Red,      bg = scheme.none, style = "bold" },
     rustIdentifier =           { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
-    rustCommentLineDoc =       { fg = scheme.Grey,     bg = scheme.none, scheme.none },
-    rustCommentBlockDocError = { fg = scheme.Grey,     bg = scheme.none, scheme.none },
+    rustCommentLineDoc =       { fg = scheme.DarkGrey, bg = scheme.none, scheme.none },
+    rustCommentBlockDocError = { fg = scheme.DarkGrey, bg = scheme.none, scheme.none },
 
     -----------
     -- C/C++ --
@@ -487,15 +487,15 @@ function setup.load_colors(scheme)
     --------
     -- C# --
     --------
-    csBraces =                 { fg = scheme.White, bg = scheme.none, scheme.none },
-    csEndColon =               { fg = scheme.White, bg = scheme.none, scheme.none },
-    csLogicSymbols =           { fg = scheme.White, bg = scheme.none, scheme.none },
-    csParens =                 { fg = scheme.White, bg = scheme.none, scheme.none },
-    csOpSymbols =              { fg = scheme.Grey,  bg = scheme.none, scheme.none },
-    csInterpolationDelimiter = { fg = scheme.Grey,  bg = scheme.none, scheme.none },
-    csInterpolationAlignDel =  { fg = scheme.Grey,  bg = scheme.none, syle = "bold" },
-    csInterpolationFormat =    { fg = scheme.Grey,  bg = scheme.none, scheme.none },
-    csInterpolationFormatDel = { fg = scheme.Grey,  bg = scheme.none, syle = "bold" },
+    csBraces =                 { fg = scheme.White,     bg = scheme.none, scheme.none },
+    csEndColon =               { fg = scheme.White,     bg = scheme.none, scheme.none },
+    csLogicSymbols =           { fg = scheme.White,     bg = scheme.none, scheme.none },
+    csParens =                 { fg = scheme.White,     bg = scheme.none, scheme.none },
+    csOpSymbols =              { fg = scheme.DarkGrey,  bg = scheme.none, scheme.none },
+    csInterpolationDelimiter = { fg = scheme.DarkGrey,  bg = scheme.none, scheme.none },
+    csInterpolationAlignDel =  { fg = scheme.DarkGrey,  bg = scheme.none, syle = "bold" },
+    csInterpolationFormat =    { fg = scheme.DarkGrey,  bg = scheme.none, scheme.none },
+    csInterpolationFormatDel = { fg = scheme.DarkGrey,  bg = scheme.none, syle = "bold" },
 
     --------------
     -- CUCUMBER --
@@ -510,8 +510,8 @@ function setup.load_colors(scheme)
     cucumberBackground =      { fg = scheme.Purple,   bg = scheme.none, syle = "bold" },
     cucumberScenario =        { fg = scheme.Purple,   bg = scheme.none, syle = "bold" },
     cucumberWhen =            { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
-    cucumberTags =            { fg = scheme.Grey,     bg = scheme.none, syle = "bold" },
-    cucumberDelimiter =       { fg = scheme.Grey,     bg = scheme.none, syle = "bold" },
+    cucumberTags =            { fg = scheme.DarkGrey, bg = scheme.none, syle = "bold" },
+    cucumberDelimiter =       { fg = scheme.DarkGrey, bg = scheme.none, syle = "bold" },
 
     -----------
     -- SPELL --
@@ -581,8 +581,8 @@ function setup.load_colors(scheme)
     -- VIM --
     ---------
     vimSep =          { fg = scheme.DarkGrey, bg = scheme.none, scheme.none },
-    vimCommentTitle = { fg = scheme.Grey,     bg = scheme.none, syle = "bold" },
-    vimLineComment =  { fg = scheme.Grey,     bg = scheme.none, syle = "italic" },
+    vimCommentTitle = { fg = scheme.DarkGrey, bg = scheme.none, syle = "bold" },
+    vimLineComment =  { fg = scheme.DarkGrey, bg = scheme.none, syle = "italic" },
     vimParenSep =     { fg = scheme.White,    bg = scheme.none, scheme.none },
     vimFuncName =     { fg = scheme.Purple,   bg = scheme.none, scheme.none },
     vimHighlight =    { fg = scheme.DarkCyan, bg = scheme.none, scheme.none },
@@ -610,15 +610,15 @@ function setup.load_colors(scheme)
     ---------
     -- ZSH --
     ---------
-    zshSubst =       { fg = scheme.Red,    bg = scheme.none, scheme.none },
-    zshCommands =    { fg = scheme.White,  bg = scheme.none, scheme.none },
-    zshKeyword =     { fg = scheme.Purple, bg = scheme.none, scheme.none },
-    zshTypes =       { fg = scheme.Purple, bg = scheme.none, scheme.none },
-    zshDeref =       { fg = scheme.Red,    bg = scheme.none, scheme.none },
-    zshShortDeref =  { fg = scheme.Red,    bg = scheme.none, scheme.none },
-    zshVariableDef = { fg = scheme.Orange, bg = scheme.none, scheme.none },
-    zshSubstDelim =  { fg = scheme.Grey,   bg = scheme.none, scheme.none },
-    zshFunction =    { fg = scheme.Cyan,   bg = scheme.none, scheme.none },
+    zshSubst =       { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    zshCommands =    { fg = scheme.White,    bg = scheme.none, scheme.none },
+    zshKeyword =     { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    zshTypes =       { fg = scheme.Purple,   bg = scheme.none, scheme.none },
+    zshDeref =       { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    zshShortDeref =  { fg = scheme.Red,      bg = scheme.none, scheme.none },
+    zshVariableDef = { fg = scheme.Orange,   bg = scheme.none, scheme.none },
+    zshSubstDelim =  { fg = scheme.DarkGrey, bg = scheme.none, scheme.none },
+    zshFunction =    { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
 
     ----------
     -- RUBY --
@@ -650,22 +650,22 @@ function setup.load_colors(scheme)
     ----------
     -- JAVA --
     ----------
-    javaParen =        { fg = scheme.White,  bg = scheme.none, scheme.none },
-    javaOperator =     { fg = scheme.Orange, bg = scheme.none, scheme.none },
-    javaVarArg =       { fg = scheme.Green,  bg = scheme.none, scheme.none },
-    javaParen1 =       { fg = scheme.White,  bg = scheme.none, scheme.none },
-    javaParen2 =       { fg = scheme.White,  bg = scheme.none, scheme.none },
-    javaParen3 =       { fg = scheme.White,  bg = scheme.none, scheme.none },
-    javaParen4 =       { fg = scheme.White,  bg = scheme.none, scheme.none },
-    javaParen5 =       { fg = scheme.White,  bg = scheme.none, scheme.none },
-    javaAnnotation =   { fg = scheme.Cyan,   bg = scheme.none, scheme.none },
-    javaDocTags =      { fg = scheme.Blue,   bg = scheme.none, scheme.none },
-    javaCommentTitle = { fg = scheme.Grey,   bg = scheme.none, scheme.none },
+    javaParen =        { fg = scheme.White,      bg = scheme.none, scheme.none },
+    javaOperator =     { fg = scheme.Orange,     bg = scheme.none, scheme.none },
+    javaVarArg =       { fg = scheme.Green,      bg = scheme.none, scheme.none },
+    javaParen1 =       { fg = scheme.White,      bg = scheme.none, scheme.none },
+    javaParen2 =       { fg = scheme.White,      bg = scheme.none, scheme.none },
+    javaParen3 =       { fg = scheme.White,      bg = scheme.none, scheme.none },
+    javaParen4 =       { fg = scheme.White,      bg = scheme.none, scheme.none },
+    javaParen5 =       { fg = scheme.White,      bg = scheme.none, scheme.none },
+    javaAnnotation =   { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    javaDocTags =      { fg = scheme.Blue,       bg = scheme.none, scheme.none },
+    javaCommentTitle = { fg = scheme.DarkGrey,   bg = scheme.none, scheme.none },
 
     -----------
     -- OCAML --
     -----------
-    ocamlOperator =       { fg = scheme.Grey,   bg = scheme.none, scheme.none },
+    ocamlOperator =       { fg = scheme.White,   bg = scheme.none, scheme.none },
     ocamlArrow =          { fg = scheme.Orange, bg = scheme.none, scheme.none },
     ocamlKeyChar =        { fg = scheme.Orange, bg = scheme.none, scheme.none },
     ocamlInfixOpKeyword = { fg = scheme.Red,    bg = scheme.none, scheme.none },
