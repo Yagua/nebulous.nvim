@@ -757,6 +757,26 @@ function setup.load_colors(scheme)
     rainbowcol7 = { fg = scheme.Green,  bg = scheme.none, scheme.none },
 
 
+    ---------------
+    --  LSPSAGA  --
+    ---------------
+    LspSagaRenamePromptPrefix = { fg = scheme.Green,      bg = scheme.none, scheme.none },
+    DiagnosticHint =            { fg = scheme.Custom_2,   bg = scheme.none, scheme.none },
+    DefinitionPreviewTitle =    { fg = scheme.Yellow,     bg = scheme.none, scheme.none },
+    LspSagaRenameBorder =       { fg = scheme.Green,      bg = scheme.none, scheme.none },
+    DiagnosticInformation =     { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    LspSagaDefPreviewBorder =   { fg = scheme.Yellow,     bg = scheme.none, scheme.none },
+    LspSagaHoverBorder =        { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
+    DiagnosticWarning =         { fg = scheme.DarkOrange, bg = scheme.none, scheme.none },
+    DiagnosticError =           { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
+
+    -------------------
+    --  LSP TROUBLE  --
+    -------------------
+    LspTroubleText =   { fg = scheme.White, bg = scheme.none,       scheme.none },
+    LspTroubleCount =  { fg = scheme.Black, bg = scheme.DarkOrange, scheme.none },
+    LspTroubleNormal = { fg = scheme.White, bg = scheme.Background, scheme.none },
+
     ----------------
     -- LSP COLORS --
     ----------------
@@ -783,26 +803,6 @@ function setup.load_colors(scheme)
     LspReferenceText =                     { fg = scheme.DarkOrange,  bg = scheme.Cyan, scheme.none },
     LspReferenceRead =                     { fg = scheme.DarkOrange,  bg = scheme.Cyan, scheme.none },
     LspReferenceWrite =                    { fg = scheme.DarkOrange,  bg = scheme.Cyan, scheme.none },
-
-    ---------------
-    --  LSPSAGA  --
-    ---------------
-    LspSagaRenamePromptPrefix = { fg = scheme.Green,   bg = scheme.none, scheme.none },
-    DiagnosticHint =            { fg = scheme.Purple,  bg = scheme.none, scheme.none },
-    DefinitionPreviewTitle =    { fg = scheme.Yellow,  bg = scheme.none, scheme.none },
-    LspSagaRenameBorder =       { fg = scheme.Green,   bg = scheme.none, scheme.none },
-    DiagnosticInformation =     { fg = scheme.Blue,    bg = scheme.none, scheme.none },
-    LspSagaDefPreviewBorder =   { fg = scheme.Yellow,  bg = scheme.none, scheme.none },
-    LspSagaHoverBorder =        { fg = scheme.Cyan,    bg = scheme.none, scheme.none },
-    DiagnosticWarning =         { fg = scheme.Yellow,  bg = scheme.none, scheme.none },
-    DiagnosticError =           { fg = scheme.DarkRed, bg = scheme.none, scheme.none },
-
-    -------------------
-    --  LSP TROUBLE  --
-    -------------------
-    LspTroubleText =   { fg = scheme.White, bg = scheme.none,       scheme.none },
-    LspTroubleCount =  { fg = scheme.Black, bg = scheme.DarkOrange, scheme.none },
-    LspTroubleNormal = { fg = scheme.White, bg = scheme.Background, scheme.none },
 
     ---------------
     -- TELESCOPE --
