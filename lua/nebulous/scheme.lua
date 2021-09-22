@@ -761,14 +761,10 @@ function setup.load_colors(scheme)
     --  LSPSAGA  --
     ---------------
     LspSagaRenamePromptPrefix = { fg = scheme.Green,      bg = scheme.none, scheme.none },
-    DiagnosticHint =            { fg = scheme.Custom_2,   bg = scheme.none, scheme.none },
-    DefinitionPreviewTitle =    { fg = scheme.Yellow,     bg = scheme.none, scheme.none },
     LspSagaRenameBorder =       { fg = scheme.Green,      bg = scheme.none, scheme.none },
-    DiagnosticInformation =     { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
     LspSagaDefPreviewBorder =   { fg = scheme.Yellow,     bg = scheme.none, scheme.none },
     LspSagaHoverBorder =        { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
-    DiagnosticWarning =         { fg = scheme.DarkOrange, bg = scheme.none, scheme.none },
-    DiagnosticError =           { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
+
 
     -------------------
     --  LSP TROUBLE  --
@@ -780,29 +776,47 @@ function setup.load_colors(scheme)
     ----------------
     -- LSP COLORS --
     ----------------
-    LspDiagnosticsVirtualTextHint =        { fg = scheme.Custom_2,    bg = scheme.none, scheme.none },
     LspDiagnosticsSignWarning =            { fg = scheme.DarkOrange,  bg = scheme.none, scheme.none },
-    LspDiagnosticsSignInformation =        { fg = scheme.Custom_3,    bg = scheme.none, scheme.none },
+    LspDiagnosticsDefaultWarning =         { fg = scheme.DarkOrange,  bg = scheme.none, scheme.none },
+    LspDiagnosticsFloatingWarning =        { fg = scheme.DarkOrange,  bg = scheme.none, style = "underline" },
+    LspDiagnosticsVirtualTextWarning =     { fg = scheme.DarkOrange,  bg = scheme.none, scheme.none },
+    LspDiagnosticsUnderlineWarning =       { fg = scheme.none,        bg = scheme.none, style = "underline" },
+    LspDiagnosticsVirtualTextHint =        { fg = scheme.Custom_2,    bg = scheme.none, scheme.none },
+    LspDiagnosticsDefaultHint =            { fg = scheme.Custom_2,    bg = scheme.none, scheme.none },
     LspDiagnosticsSignHint =               { fg = scheme.Custom_2,    bg = scheme.none, scheme.none },
+    LspDiagnosticsUnderlineHint =          { fg = scheme.none,        bg = scheme.none, style = "underline" },
     LspDiagnosticsFloatingHint =           { fg = scheme.Custom_2,    bg = scheme.none, style = "underline" },
     LspDiagnosticsSignError =              { fg = scheme.DarkRed,     bg = scheme.none, scheme.none },
-    LspDiagnosticsDefaultWarning =         { fg = scheme.DarkOrange,  bg = scheme.none, scheme.none },
     LspDiagnosticsDefaultError =           { fg = scheme.DarkRed,     bg = scheme.none, scheme.none },
-    LspDiagnosticsFloatingError =          { fg = scheme.DarkRed,     bg = scheme.none, style = "underline" },
-    LspDiagnosticsFloatingWarning =        { fg = scheme.DarkOrange,  bg = scheme.none, style = "underline" },
-    LspDiagnosticsFloatingInformation =    { fg = scheme.Custom_3,    bg = scheme.none, style = "underline" },
-    LspDiagnosticsUnderlineInformation =   { fg = scheme.none,        bg = scheme.none, style = "underline" },
-    LspDiagnosticsUnderlineHint =          { fg = scheme.none,        bg = scheme.none, style = "underline" },
-    LspDiagnosticsDefaultInformation =     { fg = scheme.Cyan,        bg = scheme.none, scheme.none },
-    LspDiagnosticsDefaultHint =            { fg = scheme.Custom_2,    bg = scheme.none, scheme.none },
-    LspDiagnosticsUnderlineError =         { fg = scheme.none,        bg = scheme.none, style = "underline" },
     LspDiagnosticsVirtualTextError =       { fg = scheme.DarkRed,     bg = scheme.none, scheme.none },
-    LspDiagnosticsVirtualTextWarning =     { fg = scheme.DarkOrange,  bg = scheme.none, scheme.none },
+    LspDiagnosticsFloatingError =          { fg = scheme.DarkRed,     bg = scheme.none, style = "underline" },
+    LspDiagnosticsUnderlineError =         { fg = scheme.none,        bg = scheme.none, style = "underline" },
+    LspDiagnosticsDefaultInformation =     { fg = scheme.Cyan,        bg = scheme.none, scheme.none },
+    LspDiagnosticsFloatingInformation =    { fg = scheme.Custom_3,    bg = scheme.none, style = "underline" },
+    LspDiagnosticsSignInformation =        { fg = scheme.Custom_3,    bg = scheme.none, scheme.none },
     LspDiagnosticsVirtualTextInformation = { fg = scheme.Custom_3,    bg = scheme.none, scheme.none },
-    LspDiagnosticsUnderlineWarning =       { fg = scheme.none,        bg = scheme.none, style = "underline" },
+    LspDiagnosticsUnderlineInformation =   { fg = scheme.none,        bg = scheme.none, style = "underline" },
     LspReferenceText =                     { fg = scheme.DarkOrange,  bg = scheme.Cyan, scheme.none },
     LspReferenceRead =                     { fg = scheme.DarkOrange,  bg = scheme.Cyan, scheme.none },
     LspReferenceWrite =                    { fg = scheme.DarkOrange,  bg = scheme.Cyan, scheme.none },
+
+    -- Nvim 0.6.x Lsp highlight groups
+    DiagnosticVirtualTextWarn  = { link = "LspDiagnosticsVirtualTextWarning" },
+    DiagnosticUnderlineWarn    = { link = "LspDiagnosticsUnderlineWarning" },
+    DiagnosticFloatingWarn     = { link = "LspDiagnosticsFloatingWarning" },
+    DiagnosticSignWarn         = { link = "LspDiagnosticsSignWarning" },
+    DiagnosticVirtualTextError = { link = "LspDiagnosticsVirtualTextError" },
+    DiagnosticUnderlineError   = { link = "LspDiagnosticsUnderlineError" },
+    DiagnosticFloatingError    = { link = "LspDiagnosticsFloatingError" },
+    DiagnosticSignError        = { link = "LspDiagnosticsSignError" },
+    DiagnosticVirtualTextInfo  = { link = "LspDiagnosticsVirtualTextInformation" },
+    DiagnosticUnderlineInfo    = { link = "LspDiagnosticsUnderlineInformation" },
+    DiagnosticFloatingInfo     = { link = "LspDiagnosticsFloatingInformation" },
+    DiagnosticSignInfo         = { link = "LspDiagnosticsSignInformation" },
+    DiagnosticVirtualTextHint  = { link = "LspDiagnosticsVirtualTextHint" },
+    DiagnosticUnderlineHint    = { link = "LspDiagnosticsUnderlineHint" },
+    DiagnosticFloatingHint     = { link = "LspDiagnosticsFloatingHint" },
+    DiagnosticSignHint         = { link = "LspDiagnosticsSignHint" },
 
     ---------------
     -- TELESCOPE --
