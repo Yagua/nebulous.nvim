@@ -1,31 +1,35 @@
-local utils = {}
+local config = require("nebulous.config")
+local theme = require("nebulous.scheme")
+local color = require("nebulous.colors")
+
 local api = vim.api
+local utils = {}
 
 ---Apply colors in the editor
 --@param group string: group name
---@param color string: color name to be applied to the groups
-function utils.set_highlights(group, color)
+--@param cols string: color name to be applied to the groups
+local function set_highlights(group, cols)
   api.nvim_command(string.format('highlight %s gui=%s guifg=%s guibg=%s guisp=%s',
     group,
-    color.style or "NONE",
-    color.fg    or "NONE",
-    color.bg    or "NONE",
-    color.sp    or "NONE"
+    cols.style or "NONE",
+    cols.fg    or "NONE",
+    cols.bg    or "NONE",
+    cols.sp    or "NONE"
   ))
 
-  if color.link then
-    api.nvim_command(string.format("highlight! link %s %s", group, color.link))
+  if cols.link then
+    api.nvim_command(string.format("highlight! link %s %s", group, cols.link))
   end
 end
 
 ---Load colorscheme
 --@param scheme table: editor elements with its colors
 --@param custom_tab table: custom color table
-function utils.load_colorscheme(scheme, custom_tab)
+local function load_colorscheme(scheme, custom_tab)
   local color_table = scheme or {}
   local custom_colors = custom_tab or {}
 
-  api.nvim_command("highlight clear")
+  --api.nvim_command("highlight clear") -- this clears the default colors and makes them blank
   if vim.fn.exists("sintax_on") then api.nvim_command("syntax reset") end
   vim.opt.background = "dark"
   vim.g.colors_name = "nebulous"
@@ -39,10 +43,22 @@ function utils.load_colorscheme(scheme, custom_tab)
   end
 
   --Load editor colors
-  for group, color in pairs(color_table) do
-    utils.set_highlights(group, color)
+  for grp, col in pairs(color_table) do
+    set_highlights(grp, col)
   end
 
+end
+
+--- Set and load the color scheme
+--@param opts table: custom options to be applied to the editor
+function utils.setup_scheme(opts)
+  config.set_options(opts)
+  local sch_opts = config.scheme_options
+
+  local scheme = color.set_scheme(sch_opts.variant)
+  local colors = theme.load_colors(scheme)
+
+  load_colorscheme(colors, sch_opts.custom_colors)
 end
 
 return utils

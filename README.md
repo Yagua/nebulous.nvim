@@ -12,6 +12,7 @@ Minimalist Collection of Colorschemes Written in Lua
 - Lualine scheme
 - Color customization
 - Italic elements in the editor
+- Fun built-in functions
 - They support a large number of terminal emulation environments, such as:
     - [Alacritty](https://github.com/alacritty/alacritty)
     - [Kitty](https://github.com/kovidgoyal/kitty)
@@ -120,6 +121,48 @@ require('lualine').setup {
     theme = 'nebulous'
   }
 }
+```
+
+## Functions
+
+| Option                               |  Description                                      |
+| -------------------------------------|---------------------------------------------------|
+| `toggle_variant`                     | Browse among the different variants               |
+| `random_variant`                     | Set a random variant among the different variants |
+
+
+##### Toggle variant
+![toggle](./media/toggle_variant.gif)
+
+To switch between styles just run the function, e.g:
+
+```vim
+:lua require("nebulous").toggle_variant()
+```
+
+The random function has a similar behavior, just call the function as well:
+
+```vim
+:lua require("nebulous").random_variant()
+```
+
+The functions can be mapped for quick use, e.g:
+
+- Vimscript
+
+```vim
+nnoremap <silent><leader>tc :lua require("nebulous").toggle_variant()<CR>
+nnoremap <silent><leader>rc :lua require("nebulous").random_variant()<CR>
+```
+
+- Lua
+
+```lua
+local setmap = vim.api.nvim_set_keymap
+local options = { silent = true, noremap = true }
+
+setmap("n", "<leader>tc", ":lua require('nebulous').toggle_variant()<CR>", options)
+setmap("n", "<leader>rc", ":lua require('nebulous').random_variant()<CR>", options)
 ```
 
 More features and color variants are coming in future updates!
