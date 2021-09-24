@@ -97,7 +97,7 @@ function setup.load_colors(scheme)
     LineNr =           { fg = scheme.DarkGrey,   bg = scheme.none,       scheme.none },
     MatchParen =       { fg = scheme.Cyan,       bg = scheme.none,       style = "bold" },
     odeMsg =           { fg = scheme.Blue,       bg = scheme.none,       scheme.none },
-    NonText =          { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
+    NonText =          { fg = scheme.DarkGrey,   bg = scheme.none,       scheme.none },
     Normal =           { fg = scheme.White,      bg = opts.st_disable_bg or scheme.background, scheme.none },
     NormalFloat =      { fg = scheme.White,      bg = scheme.LightGrey,  scheme.none },
     Question =         { fg = scheme.DarkCyan,   bg = scheme.none,       style = "bold" },
@@ -580,7 +580,7 @@ function setup.load_colors(scheme)
     ---------
     -- VIM --
     ---------
-    vimSep =          { fg = scheme.DarkGrey, bg = scheme.none, scheme.none },
+    vimSep =          { fg = scheme.White,    bg = scheme.none, scheme.none },
     vimCommentTitle = { fg = scheme.DarkGrey, bg = scheme.none, syle = "bold" },
     vimLineComment =  { fg = scheme.DarkGrey, bg = scheme.none, syle = "italic" },
     vimParenSep =     { fg = scheme.White,    bg = scheme.none, scheme.none },
@@ -597,9 +597,9 @@ function setup.load_colors(scheme)
     vimContinue =     { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
     vimSetSep =       { fg = scheme.DarkGrey, bg = scheme.none, scheme.none },
     vimHiGroup =      { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
-    vimFunction =     { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    vimFunction =     { fg = scheme.Orange,   bg = scheme.none, scheme.none },
     vimFuncSID =      { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
-    vimCommand =      { fg = scheme.Cyan,     bg = scheme.none, scheme.none },
+    vimCommand =      { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
     vimNotFunc =      { fg = scheme.Blue,     bg = scheme.none, scheme.none },
     vimFuncVar =      { fg = scheme.Purple,   bg = scheme.none, scheme.none },
     vimMapLHS =       { fg = scheme.Yellow,   bg = scheme.none, scheme.none },
@@ -805,14 +805,17 @@ function setup.load_colors(scheme)
     DiagnosticUnderlineWarn    = { link = "LspDiagnosticsUnderlineWarning" },
     DiagnosticFloatingWarn     = { link = "LspDiagnosticsFloatingWarning" },
     DiagnosticSignWarn         = { link = "LspDiagnosticsSignWarning" },
+
     DiagnosticVirtualTextError = { link = "LspDiagnosticsVirtualTextError" },
     DiagnosticUnderlineError   = { link = "LspDiagnosticsUnderlineError" },
     DiagnosticFloatingError    = { link = "LspDiagnosticsFloatingError" },
     DiagnosticSignError        = { link = "LspDiagnosticsSignError" },
+
     DiagnosticVirtualTextInfo  = { link = "LspDiagnosticsVirtualTextInformation" },
     DiagnosticUnderlineInfo    = { link = "LspDiagnosticsUnderlineInformation" },
     DiagnosticFloatingInfo     = { link = "LspDiagnosticsFloatingInformation" },
     DiagnosticSignInfo         = { link = "LspDiagnosticsSignInformation" },
+
     DiagnosticVirtualTextHint  = { link = "LspDiagnosticsVirtualTextHint" },
     DiagnosticUnderlineHint    = { link = "LspDiagnosticsUnderlineHint" },
     DiagnosticFloatingHint     = { link = "LspDiagnosticsFloatingHint" },
