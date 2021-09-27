@@ -18,7 +18,7 @@ end
 local function set_variant(position)
   local variant = variants[position]
   g.nebulous_variant_loaded = position
-  print(string.format("[Nebulous]: '%s' set", variant))
+  vim.api.nvim_command(string.format("echo \"[Nebulous]: '%s' set\"", variant))
   utils.setup_scheme { variant = variant }
 end
 
