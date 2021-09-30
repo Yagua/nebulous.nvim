@@ -129,6 +129,7 @@ require('lualine').setup {
 | -------------------------------------|---------------------------------------------------|
 | `toggle_variant`                     | Browse among the different variants               |
 | `random_variant`                     | Set a random variant among the different variants |
+| `set_variant`                        | Set a specific variant according to its name      |
 
 
 ##### Toggle variant
@@ -146,6 +147,12 @@ The random function has a similar behavior, just call the function as well:
 :lua require("nebulous").random_variant()
 ```
 
+You can also set a specific variant based on its name:
+
+```vim
+:lua require("nebulous").set_variant("variant_name")
+```
+
 The functions can be mapped for quick use, e.g:
 
 - Vimscript
@@ -153,6 +160,7 @@ The functions can be mapped for quick use, e.g:
 ```vim
 nnoremap <silent><leader>tc :lua require("nebulous").toggle_variant()<CR>
 nnoremap <silent><leader>rc :lua require("nebulous").random_variant()<CR>
+nnoremap <silent><leader>tw :lua require("nebulous").set_variant("variant_name")<CR>
 ```
 
 - Lua
@@ -163,6 +171,7 @@ local options = { silent = true, noremap = true }
 
 setmap("n", "<leader>tc", ":lua require('nebulous').toggle_variant()<CR>", options)
 setmap("n", "<leader>rc", ":lua require('nebulous').random_variant()<CR>", options)
+setmap("n", "<leader>tw", ":lua require('nebulous').set_variant('variant_name')<CR>", options)
 ```
 
 More features and color variants are coming in future updates!

@@ -13,13 +13,20 @@ local function change_variant(v_tab, pos)
   return position
 end
 
---- Sets a variant in accordance with a valid position
+---Set a especific variant
+--@param scheme string: name of the variant to be set
+function M.set_variant(scheme)
+  local variant = scheme  or ""
+  utils.setup_scheme { variant = variant }
+end
+
+--- Sets a variant in accordance with a valid position in the variants table
 --@param position number: position to load a variant from the variant table
-local function set_variant(position)
+local function load_variant(position)
   local variant = variants[position]
   g.nebulous_variant_loaded = position
-  vim.api.nvim_command(string.format("echo \"[Nebulous]: '%s' set\"", variant))
-  utils.setup_scheme { variant = variant }
+  vim.api.nvim_command(string.format("echo \"[Nebulous] '%s' set\"", variant))
+  M.set_variant(variant)
 end
 
 --- Set a variant by scrolling through the variant table in an orderly fashion
@@ -27,7 +34,7 @@ function M.toggle_variant()
   local position = change_variant(
     variants, g.nebulous_variant_loaded
   )
-  set_variant(position)
+  load_variant(position)
 end
 
 --- Set a random variant according to the number of entries in the variant table
@@ -36,7 +43,7 @@ function M.random_variant()
   local position = change_variant(
     variants, random
   )
-  set_variant(position)
+  load_variant(position)
 end
 
 return M

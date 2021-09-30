@@ -22,10 +22,11 @@ end
 function colors.set_scheme(variant)
   local scheme = {}
   local variant_selected = variant or ""
-  local ok, index = variant_exists(variant_selected)
+  local exists, index = variant_exists(variant_selected)
 
-  if ok then
-    scheme = require(string.format("nebulous.colors.%s", variant_selected))
+  if exists then
+    _, scheme = pcall(require,
+      string.format("nebulous.colors.%s", variant_selected))
     vim.g.nebulous_variant_loaded = index
   else
     scheme = require("nebulous.colors.night")

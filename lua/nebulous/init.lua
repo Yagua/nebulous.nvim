@@ -19,5 +19,6 @@ end
 
 nebulous.toggle_variant = functions.toggle_variant
 nebulous.random_variant = functions.random_variant
+nebulous.set_variant    = functions.set_variant
 
 return nebulous
