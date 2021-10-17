@@ -1,9 +1,3 @@
-" Requirements verification
-if !has('nvim-0.5')
-  echoerr "Nvim-0.5 is required"
-  finish
-endif
-
 if exists("g:nebulous") | finish | endif
 
 "Reload all modules
