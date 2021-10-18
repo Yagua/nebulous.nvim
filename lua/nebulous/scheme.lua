@@ -935,6 +935,13 @@ function setup.load_colors(scheme)
     HopNextKey1  = { fg = scheme.Purple,     bg = scheme.none, scheme.none },
     HopNextKey2  = { fg = scheme.Blue,       bg = scheme.none, scheme.none },
     HopUnmatched = { fg = scheme.DarkGrey,   bg = scheme.none, scheme.none },
+
+    ---------------
+    --  NVIM-CMP --
+    ---------------
+    CmpItemAbbrMatch =             { fg = scheme.Blue,    bg = scheme.none, style = "bold" },
+    CmpItemAbbrDefault =           { fg = scheme.White, bg = scheme.none, scheme.none },
+    CmpItemAbbrDeprecated =        { fg = scheme.DarkGrey_2, bg = scheme.none, scheme.none },
   }
 
   terminal_colors(scheme)
