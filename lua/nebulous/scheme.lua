@@ -1,4 +1,4 @@
-local config = require("nebulous.config")
+local get_options = require("nebulous.config").get_options
 local setup = {}
 local g = vim.g
 
@@ -28,7 +28,7 @@ end
 --@param settings table: custom options to be applied to the scheme
 --@return editor table: all groups and its respectives colors
 function setup.load_colors(scheme)
-  local opts = config.get_options()
+  local opts = get_options()
 
   ---------------------
   --  EDITOR COLORS  --

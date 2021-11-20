@@ -1,4 +1,4 @@
-local config = require("nebulous.config")
+local set_options = require("nebulous.config").set_options
 local theme = require("nebulous.scheme")
 local color = require("nebulous.colors")
 
@@ -33,7 +33,6 @@ local function load_colorscheme(scheme, custom_tab)
   if vim.fn.exists("sintax_on") then api.nvim_command("syntax reset") end
   vim.opt.background = "dark"
   vim.g.colors_name = "nebulous"
-  vim.g.nebulous = 1
   vim.opt.termguicolors = true
 
   if type(custom_colors) == "table" then
@@ -52,13 +51,11 @@ end
 --- Set and load the color scheme
 --@param opts table: custom options to be applied to the editor
 function utils.setup_scheme(opts)
-  config.set_options(opts)
-  local sch_opts = config.scheme_options
-
-  local scheme = color.set_scheme(sch_opts.variant)
+  local conf = set_options(opts)
+  local scheme = color.set_scheme(conf.variant)
   local colors = theme.load_colors(scheme)
 
-  load_colorscheme(colors, sch_opts.custom_colors)
+  load_colorscheme(colors, conf.custom_colors)
 end
 
 return utils

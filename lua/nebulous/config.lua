@@ -25,6 +25,7 @@ function M.set_options(opts)
       vim.tbl_deep_extend("force", {}, M.scheme_options, options)
     M.scheme_options = new_sets
   end
+  return M.scheme_options
 end
 
 ---Get the value of secheme options
