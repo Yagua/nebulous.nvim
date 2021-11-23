@@ -65,7 +65,7 @@ function setup.load_colors(scheme)
     IncSearch =        { fg = scheme.Black,      bg = scheme.DarkCyan,   scheme.none },
     Include =          { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
     Keyword =          { fg = scheme.Red,        bg = scheme.none,       style = opts.st_keywords },
-    Label =            { fg = scheme.DarkYellow, bg = scheme.none,       scheme.none },
+    Label =            { fg = scheme.Purple,     bg = scheme.none,       scheme.none },
     LineNr =           { fg = scheme.DarkGrey,   bg = scheme.none,       scheme.none },
     Macro =            { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
     MatchParen =       { fg = scheme.Cyan,       bg = scheme.none,       style = "bold" },
