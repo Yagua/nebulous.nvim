@@ -327,7 +327,7 @@ function setup.load_colors(scheme)
     HopUnmatched = { fg = scheme.DarkGrey,   bg = scheme.none, scheme.none },
 
     -- Nvimcmp
-    CmpItemAbbrDefault =     { fg = scheme.White, bg = scheme.none, scheme.none },
+    CmpItemKind =            { fg = scheme.Yellow, bg = scheme.none, scheme.none },
     CmpItemAbbrDeprecated =  { fg = scheme.DarkGrey_2, bg = scheme.none, scheme.none },
     CmpItemAbbrMatch =       { fg = scheme.Blue,    bg = scheme.none, style = "bold" },
   }

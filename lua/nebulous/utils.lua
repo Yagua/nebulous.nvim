@@ -29,7 +29,9 @@ local function load_colorscheme(scheme, custom_tab)
   local color_table = scheme or {}
   local custom_colors = custom_tab or {}
 
-  -- api.nvim_command("highlight clear") -- this clears the default colors and makes them blank
+  api.nvim_command("highlight clear") --TODO: fix blank colors during variant changeover
+  api.nvim_command("silent! colorscheme " .. vim.g.nebulous_variant_loaded) -- temporary trick to solve the above problem
+
   if vim.fn.exists("sintax_on") then api.nvim_command("syntax reset") end
   vim.opt.background = "dark"
   vim.g.colors_name = "nebulous"
@@ -45,7 +47,6 @@ local function load_colorscheme(scheme, custom_tab)
   for grp, col in pairs(color_table) do
     set_highlights(grp, col)
   end
-
 end
 
 --- Set and load the color scheme
