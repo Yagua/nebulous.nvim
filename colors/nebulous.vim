@@ -1,11 +1,2 @@
-lua  << EOF
-
-package.loaded['nebulous']        = nil
-package.loaded['nebulous.utils']  = nil
-package.loaded['nebulous.config'] = nil
-package.loaded['nebulous.colors'] = nil
-package.loaded['nebulous.scheme'] = nil
-
-require("nebulous.utils").setup_scheme()
-
-EOF
+" Configure via the setup function. Check the readme file.
+" require("nebulous").setup{...}
