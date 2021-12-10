@@ -8,7 +8,6 @@
 --]]
 
 local utils = require("nebulous.utils")
-local functions = require("nebulous.functions")
 local nebulous = {}
 
 ---Setup function to load the colorscheme
@@ -16,9 +15,5 @@ local nebulous = {}
 function nebulous.setup(opts)
   utils.setup_scheme(opts)
 end
-
-nebulous.toggle_variant = functions.toggle_variant
-nebulous.random_variant = functions.random_variant
-nebulous.set_variant    = functions.set_variant
 
 return nebulous

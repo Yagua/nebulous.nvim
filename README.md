@@ -61,6 +61,7 @@ Plug 'Yagua/nebulous.nvim'
 ## Configuration & Use
 
 Setup example:
+
 ```lua
 --Put this lines inside your vimrc to set the colorscheme
 require("nebulous").setup {
@@ -86,6 +87,20 @@ require("nebulous").setup {
   }
 ```
 
+When overwriting the color groups of the selected variant, it is possible to
+obtain their colors or those of another variant as follows:
+
+```lua
+local colors = require("nebulous.functions").get_colors("midnight") -- < variant name
+
+require("nebulous").setup {
+  ...
+  custom_colors = {
+    Normal = { fg = colors.Red, bg = colors.Black, style = colors.none },
+  },
+}
+-- the '...' is used to denote the existence of other settings, this is not language syntax.
+```
 ## Summary of options
 
 | Option                               | Default Value |  Description                                   |
@@ -112,7 +127,7 @@ require("nebulous").setup {
 
 If you want to use the custom colorscheme of lualine, put the following code in
 your init (make sure you have nebulous and [lualine](https://github.com/hoob3rt/lualine.nvim)
-installed, otherwise it may not work):
+installed):
 
 ```lua
 require('lualine').setup {
@@ -130,6 +145,7 @@ require('lualine').setup {
 | `toggle_variant`                     | Browse among the different variants               |
 | `random_variant`                     | Set a random variant among the different variants |
 | `set_variant`                        | Set a specific variant according to its name      |
+| `get_colors`                         | Get colors of the especified variant              |
 
 
 ##### Toggle variant
@@ -138,19 +154,19 @@ require('lualine').setup {
 To switch between styles just run the function, e.g:
 
 ```vim
-:lua require("nebulous").toggle_variant()
+:lua require("nebulous.functions").toggle_variant()
 ```
 
 The random function has a similar behavior, just call the function as well:
 
 ```vim
-:lua require("nebulous").random_variant()
+:lua require("nebulous.functions").random_variant()
 ```
 
 You can also set a specific variant based on its name:
 
 ```vim
-:lua require("nebulous").set_variant("variant_name")
+:lua require("nebulous.functions").set_variant("variant_name")
 ```
 
 The functions can be mapped for quick use, e.g:
@@ -158,9 +174,9 @@ The functions can be mapped for quick use, e.g:
 - Vimscript
 
 ```vim
-nnoremap <silent><leader>tc :lua require("nebulous").toggle_variant()<CR>
-nnoremap <silent><leader>rc :lua require("nebulous").random_variant()<CR>
-nnoremap <silent><leader>tw :lua require("nebulous").set_variant("variant_name")<CR>
+nnoremap <silent><leader>tc :lua require("nebulous.functions").toggle_variant()<CR>
+nnoremap <silent><leader>rc :lua require("nebulous.functions").random_variant()<CR>
+nnoremap <silent><leader>tw :lua require("nebulous.functions").set_variant("variant_name")<CR>
 ```
 
 - Lua
@@ -169,13 +185,12 @@ nnoremap <silent><leader>tw :lua require("nebulous").set_variant("variant_name")
 local setmap = vim.api.nvim_set_keymap
 local options = { silent = true, noremap = true }
 
-setmap("n", "<leader>tc", ":lua require('nebulous').toggle_variant()<CR>", options)
-setmap("n", "<leader>rc", ":lua require('nebulous').random_variant()<CR>", options)
-setmap("n", "<leader>tw", ":lua require('nebulous').set_variant('variant_name')<CR>", options)
+setmap("n", "<leader>tc", ":lua require('nebulous.functions').toggle_variant()<CR>", options)
+setmap("n", "<leader>rc", ":lua require('nebulous.functions').random_variant()<CR>", options)
+setmap("n", "<leader>tw", ":lua require('nebulous.functions').set_variant('variant_name')<CR>", options)
 ```
 
 More features and color variants are coming in future updates!
-
 
 ### NOTE
 - In case you find an error in any color scheme, please make an appropriate issue describing in detail the problem found.

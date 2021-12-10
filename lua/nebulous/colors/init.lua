@@ -25,16 +25,15 @@ function colors.set_scheme(variant)
   local exists, index = variant_exists(variant_selected)
 
   if exists then
-    _, scheme = pcall(require,
-      string.format("nebulous.colors.%s", variant_selected))
+    scheme = require(string.format("nebulous.colors.%s", variant_selected))
     vim.g.nebulous_variant_loaded = index
   else
-    scheme = require("nebulous.colors.night")
     print(string.format(
-      "[Nebulous]: The variant '%s' does not exists. Default variant was set.",
+      "[Nebulous] The variant '%s' does not exists. Default variant was set.",
       variant_selected
     ))
-    vim.g.nebulous_variant_loaded = 1
+    scheme = require("nebulous.colors.night")
+    vim.g.nebulous_variant_loaded = 3
   end
   scheme.none = "NONE"
 

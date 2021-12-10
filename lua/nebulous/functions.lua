@@ -13,13 +13,6 @@ local function change_variant(pos)
   return position
 end
 
----Set a especific variant
---@param scheme string: name of the variant to be set
-function M.set_variant(scheme)
-  local variant = scheme  or ""
-  utils.setup_scheme { variant = variant }
-end
-
 --- Sets a variant in accordance with a valid position in the variants table
 --@param position number: position to load a variant from the variant table
 local function load_variant(position)
@@ -28,6 +21,12 @@ local function load_variant(position)
   M.set_variant(variant)
 end
 
+---Set a especific variant
+--@param scheme string: name of the variant to be set
+function M.set_variant(scheme)
+  if scheme == nil then return end
+  utils.setup_scheme { variant = scheme }
+end
 --- Set a variant by scrolling through the variant table in an orderly fashion
 function M.toggle_variant()
   local position = change_variant(g.nebulous_variant_loaded)
@@ -39,6 +38,21 @@ function M.random_variant()
   local random = math.random(1, table.getn(variants))
   local position = change_variant(random)
   load_variant(position)
+end
+
+--- Get colors of the given variant
+--@param variant_name  string: name of the chosen variant
+--@return table with the colors of the given variant
+function M.get_colors(variant_name)
+  local variant = variant_name or "night"
+  local exists, scheme = pcall(require,
+    string.format("nebulous.colors.%s", variant))
+
+  if not exists then
+    return string.format("nebulous.colors.night")
+  end
+
+  return scheme
 end
 
 return M

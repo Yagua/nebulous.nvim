@@ -27,19 +27,21 @@ end
 --@param custom_tab table: custom color table
 local function load_colorscheme(scheme, custom_tab)
   local color_table = scheme or {}
-  local custom_colors = custom_tab or {}
+  local overrides = custom_tab or {}
 
-  api.nvim_command("highlight clear") --TODO: fix blank colors during variant changeover
-  api.nvim_command("silent! colorscheme " .. vim.g.nebulous_variant_loaded) -- temporary trick to solve the above problem
+  api.nvim_command("highlight clear")
+  if vim.fn.exists("sintax_on") then
+    api.nvim_command("syntax reset")
+  end
 
-  if vim.fn.exists("sintax_on") then api.nvim_command("syntax reset") end
-  vim.opt.background = "dark"
-  vim.g.colors_name = "nebulous"
   vim.opt.termguicolors = true
+  vim.g.colors_name = "nebulous"
+  api.nvim_command("silent! colorscheme nebulous~" ..
+    vim.g.nebulous_variant_loaded) -- reset blank colors during variant changeover
 
-  if type(custom_colors) == "table" then
-    if next(custom_colors) ~= nil then
-      color_table = vim.tbl_deep_extend("force", {}, color_table, custom_colors)
+  if type(overrides) == "table" then
+    if next(overrides) ~= nil then
+      color_table = vim.tbl_deep_extend("force", {}, color_table, overrides)
     end
   end
 
