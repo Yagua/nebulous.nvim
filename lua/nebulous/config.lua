@@ -19,10 +19,10 @@ M.scheme_options = {
 ---Set custom options to the editor
 --@parama opts table: custom options for editor
 function M.set_options(opts)
-  local options = opts or {}
-  if type(options) == "table" then
+  opts = opts or {}
+  if type(opts) == "table" then
     local new_sets =
-      vim.tbl_deep_extend("force", {}, M.scheme_options, options)
+      vim.tbl_deep_extend("force", {}, M.scheme_options, opts)
     M.scheme_options = new_sets
   end
   return M.scheme_options

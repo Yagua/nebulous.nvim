@@ -24,10 +24,10 @@ end
 
 ---Load colorscheme
 --@param scheme table: editor elements with its colors
---@param custom_tab table: custom color table
-local function load_colorscheme(scheme, custom_tab)
-  local color_table = scheme or {}
-  local overrides = custom_tab or {}
+--@param overrides table: custom color table
+local function load_colorscheme(scheme, overrides)
+  scheme = scheme or {}
+  overrides = overrides or {}
 
   api.nvim_command("highlight clear")
   if vim.fn.exists("sintax_on") then
@@ -41,12 +41,12 @@ local function load_colorscheme(scheme, custom_tab)
 
   if type(overrides) == "table" then
     if next(overrides) ~= nil then
-      color_table = vim.tbl_deep_extend("force", {}, color_table, overrides)
+      scheme = vim.tbl_deep_extend("force", {}, scheme, overrides)
     end
   end
 
   --Load editor colors
-  for grp, col in pairs(color_table) do
+  for grp, col in pairs(scheme) do
     set_highlights(grp, col)
   end
 end

@@ -7,9 +7,8 @@ local g = vim.g
 --@parma pos number: a position to search in the table of variants
 --@return position number: a valid position for setting a variant from the variant table
 local function change_variant(pos)
-  local v_tab = variants or {}
-  if next(v_tab) == nil then return end
-  local position = table.getn(v_tab) > pos and pos + 1 or 1
+  if next(variants) == nil then return end
+  local position = table.getn(variants) > pos and pos + 1 or 1
   return position
 end
 
@@ -27,6 +26,7 @@ function M.set_variant(scheme)
   if scheme == nil then return end
   utils.setup_scheme { variant = scheme }
 end
+
 --- Set a variant by scrolling through the variant table in an orderly fashion
 function M.toggle_variant()
   local position = change_variant(g.nebulous_variant_loaded)
@@ -41,16 +41,25 @@ function M.random_variant()
 end
 
 --- Get colors of the given variant
---@param variant_name  string: name of the chosen variant
+--@param variant  string: name of the chosen variant
 --@return table with the colors of the given variant
-function M.get_colors(variant_name)
-  local variant = variant_name or "night"
+function M.get_colors(variant)
+  variant = variant or ""
+
+  if type(variant) == "string" then
+    if string.len(vim.fn.trim(variant)) < 1 then
+      variant = "night"
+    end
+  end
+
   local exists, scheme = pcall(require,
     string.format("nebulous.colors.%s", variant))
 
   if not exists then
-    return string.format("nebulous.colors.night")
+    scheme = require("nebulous.colors.night")
   end
+
+  scheme.none = "NONE"
 
   return scheme
 end

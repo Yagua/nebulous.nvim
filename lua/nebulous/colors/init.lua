@@ -8,10 +8,10 @@ colors.variants = {
 
 ---Check for the existence of a variant in the variant table
 --@param val string: variant to search for
---@return exists boolean: boolean value with the search response
+--@geturn exists boolean: boolean value with the search response
 local function variant_exists(val)
-  local variant = val or ""
-  local index = vim.fn.index(colors.variants, variant)
+  val = val or ""
+  local index = vim.fn.index(colors.variants, val)
   local exists = index >= 0 and true or false
   return exists, (index + 1)
 end
@@ -20,17 +20,17 @@ end
 --@param variant string: name of the selected color variant
 --@return scheme table: editor elements with its respective colors
 function colors.set_scheme(variant)
+  variant = variant or ""
+  local exists, index = variant_exists(variant)
   local scheme = {}
-  local variant_selected = variant or ""
-  local exists, index = variant_exists(variant_selected)
 
   if exists then
-    scheme = require(string.format("nebulous.colors.%s", variant_selected))
+    scheme = require(string.format("nebulous.colors.%s", variant))
     vim.g.nebulous_variant_loaded = index
   else
     print(string.format(
       "[Nebulous] The variant '%s' does not exists. Default variant was set.",
-      variant_selected
+      variant
     ))
     scheme = require("nebulous.colors.night")
     vim.g.nebulous_variant_loaded = 3
