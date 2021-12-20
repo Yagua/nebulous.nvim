@@ -216,26 +216,26 @@ function setup.load_colors(scheme)
     LspReferenceText =                     { fg = scheme.none,        bg = scheme.LightGrey, scheme.none },
     LspReferenceWrite =                    { fg = scheme.none,        bg = scheme.LightGrey, scheme.none },
 
-    -- Nvim 0.6.x Lsp highlight groups
-    DiagnosticFloatingWarn     = { link = "LspDiagnosticsFloatingWarning" },
-    DiagnosticSignWarn         = { link = "LspDiagnosticsSignWarning" },
-    DiagnosticUnderlineWarn    = { link = "LspDiagnosticsUnderlineWarning" },
-    DiagnosticVirtualTextWarn  = { link = "LspDiagnosticsVirtualTextWarning" },
+    -- Nvim 0.6.x LSP
+    DiagnosticFloatingWarn     = { fg = scheme.DarkOrange, bg = scheme.none, style = "underline" },
+    DiagnosticSignWarn         = { fg = scheme.DarkOrange, bg = scheme.none, scheme.none },
+    DiagnosticUnderlineWarn    = { fg = scheme.none,       bg = scheme.none, style = "underline" },
+    DiagnosticVirtualTextWarn  = { fg = scheme.DarkOrange, bg = scheme.none, scheme.none },
 
-    DiagnosticFloatingError    = { link = "LspDiagnosticsFloatingError" },
-    DiagnosticSignError        = { link = "LspDiagnosticsSignError" },
-    DiagnosticUnderlineError   = { link = "LspDiagnosticsUnderlineError" },
-    DiagnosticVirtualTextError = { link = "LspDiagnosticsVirtualTextError" },
+    DiagnosticFloatingError    = { fg = scheme.DarkRed,    bg = scheme.none, style = "underline" },
+    DiagnosticSignError        = { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
+    DiagnosticUnderlineError   = { fg = scheme.none,       bg = scheme.none, style = "underline" },
+    DiagnosticVirtualTextError = { fg = scheme.DarkRed,    bg = scheme.none, scheme.none },
 
-    DiagnosticFloatingInfo     = { link = "LspDiagnosticsFloatingInformation" },
-    DiagnosticSignInfo         = { link = "LspDiagnosticsSignInformation" },
-    DiagnosticUnderlineInfo    = { link = "LspDiagnosticsUnderlineInformation" },
-    DiagnosticVirtualTextInfo  = { link = "LspDiagnosticsVirtualTextInformation" },
+    DiagnosticFloatingInfo     = { fg = scheme.Custom_3,   bg = scheme.none, style = "underline" },
+    DiagnosticSignInfo         = { fg = scheme.Custom_3,   bg = scheme.none, scheme.none },
+    DiagnosticUnderlineInfo    = { fg = scheme.none,       bg = scheme.none, style = "underline" },
+    DiagnosticVirtualTextInfo  = { fg = scheme.Custom_3,   bg = scheme.none, scheme.none },
 
-    DiagnosticFloatingHint     = { link = "LspDiagnosticsFloatingHint" },
-    DiagnosticSignHint         = { link = "LspDiagnosticsSignHint" },
-    DiagnosticUnderlineHint    = { link = "LspDiagnosticsUnderlineHint" },
-    DiagnosticVirtualTextHint  = { link = "LspDiagnosticsVirtualTextHint" },
+    DiagnosticFloatingHint     = { fg = scheme.Custom_2,   bg = scheme.none, style = "underline" },
+    DiagnosticSignHint         = { fg = scheme.Custom_2,   bg = scheme.none, scheme.none },
+    DiagnosticUnderlineHint    = { fg = scheme.none,       bg = scheme.none, style = "underline" },
+    DiagnosticVirtualTextHint  = { fg = scheme.Custom_2,   bg = scheme.none, scheme.none },
 
     -- Telescope
     TelescopeBorder =         { fg = scheme.DarkOrange,  bg = scheme.none, scheme.none },
