@@ -26,6 +26,9 @@ Minimalist Collection of Colorschemes Written in Lua
 
 ## Preview
 
+<details>
+<summary>Screenshots</summary>
+
 #### Fullmoon
 
 ![fullmoon](./media/fullmoon.gif)
@@ -41,6 +44,8 @@ Minimalist Collection of Colorschemes Written in Lua
 #### Night
 
 ![night](./media/night.gif)
+
+</details>
 
 ## Installation
 
