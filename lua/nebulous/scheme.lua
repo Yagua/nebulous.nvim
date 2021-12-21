@@ -1,6 +1,6 @@
 local get_options = require("nebulous.config").get_options
-local setup = {}
 local g = vim.g
+local setup = {}
 
 ---Load terminal colors
 --@param tab table: scheme colors to apply
@@ -257,6 +257,7 @@ function setup.load_colors(scheme)
     NvimTreeFolderName =      { fg = scheme.Blue,       bg = scheme.none, scheme.none },
     NvimTreeImageFile =       { fg = scheme.Pink,       bg = scheme.none, scheme.none },
     NvimTreeIndentMarker =    { fg = scheme.Blue,       bg = scheme.none, scheme.none },
+    NvimTreeRootFolder =      { fg = scheme.Purple,     bg = scheme.none, scheme.none },
 
     -- Startify
     StartifyBracket = { fg = scheme.Red,        bg = scheme.none, scheme.none },
@@ -332,7 +333,10 @@ function setup.load_colors(scheme)
     CmpItemAbbrMatch =       { fg = scheme.Blue,    bg = scheme.none, style = "bold" },
   }
 
-  terminal_colors(scheme)
+  if opts.term_colors == false then
+    terminal_colors(scheme)
+  end
+
   return editor
 end
 

@@ -6,6 +6,7 @@ M.scheme_options = {
   disable = {
     background = false,
     endOfBuffer = true,
+    terminal_colors = false,
   },
   italic = {
     comments   = false,
@@ -36,6 +37,7 @@ function M.get_options()
   local opts = M.scheme_options
 
   settings.st_eof        = opts.disable.endOfBuffer
+  settings.term_colors   = opts.disable.terminal_colors
   settings.st_disable_bg = opts.disable.background  and "NONE"
   settings.st_comments   = opts.italic.comments     and "italic" or "NONE"
   settings.st_keywords   = opts.italic.keywords     and "italic" or "NONE"

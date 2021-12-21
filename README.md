@@ -69,6 +69,7 @@ require("nebulous").setup {
   disable = {
     background = true,
     endOfBuffer = false,
+    terminal_colors = false,
   },
   italic = {
     comments   = false,
@@ -108,6 +109,7 @@ require("nebulous").setup {
 | variant                              | `night`       | Select color variant                           |
 | <b>disable</b>.background            | `false`       | Enable/Disable background in the editor        |
 | <b>disable</b>.endOfBuffer           | `false`       | Enable/Disable lines at the end of the buffer  |
+| <b>disable</b>.terminal_colors       | `false`       | Enable/Disable terminal colors                 |
 | <b>italic</b>.comments               | `false`       | Enable/Disable "italic" style in comments      |
 | <b>italic</b>.functions              | `false`       | Enable/Disable "italic" style in functions     |
 | <b>italic</b>.variables              | `false`       | Enable/Disable "italic" style in variables     |
