@@ -5,7 +5,7 @@ M.scheme_options = {
   variant = "night",
   disable = {
     background = false,
-    endOfBuffer = true,
+    endOfBuffer = false,
     terminal_colors = false,
   },
   italic = {

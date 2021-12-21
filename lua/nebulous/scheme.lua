@@ -188,7 +188,7 @@ function setup.load_colors(scheme)
 
     -- Lsp trouble
     LspTroubleCount =  { fg = scheme.Black, bg = scheme.DarkOrange, scheme.none },
-    LspTroubleNormal = { fg = scheme.White, bg = scheme.Background, scheme.none },
+    LspTroubleNormal = { fg = scheme.White, bg = scheme.background, scheme.none },
     LspTroubleText =   { fg = scheme.White, bg = scheme.none,       scheme.none },
 
     -- Lsp colors
@@ -272,7 +272,7 @@ function setup.load_colors(scheme)
     NeogitDiffAddHighlight =     { fg = scheme.DarkGreen, bg = scheme.LightGrey,  scheme.none },
     NeogitDiffContextHighlight = { fg = scheme.Orange,    bg = scheme.LightGrey,  scheme.none },
     NeogitDiffDeleteHighlight =  { fg = scheme.DarkRed,   bg = scheme.LightGrey,  scheme.none },
-    NeogitHunkHeader =           { fg = scheme.White,     bg = scheme.Background, scheme.none },
+    NeogitHunkHeader =           { fg = scheme.White,     bg = scheme.background, scheme.none },
     NeogitHunkHeaderHighlight =  { fg = scheme.Blue,      bg = scheme.LightGrey,  scheme.none },
     NeogitObjectId =             { fg = scheme.Purple,    bg = scheme.none,       scheme.none },
     NeogitRemote =               { fg = scheme.Yellow,    bg = scheme.none,       scheme.none },
@@ -331,6 +331,10 @@ function setup.load_colors(scheme)
     CmpItemKind =            { fg = scheme.Yellow, bg = scheme.none, scheme.none },
     CmpItemAbbrDeprecated =  { fg = scheme.DarkGrey_2, bg = scheme.none, scheme.none },
     CmpItemAbbrMatch =       { fg = scheme.Blue,    bg = scheme.none, style = "bold" },
+
+    -- BufferLine
+    BufferLineIndicatorSelected = { fg = scheme.DarkOrange, bg = scheme.background, scheme.none },
+    BufferLineFill =              { fg = scheme.DarkGrey,   bg = scheme.Custom_1, scheme.none },
   }
 
   if opts.term_colors == false then
