@@ -30,8 +30,7 @@ function colors.set_scheme(variant)
   else
     print(string.format(
       "[Nebulous] The variant '%s' does not exists. Default variant was set.",
-      variant
-    ))
+      variant))
     scheme = require("nebulous.colors.night")
     vim.g.nebulous_variant_loaded = 3
   end
