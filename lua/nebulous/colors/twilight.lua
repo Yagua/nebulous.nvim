@@ -1,5 +1,4 @@
 local Twilight = {}
-
 --Light colors
 Twilight.background  = "#010018"
 Twilight.Red         = "#FE5D8B"

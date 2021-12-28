@@ -1,5 +1,4 @@
 local Night = {}
-
 --Light colors
 Night.background  = "#0b1015"
 Night.Red         = "#FB467B"
