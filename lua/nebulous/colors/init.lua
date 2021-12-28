@@ -4,11 +4,12 @@ colors.variants = {
   [2] = "twilight",
   [3] = "night",
   [4] = "fullmoon",
+  [5] = "quasar",
 }
 
 ---Check for the existence of a variant in the variant table
 --@param val string: variant to search for
---@geturn exists boolean: boolean value with the search response
+--@return exists boolean: boolean value with the search response
 local function variant_exists(val)
   val = val or ""
   local index = vim.fn.index(colors.variants, val)

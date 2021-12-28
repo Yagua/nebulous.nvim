@@ -6,7 +6,7 @@ Minimalist Collection of Colorschemes Written in Lua
 
 ## Features
 
-- 4 available variants (for the moment)
+- 5 available variants (for the moment)
 - It has support for a large number of plugins such as LSP, Tree-Sitter, Telescope, Nvim-Tree and others.
 - Support for Vim Terminal Colors
 - Lualine scheme
@@ -44,6 +44,10 @@ Minimalist Collection of Colorschemes Written in Lua
 #### Night
 
 ![night](./media/night.gif)
+
+#### Quasar
+
+![quasar](./media/quasar.gif)
 
 </details>
 
@@ -129,6 +133,7 @@ require("nebulous").setup {
 | twilight            | `alternative` |
 | midnight            | `alternative` |
 | fullmoon            | `alternative` |
+| quasar              | `alternative` |
 
 ### Lualine scheme
 
