@@ -3,8 +3,8 @@ local utils = require("nebulous.utils")
 local variants = require("nebulous.colors").variants
 local g = vim.g
 
---- Returns the position of the variant that will be loaded.
---@parma pos number: a position to search in the table of variants
+--- Return the position of the variant that will be loaded.
+--@param pos number: a position to search in the table of variants
 --@return position number: a valid position for setting a variant from the variant table
 local function change_variant(pos)
   if next(variants) == nil then return end
@@ -12,7 +12,7 @@ local function change_variant(pos)
   return position
 end
 
---- Sets a variant in accordance with a valid position in the variants table
+--- Set a variant in accordance with a valid position in the variants table
 --@param position number: position to load a variant from the variant table
 local function load_variant(position)
   local variant = variants[position]
@@ -41,7 +41,7 @@ function M.random_variant()
 end
 
 --- Get colors of the given variant
---@param variant  string: name of the chosen variant
+--@param variant string: name of the chosen variant
 --@return table with the colors of the given variant
 function M.get_colors(variant)
   variant = variant or ""

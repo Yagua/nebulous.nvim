@@ -20,7 +20,7 @@ M.scheme_options = {
 local _user_config = {}
 
 ---Set custom options to the editor
---@parama opts table: custom options for editor
+--@param opts table: custom options for editor
 function M.set_options(opts)
   opts = opts or {}
   local options = vim.tbl_deep_extend("force", {}, M.scheme_options, opts)
@@ -30,7 +30,7 @@ end
 
 ---Get the value of secheme options
 --@param tab table: custom options to be applied to the editor scheme
---@returns settings table: settings adapted to load the scheme
+--@return settings table: settings adapted to load the scheme
 function M.get_options()
   local settings = {} --TODO: improve options adaptation
 

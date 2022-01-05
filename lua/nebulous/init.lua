@@ -1,6 +1,6 @@
 --[[
 
-  Title:        Nebulous.nvim
+  Title:        nebulous.nvim
   Description:  Minimalist Collection of Colorschemes Written in Lua
   Author:       Yagua <yagua.db@gmail.com>
   Website:      https://github.com/Yagua/nebulous.nvim
