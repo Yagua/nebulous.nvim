@@ -1,34 +1,34 @@
-local get_options = require("nebulous.config").get_options
 local g = vim.g
 local setup = {}
 
 ---Load terminal colors
---@param tab table: scheme colors to apply
-local function terminal_colors(tab)
-  g.terminal_color_0  = tab.Black
-  g.terminal_color_1  = tab.Red
-  g.terminal_color_2  = tab.Green
-  g.terminal_color_3  = tab.Yellow
-  g.terminal_color_4  = tab.Blue
-  g.terminal_color_5  = tab.Purple
-  g.terminal_color_6  = tab.Cyan
-  g.terminal_color_7  = tab.White
-  g.terminal_color_8  = tab.Grey
-  g.terminal_color_9  = tab.Red
-  g.terminal_color_10 = tab.Green
-  g.terminal_color_11 = tab.Yellow
-  g.terminal_color_12 = tab.Blue
-  g.terminal_color_13 = tab.Purple
-  g.terminal_color_14 = tab.Cyan
-  g.terminal_color_15 = tab.White
+--@param scheme table: colors to apply in terminal
+local function terminal_colors(scheme)
+  g.terminal_color_0  = scheme.Black
+  g.terminal_color_1  = scheme.Red
+  g.terminal_color_2  = scheme.Green
+  g.terminal_color_3  = scheme.Yellow
+  g.terminal_color_4  = scheme.Blue
+  g.terminal_color_5  = scheme.Purple
+  g.terminal_color_6  = scheme.Cyan
+  g.terminal_color_7  = scheme.White
+  g.terminal_color_8  = scheme.Grey
+  g.terminal_color_9  = scheme.Red
+  g.terminal_color_10 = scheme.Green
+  g.terminal_color_11 = scheme.Yellow
+  g.terminal_color_12 = scheme.Blue
+  g.terminal_color_13 = scheme.Purple
+  g.terminal_color_14 = scheme.Cyan
+  g.terminal_color_15 = scheme.White
 end
 
 ---Load all colorscheme elements
 --@param scheme table: colors to apply
 --@param settings table: custom options to be applied to the scheme
---@return editor table: all groups and its respectives colors
-function setup.load_colors(scheme)
-  local opts = get_options()
+--@return editor table: all highlight groups and its respectives colors
+function setup.load_colors(scheme, settings)
+  scheme = scheme or {}
+  settings = settings or {}
 
   ---------------------
   --  EDITOR COLORS  --
@@ -37,7 +37,7 @@ function setup.load_colors(scheme)
     Boolean =          { fg = scheme.DarkYellow, bg = scheme.none,       scheme.none },
     Character =        { fg = scheme.Orange,     bg = scheme.none,       scheme.none },
     ColorColumn =      { fg = scheme.none,       bg = scheme.LightGrey,  scheme.none },
-    Comment =          { fg = scheme.DarkGrey,   bg = scheme.none,       style = opts.st_comments },
+    Comment =          { fg = scheme.DarkGrey,   bg = scheme.none,       style = settings.st_comments },
     Conceal =          { fg = scheme.Blue,       bg = scheme.none,       scheme.none },
     Conditional =      { fg = scheme.Red,        bg = scheme.none,       scheme.none },
     Constant =         { fg = scheme.Orange,     bg = scheme.none,       scheme.none },
@@ -51,26 +51,26 @@ function setup.load_colors(scheme)
     DiffDelete =       { fg = scheme.Red,        bg = scheme.none,       style = "reverse" },
     DiffText =         { fg = scheme.Yellow,     bg = scheme.none,       style = "reverse" },
     Directory =        { fg = scheme.Blue,       bg = scheme.none,       style = "bold" },
-    EndOfBuffer =      { fg = opts.st_eof and scheme.background or scheme.DarkGrey, bg = scheme.none, scheme.none },
+    EndOfBuffer =      { fg = settings.st_eof and scheme.background or scheme.DarkGrey, bg = scheme.none, scheme.none },
     Error =            { fg = scheme.DarkRed,    bg = scheme.none,       style = "bold,underline" },
     ErrorMsg =         { fg = scheme.DarkRed,    bg = scheme.none,       scheme.none },
     Exception =        { fg = scheme.DarkRed,    bg = scheme.none,       scheme.none },
     Float =            { fg = scheme.Orange,     bg = scheme.none,       scheme.none },
     FoldColumn =       { fg = scheme.Grey,       bg = scheme.DarkGrey,   scheme.none },
     Folded =           { fg = scheme.Grey,       bg = scheme.none,       scheme.none },
-    Function =         { fg = scheme.Aqua,       bg = scheme.none,       style = opts.st_functions },
-    Identifier =       { fg = scheme.Cyan,       bg = scheme.none,       style = opts.st_variables },
+    Function =         { fg = scheme.Aqua,       bg = scheme.none,       style = settings.st_functions },
+    Identifier =       { fg = scheme.Cyan,       bg = scheme.none,       style = settings.st_variables },
     Ignore =           { fg = scheme.none,       bg = scheme.none,       scheme.none },
     Italic =           { fg = scheme.none,       bg = scheme.none,       style = "italic" },
     IncSearch =        { fg = scheme.Black,      bg = scheme.DarkCyan,   scheme.none },
     Include =          { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
-    Keyword =          { fg = scheme.Red,        bg = scheme.none,       style = opts.st_keywords },
+    Keyword =          { fg = scheme.Red,        bg = scheme.none,       style = settings.st_keywords },
     Label =            { fg = scheme.Purple,     bg = scheme.none,       scheme.none },
     LineNr =           { fg = scheme.DarkGrey,   bg = scheme.none,       scheme.none },
     Macro =            { fg = scheme.Cyan,       bg = scheme.none,       scheme.none },
     MatchParen =       { fg = scheme.Cyan,       bg = scheme.none,       style = "bold" },
     NonText =          { fg = scheme.DarkGrey,   bg = scheme.none,       scheme.none },
-    Normal =           { fg = scheme.White,      bg = opts.st_disable_bg or scheme.background, scheme.none },
+    Normal =           { fg = scheme.White,      bg = settings.st_disable_bg or scheme.background, scheme.none },
     NormalFloat =      { fg = scheme.White,      bg = scheme.LightGrey,  scheme.none },
     Number =           { fg = scheme.Red,        bg = scheme.none,       scheme.none },
     Operator =         { fg = scheme.White,      bg = scheme.none,       scheme.none },
@@ -151,9 +151,9 @@ function setup.load_colors(scheme)
     TSFloat =           { fg = scheme.Orange,     bg = scheme.none, scheme.none },
     TSFuncBuiltin =     { fg = scheme.Aqua,       bg = scheme.none, scheme.none },
     TSFuncMacro =       { fg = scheme.Aqua,       bg = scheme.none, scheme.none },
-    TSFunction =        { fg = scheme.Aqua,       bg = scheme.none, style = opts.st_functions },
+    TSFunction =        { fg = scheme.Aqua,       bg = scheme.none, style = settings.st_functions },
     TSInclude =         { fg = scheme.Cyan,       bg = scheme.none, scheme.none },
-    TSKeyword =         { fg = scheme.Red,        bg = scheme.none, style = opts.st_keywords },
+    TSKeyword =         { fg = scheme.Red,        bg = scheme.none, style = settings.st_keywords },
     TSLabel =           { fg = scheme.DarkYellow, bg = scheme.none, scheme.none },
     TSMethod =          { fg = scheme.Aqua,       bg = scheme.none, scheme.none },
     TSNumber =          { fg = scheme.Red,        bg = scheme.none, scheme.none },
@@ -168,7 +168,7 @@ function setup.load_colors(scheme)
     TSTagDelimiter =    { fg = scheme.Green,      bg = scheme.none, scheme.none },
     TSType =            { fg = scheme.Yellow,     bg = scheme.none, scheme.none },
     TSTypeBuiltin =     { fg = scheme.Yellow,     bg = scheme.none, scheme.none },
-    TSVariable =        { fg = scheme.Cyan,       bg = scheme.none, style = opts.st_variables },
+    TSVariable =        { fg = scheme.Cyan,       bg = scheme.none, style = settings.st_variables },
     TSVariableBuiltin = { fg = scheme.Orange,     bg = scheme.none, scheme.none },
 
     -- Treesitter rainbow
@@ -337,7 +337,7 @@ function setup.load_colors(scheme)
     BufferLineFill =              { fg = scheme.DarkGrey,   bg = scheme.Custom_1, scheme.none },
   }
 
-  if opts.term_colors == false then
+  if settings.term_colors == false then
     terminal_colors(scheme)
   end
 

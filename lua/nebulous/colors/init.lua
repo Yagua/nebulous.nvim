@@ -20,7 +20,7 @@ end
 ---Select variant color and return it
 --@param variant string: name of the selected color variant
 --@return scheme table: editor elements with its respective colors
-function colors.set_scheme(variant)
+function colors.get_scheme(variant)
   variant = variant or ""
   local exists, index = variant_exists(variant)
   local scheme = {}

@@ -1,4 +1,4 @@
-local set_options = require("nebulous.config").set_options
+local config = require("nebulous.config")
 local theme = require("nebulous.scheme")
 local color = require("nebulous.colors")
 
@@ -24,10 +24,9 @@ end
 
 ---Load colorscheme
 --@param scheme table: editor elements with its colors
---@param overrides table: custom color table
-local function load_colorscheme(scheme, overrides)
+local function load_colorscheme(scheme)
   scheme = scheme or {}
-  overrides = overrides or {}
+  local overrides = scheme.overrides or {}
 
   api.nvim_command("highlight clear")
   if vim.fn.exists("sintax_on") then
@@ -54,11 +53,13 @@ end
 --- Set and load the color scheme
 --@param opts table: custom options to be applied to the editor
 function utils.setup_scheme(opts)
-  local conf = set_options(opts)
-  local scheme = color.set_scheme(conf.variant)
-  local colors = theme.load_colors(scheme)
+  local usr_opts = config.set_user_options(opts)
+  local scheme_opts = config.get_scheme_options(usr_opts)
+  local scheme = color.get_scheme(usr_opts.variant)
+  local colors = theme.load_colors(scheme, scheme_opts)
+  colors.overrides = usr_opts.custom_colors
 
-  load_colorscheme(colors, conf.custom_colors)
+  load_colorscheme(colors)
 end
 
 return utils
