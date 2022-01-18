@@ -19,6 +19,7 @@ Quasar.LightGrey   = "#CCC2C2"
 Quasar.Custom_1    = "#2B2B39"
 Quasar.Custom_2    = "#62968E"
 Quasar.Custom_3    = "#0D804A"
+Quasar.Custom_4    = "#49465c"
 
 --Dark colors
 Quasar.DarkRed     = "#BA0912"
