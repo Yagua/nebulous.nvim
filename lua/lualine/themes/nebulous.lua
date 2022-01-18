@@ -1,36 +1,36 @@
-local colors = require("nebulous.colors")
-local nb_statusline = {}
+local colors = require("nebulous.functions").get_current_colors()
+local nebulous = {}
 
-nb_statusline.normal = {
+nebulous.normal = {
   a = { bg = colors.Orange, fg = colors.Black, gui = "bold" },
   b = { bg = colors.Grey, fg = colors.White },
   c = { bg = colors.Custom_1, fg = colors.White },
 }
 
-nb_statusline.insert = {
+nebulous.insert = {
   a = { bg = colors.Magenta, fg = colors.Black, gui = "bold" },
   b = { bg = colors.Grey, fg = colors.White },
 }
 
-nb_statusline.visual = {
+nebulous.visual = {
   a = { bg = colors.Yellow, fg = colors.Black, gui = "bold" },
   b = { bg = colors.Grey, fg = colors.White },
 }
 
-nb_statusline.replace = {
+nebulous.replace = {
   a = { bg = colors.DarkRed, fg = colors.Black, gui = "bold" },
   b = { bg = colors.Grey, fg = colors.White },
 }
 
-nb_statusline.command = {
+nebulous.command = {
   a = { bg = colors.Green, fg = colors.Black, gui = "bold" },
   b = { bg = colors.Grey, fg = colors.White },
 }
 
-nb_statusline.inactive = {
+nebulous.inactive = {
   a = { bg = colors.Grey, fg = colors.White, gui = "bold" },
   b = { bg = colors.Grey, fg = colors.White },
   c = { bg = colors.Grey, fg = colors.White },
 }
 
-return nb_statusline
+return nebulous

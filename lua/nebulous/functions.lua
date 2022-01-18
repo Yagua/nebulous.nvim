@@ -40,6 +40,15 @@ function M.random_variant()
   load_variant(position)
 end
 
+--- Get table with the colors of active variant
+--@return colors of the current variant
+function M.get_current_colors()
+  local current_variant = variants[g.nebulous_variant_loaded]
+  local _, scheme = pcall(require, string.format("nebulous.colors.%s",
+    current_variant))
+  return scheme or {}
+end
+
 --- Get colors of the given variant
 --@param variant string: name of the chosen variant
 --@return table with the colors of the given variant
