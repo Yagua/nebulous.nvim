@@ -3,6 +3,7 @@ local nebulous = {}
 
 --For quasar variant
 if vim.g.nebulous_variant_loaded == 5 then
+  colors = vim.tbl_deep_extend("force", {}, colors)
   colors.Custom_1 = colors.Custom_4
   colors.Grey = colors.DarkGrey
   colors.White = colors.Black
