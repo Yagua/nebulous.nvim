@@ -40,25 +40,15 @@ function M.random_variant()
   load_variant(position)
 end
 
---- Get table with the colors of active variant
---@return colors of the current variant
-function M.get_current_colors()
-  local current_variant = variants[g.nebulous_variant_loaded]
-  local _, scheme = pcall(require, string.format("nebulous.colors.%s",
-    current_variant))
-  return scheme or {}
-end
-
 --- Get colors of the given variant
 --@param variant string: name of the chosen variant
---@return table with the colors of the given variant
+--@return table with the colors of the resulting variant
 function M.get_colors(variant)
-  variant = variant or ""
+  local current_variant = variants[g.nebulous_variant_loaded]
+  variant = variant or current_variant
 
-  if type(variant) == "string" then
-    if string.len(vim.fn.trim(variant)) < 1 then
-      variant = "night"
-    end
+  if type(variant) ~= "string" or string.len(vim.fn.trim(variant)) < 1 then
+    variant = current_variant
   end
 
   local exists, scheme = pcall(require,

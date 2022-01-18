@@ -1,4 +1,4 @@
-local colors = require("nebulous.functions").get_current_colors()
+local colors = require("nebulous.functions").get_colors()
 local nebulous = {}
 
 nebulous.normal = {

@@ -102,7 +102,7 @@ obtain their colors or those of another variant as follows:
 
 ```lua
 local colors = require("nebulous.functions").get_colors("midnight") -- < variant name
--- if you want to get the colors of the current variant use 'get_current_colors()' instead
+-- if you want to get the colors of the current variant use the function without arguments
 
 require("nebulous").setup {
   ...
@@ -153,13 +153,12 @@ require('lualine').setup {
 
 ## Functions
 
-| Option                               |  Description                                      |
-| -------------------------------------|---------------------------------------------------|
-| `toggle_variant`                     | Browse among the different variants               |
-| `random_variant`                     | Set a random variant among the different variants |
-| `set_variant`                        | Set a specific variant according to its name      |
-| `get_colors`                         | Get colors of the especified variant              |
-| `get_current_colors`                 | Get colors of the current variant                 |
+| Option                               |  Description                                                               |
+| -------------------------------------|----------------------------------------------------------------------------|
+| `toggle_variant`                     | Browse among the different variants                                        |
+| `random_variant`                     | Set a random variant among the different variants                          |
+| `set_variant`                        | Set a specific variant according to its name                               |
+| `get_colors`                         | Get the colors of the current variant or the variant specified as argument |
 
 
 ##### Toggle variant
