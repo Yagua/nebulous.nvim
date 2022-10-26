@@ -21,7 +21,7 @@ Minimalist Collection of Colorschemes Written in Lua
 
 ## Prequisites
 
-- [Neovim version 0.5+](https://github.com/neovim/neovim/releases)
+- [Neovim version 0.8+](https://github.com/neovim/neovim/releases)
 - (Recommended) [Tree-Sitter](https://github.com/nvim-treesitter/nvim-treesitter) Highlight for a better use of colors
 
 ## Preview
