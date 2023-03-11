@@ -60,6 +60,16 @@ Minimalist Collection of Colorschemes Written in Lua
 
 You can install colorsecheme with any package manager, for example:
 
+##### [Lazy.nvim](https://github.com/folke/lazy.nvim)
+
+```lazy.nvim
+    {
+    'Yagua/nebulous.nvim', --and contiue to configure with "opts"
+      opts = {
+           variant = "midnight",
+           },
+    },
+```
 ##### [Packer.nvim](https://github.com/wbthomason/packer.nvim)
 
 ```lua
