@@ -181,7 +181,7 @@ function setup.load_colors(scheme, settings)
     -- ["@character.special"] = {},
 
 	-- LSP Semantic Token Groups
-	['@lsp.type.namespace'] = { link = "@namespace" },
+   -- ['@lsp.type.namespace'] = { link = "@namespace" },
     ['@lsp.type.type'] = { link = "@type" },
     ['@lsp.type.class'] = { link = "@type" },
     ['@lsp.type.struct'] = { link = "@structure" },
