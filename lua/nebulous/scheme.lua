@@ -180,6 +180,33 @@ function setup.load_colors(scheme, settings)
     -- ["@define"] = {},
     -- ["@character.special"] = {},
 
+	-- LSP Semantic Token Groups
+	['@lsp.type.namespace'] = { link = "@namespace" },
+    ['@lsp.type.type'] = { link = "@type" },
+    ['@lsp.type.class'] = { link = "@type" },
+    ['@lsp.type.struct'] = { link = "@structure" },
+    ['@lsp.type.enumMember'] = { link = "@constant" },
+    ['@lsp.type.function'] = { link = "@function" },
+    ['@lsp.type.method'] = { link = "@method" },
+    ['@lsp.type.macro'] = { link = "@macro" },
+    ['@lsp.type.decorator'] = { link = "@function" },
+    ["@lsp.type.comment"] = { link = "@comment" },
+    ["@lsp.type.enum"] = { link = "@type" },
+    ["@lsp.type.interface"] = { link = "Identifier" },
+    ["@lsp.type.keyword"] = { link = "@keyword" },
+    ["@lsp.type.namespace"] = { link = "@namespace" },
+    ["@lsp.type.parameter"] = { link = "@parameter" },
+    ["@lsp.type.property"] = { link = "@property" },
+    ["@lsp.type.variable"] = {}, -- use treesitter styles for regular variables
+    ["@lsp.typemod.method.defaultLibrary"] = { link = "@function.builtin" },
+    ["@lsp.typemod.function.defaultLibrary"] = { link = "@function.builtin" },
+    ["@lsp.typemod.operator.injected"] = { link = "@operator" },
+    ["@lsp.typemod.string.injected"] = { link = "@string" },
+    ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
+    ["@lsp.typemod.variable.injected"] = { link = "@variable" },
+    -- NOTE: maybe add these with distinct highlights?
+    -- ["@lsp.typemod.variable.globalScope"] (global variables)
+	
     -- Treesitter rainbow
     rainbowcol1 = { fg = scheme.Red,    bg = scheme.none, scheme.none },
     rainbowcol2 = { fg = scheme.Cyan,   bg = scheme.none, scheme.none },
